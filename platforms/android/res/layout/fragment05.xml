@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/register_background_01"
+                android:orientation="vertical"
+                tools:context=".Guide.GuideActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="161dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/icon_1" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/back_image" />
+
+    <EditText
+        android:id="@+id/edtFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/radio_button_selector"
+        android:gravity="center_vertical"
+        android:paddingLeft="30dp"
+        android:text="请输入您的姓氏"
+        android:textColor="@color/color_white_text"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/edtFirstName"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rbtnMan"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/radio_button_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="先生"
+                android:textColor="@color/color_white_text"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="60dp"
+                android:paddingLeft="20dp" />
+            <RadioButton
+                android:id="@+id/rbtnWoman"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:background="@drawable/radio_button_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="女士"
+                android:textColor="@color/color_white_text"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="60dp"
+                android:paddingLeft="20dp"
+                android:checked="false"/>
+        </RadioGroup>
+        <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="27dp"
+        android:layout_height="33dp"
+
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="80dp"
+        android:src="@drawable/icon_man" />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="27dp"
+            android:layout_height="33dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_woman"
+            android:layout_marginLeft="220dp"/>
+
+
+    </RelativeLayout>
+
+    <!--<RadioGroup
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/edtFirstName"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="21dp"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/rbtnMan"
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/radio_button_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="先生"
+                android:textColor="@color/color_white_text"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="27dp"
+                android:layout_height="33dp"
+                android:layout_alignLeft="@+id/rbtnMan"
+                android:layout_alignStart="@+id/rbtnMan"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/icon_man" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <RadioButton
+                android:id="@+id/rbtnWoman"
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/radio_button_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="女士"
+                android:textColor="@color/color_white_text"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="27dp"
+                android:layout_height="33dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/icon_woman" />
+
+        </RelativeLayout>
+    </RadioGroup>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="20dp"
+        android:text="填写姓氏，性别方便联系后称谓"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/color_white_text"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignRight="@+id/edtFirstName"
+        android:layout_alignEnd="@+id/edtFirstName"/>
+
+</RelativeLayout>
