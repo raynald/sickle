@@ -1,0 +1,63 @@
+/* Empty. Add your own CSS if you like */
+* {
+    font-family: "Microsoft YaHei" ! important;
+}
+#guideContent{
+    background:url("../img/guideBackground_page1.png") no-repeat;
+    background-size: cover;
+}
+img{
+    width: 150px;
+}
+#guideLogo{
+    width: 150px;
+    margin: 20% auto;
+}
+#guideStartText{
+    font-size:17px;
+    padding-top: 20px;
+}
+div{
+    text-align: center;
+}
+#buttonContent{
+    width: 400px;
+    margin: 0 auto;
+
+}
+
+/*自定义圆角button,按下去是红色的。弹起来是透明的带有1px的白色边框。字体为*/
+.button.button-none {
+
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 30px;
+    border: 1px solid white;
+    height: 50px;
+    width: 80%;
+    font-size:17px;
+}
+.button.button-none:hover {
+    color: #ffffff;
+    text-decoration: none; }
+.button.button-none.active, .button.button-none.activated {
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: #ffffff;
+}
+.button.button-none.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #ddd; }
+.button.button-none.button-icon {
+    border-color: transparent;
+    background: none; }
+.button.button-none.button-outline {
+    border-color: #ddd;
+    background: transparent;
+    color: #ddd; }
+.button.button-none.button-outline.active, .button.button-none.button-outline.activated {
+    background-color: #ddd;
+    box-shadow: none;
+    color: #fff; }
