@@ -2,7 +2,7 @@
 * {
     font-family: "Microsoft YaHei" ! important;
 }
-#guideContent{
+/*#guideContent{
     background:url("../img/guideBackground_page1.png") no-repeat;
     background-size: cover;
 }
@@ -24,8 +24,16 @@ div{
     width: 400px;
     margin: 0 auto;
 
+}*/
+#guideContent{
+    background:url("../img/guideBackground_page1.png") no-repeat;
+    background-size: cover;
 }
-
+img{
+    width: 160px;
+    height: 100px;
+    margin-top: 9em;
+}
 /*自定义圆角button,按下去是红色的。弹起来是透明的带有1px的白色边框。字体为*/
 .button.button-none {
 
