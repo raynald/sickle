@@ -2,6 +2,7 @@
 * {
     font-family: "Microsoft YaHei" ! important;
 }
+
 /*#guideContent{
     background:url("../img/guideBackground_page1.png") no-repeat;
     background-size: cover;
@@ -25,24 +26,34 @@ div{
     margin: 0 auto;
 
 }*/
-.guideContentBackground1{
-    background:url("../img/guideBackground_page1.png") no-repeat;
+.guideContentBackground1 {
+    background: url("../img/guideBackground_page1.png") no-repeat;
     background-size: cover;
 }
-.guideContentBackground2{
-    background:url("../img/guideBackground_page2.png") no-repeat;
+
+.guideContentBackground2 {
+    background: url("../img/guideBackground.png") no-repeat;
     background-size: cover;
 }
-.imgRedLogo{
+
+.imgRedLogo {
     width: 160px;
     height: 100px;
     margin-top: 9em;
 }
-.imgWhiteLogo{
+
+.imgWhiteLogo {
     width: 128px;
     height: 80px;
-    margin-top: 4em;
+    margin-top: -1em;
 }
+
+.imgLogoIcon {
+    width: 6em;
+    height: 6em;
+    margin-top: -1em;
+}
+
 /*自定义圆角button,按下去是红色的。弹起来是透明的带有1px的白色边框。字体为*/
 .button.button-none-red {
 
@@ -52,32 +63,43 @@ div{
     border: 1px solid white;
     height: 50px;
     width: 80%;
-    font-size:17px;
+    font-size: 17px;
 }
+
 .button.button-none-red:hover {
     color: #ffffff;
-    text-decoration: none; }
+    text-decoration: none;
+}
+
 .button.button-none-red.active, .button.button-none-red.activated {
     background-color: #ae0009;
     border: 1px solid #ae0009;
     color: #ffffff;
 }
+
 .button.button-none-red.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    color: #ddd; }
+    color: #ddd;
+}
+
 .button.button-none-red.button-icon {
     border-color: transparent;
-    background: none; }
+    background: none;
+}
+
 .button.button-none-red.button-outline {
     border-color: #ddd;
     background: transparent;
-    color: #ddd; }
+    color: #ddd;
+}
+
 .button.button-none-red.button-outline.active, .button.button-none-red.button-outline.activated {
     background-color: #ddd;
     box-shadow: none;
-    color: #fff; }
+    color: #fff;
+}
 
 /*自定义圆角button,按下去是毛玻璃样式的。弹起来是透明的带有1px的白色边框。字体为*/
 .button.button-none {
@@ -88,29 +110,94 @@ div{
     border: 1px solid white;
     height: 50px;
     width: 80%;
-    font-size:17px;
+    font-size: 17px;
 }
+
 .button.button-none:hover {
     color: #ffffff;
-    text-decoration: none; }
+    text-decoration: none;
+}
+
 .button.button-none.active, .button.button-none.activated {
     background-color: rgba(184, 175, 201, 0.08);
     border: 1px solid rgba(203, 208, 219, 0.12);
     color: #ffffff;
 }
+
 .button.button-none.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    color: #ddd; }
+    color: #ddd;
+}
+
 .button.button-none.button-icon {
     border-color: transparent;
-    background: none; }
+    background: none;
+}
+
 .button.button-none.button-outline {
     border-color: #ddd;
     background: transparent;
-    color: #ddd; }
+    color: #ddd;
+}
+
 .button.button-none.button-outline.active, .button.button-none.button-outline.activated {
     background-color: #ddd;
     box-shadow: none;
-    color: #fff; }
+    color: #fff;
+}
+
+/*自定义圆形button,按下去是透明的的。弹起来是毛玻璃样式的。字体为*/
+.button.button-none-circle {
+
+    background-color: rgba(200, 200, 200, 0.27);
+    color: white;
+    border-radius: 50px;
+    border: 1px solid white;
+    height: 4em;
+    width: 4em;
+    font-size: 15px;
+}
+
+.button.button-none-circle:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.button.button-none-circle.active, .button.button-none-circle.activated {
+    background-color: rgba(184, 175, 201, 0.08);
+    border: 1px solid rgba(203, 208, 219, 0.12);
+    color: #ffffff;
+}
+
+input[type='checkbox'] {
+    visibility: hidden;
+}
+
+input[type='checkbox']:checked + label {
+    background: red;
+}
+
+.col-checkbox-div {
+    border-radius: 5em;
+    background: rgba(200, 200, 200, 0.27);
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    color: white;
+    font-family: 微软雅黑;
+    margin: 5px 10px;
+}
+
+.centerContent {
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    color: white;
+    font-family: 微软雅黑;
+"
+}
