@@ -25,19 +25,64 @@ div{
     margin: 0 auto;
 
 }*/
-#guideContent{
+.guideContentBackground1{
     background:url("../img/guideBackground_page1.png") no-repeat;
     background-size: cover;
 }
-img{
+.guideContentBackground2{
+    background:url("../img/guideBackground_page2.png") no-repeat;
+    background-size: cover;
+}
+.imgRedLogo{
     width: 160px;
     height: 100px;
     margin-top: 9em;
 }
+.imgWhiteLogo{
+    width: 128px;
+    height: 80px;
+    margin-top: 4em;
+}
 /*自定义圆角button,按下去是红色的。弹起来是透明的带有1px的白色边框。字体为*/
-.button.button-none {
+.button.button-none-red {
 
     background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 30px;
+    border: 1px solid white;
+    height: 50px;
+    width: 80%;
+    font-size:17px;
+}
+.button.button-none-red:hover {
+    color: #ffffff;
+    text-decoration: none; }
+.button.button-none-red.active, .button.button-none-red.activated {
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: #ffffff;
+}
+.button.button-none-red.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #ddd; }
+.button.button-none-red.button-icon {
+    border-color: transparent;
+    background: none; }
+.button.button-none-red.button-outline {
+    border-color: #ddd;
+    background: transparent;
+    color: #ddd; }
+.button.button-none-red.button-outline.active, .button.button-none-red.button-outline.activated {
+    background-color: #ddd;
+    box-shadow: none;
+    color: #fff; }
+
+/*自定义圆角button,按下去是毛玻璃样式的。弹起来是透明的带有1px的白色边框。字体为*/
+.button.button-none {
+
+    background-color: rgba(255, 255, 255, 0);
     color: white;
     border-radius: 30px;
     border: 1px solid white;
@@ -49,8 +94,8 @@ img{
     color: #ffffff;
     text-decoration: none; }
 .button.button-none.active, .button.button-none.activated {
-    background-color: #ae0009;
-    border: 1px solid #ae0009;
+    background-color: rgba(184, 175, 201, 0.08);
+    border: 1px solid rgba(203, 208, 219, 0.12);
     color: #ffffff;
 }
 .button.button-none.button-clear {

@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
-
-    <link href="../lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="../css/guide.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
-    <script src="../lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="../cordova.js"></script>
-
-    <!-- your app's js -->
-    <script src="../js/app.js"></script>
-</head>
-<body ng-app="starter">
-<ion-content id="guideContent">
+<ion-content class="guideContentBackground1">
     <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;">
-        <img src="../img/logo.png">
+        <img class="imgRedLogo" src="../img/logo.png">
         <label id="guideStartText"  >——&nbsp;让你感受相亲新方式&nbsp;——</label>
-        <button  class="button button-none" style="margin-top:50%;">快速登陆</button>
-        <button  class="button button-none" style="margin-top: 20px">先看看</button>
+        <!--点击按钮在index页面的ion-nav-view中插入下一个片段-->
+        <button  class="button button-none-red" style="margin-top:50%;" ui-sref="guide2">快速登陆</button>
+        <button  class="button button-none-red" style="margin-top: 20px">先看看</button>
     </div>
 </ion-content>
-</body>
-</html>
