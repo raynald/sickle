@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module("guideApp",["ionic"]);
+angular.module('starter', ['ionic'])
 
-app.run(function($ionicPlatform) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -21,15 +21,4 @@ app.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
   });
-});
-app.config(function($stateProvider){
-    $stateProvider
-        .state("guide1",{
-            templateUrl:"guide_01.html"
-        })
-        .state("guide2",{
-            templateUrl:"guide_02.html"
-        });
-}).controller('guideCtrl',function($scope,$state){
-    $state.go('guide2');
-});
+})
