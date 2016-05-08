@@ -37,36 +37,39 @@ body {
     );
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
+    font-size:18px;
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
+    text-transform: uppercase;
     width:100%;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
 }
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
     text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    height: 100%;
+    padding: 0;
 }
 
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
+/* fix odd scrolling behavior when it's absolutely positioned */
+x-layout section :only-child {
+    position: relative;
+}
+
+x-flipbox > div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+x-flipbox > div:first-child {
+    padding: 1em;
 }
 
 h1 {
@@ -76,6 +79,19 @@ h1 {
     overflow:visible;
     padding:0px;
     text-align:center;
+}
+
+body > .contactForm {
+    display: none;
+}
+
+.contactForm {
+    padding: 2em;
+    padding-top: 1em;
+}
+
+.contactForm .field {
+    margin-bottom: 1em;
 }
 
 .event {
@@ -108,8 +124,44 @@ h1 {
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
+
+#deviceready {
+    display: none;
+}
  
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+    margin: 1em 0;
+}
+
+section button {
+	line-height: 2.5;
+	display: block;
+	width: 75%;
+	margin: 0 auto 1em;
+}
+
+#slide {
+    max-width: 100%;
+}
+
+x-appbar button.back {
+    position: absolute;
+    top: 0;
+    left: .5em;
+    display: none;
+}
+
+x-appbar button.back.open {
+    display: block;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    padding-top: 3em;
+    text-align: center;
+    font-style: italic;
+    text-transform: none;
 }
