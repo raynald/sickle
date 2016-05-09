@@ -54,7 +54,7 @@ div{
     margin-top: -1em;
 }
 
-/*×Ô¶¨ÒåÔ²½Çbutton,°´ÏÂÈ¥ÊÇºìÉ«µÄ¡£µ¯ÆğÀ´ÊÇÍ¸Ã÷µÄ´øÓĞ1pxµÄ°×É«±ß¿ò¡£×ÖÌåÎª*/
+/*è‡ªå®šä¹‰åœ†è§’button,æŒ‰ä¸‹å»æ˜¯çº¢è‰²çš„ã€‚å¼¹èµ·æ¥æ˜¯é€æ˜çš„å¸¦æœ‰1pxçš„ç™½è‰²è¾¹æ¡†ã€‚å­—ä½“ä¸º*/
 .button.button-none-red {
 
     background-color: rgba(255, 255, 255, 0.2);
@@ -101,16 +101,17 @@ div{
     color: #fff;
 }
 
-/*×Ô¶¨ÒåÔ²½Çbutton,°´ÏÂÈ¥ÊÇÃ«²£Á§ÑùÊ½µÄ¡£µ¯ÆğÀ´ÊÇÍ¸Ã÷µÄ´øÓĞ1pxµÄ°×É«±ß¿ò¡£×ÖÌåÎª*/
+/*è‡ªå®šä¹‰åœ†è§’button,æŒ‰ä¸‹å»æ˜¯æ¯›ç»ç’ƒæ ·å¼çš„ã€‚å¼¹èµ·æ¥æ˜¯é€æ˜çš„å¸¦æœ‰1pxçš„ç™½è‰²è¾¹æ¡†ã€‚å­—ä½“ä¸º*/
 .button.button-none {
 
     background-color: rgba(255, 255, 255, 0);
     color: white;
     border-radius: 30px;
-    border: 1px solid white;
+    border: 2px solid white;
     height: 50px;
     width: 80%;
     font-size: 17px;
+
 }
 
 .button.button-none:hover {
@@ -119,8 +120,8 @@ div{
 }
 
 .button.button-none.active, .button.button-none.activated {
-    background-color: rgba(184, 175, 201, 0.08);
-    border: 1px solid rgba(203, 208, 219, 0.12);
+    background-color: rgba(184, 175, 201, 0.4);
+    border: 2px solid rgba(203, 208, 219, 0.12);
     color: #ffffff;
 }
 
@@ -148,16 +149,18 @@ div{
     color: #fff;
 }
 
-/*×Ô¶¨ÒåÔ²ĞÎbutton,°´ÏÂÈ¥ÊÇÍ¸Ã÷µÄµÄ¡£µ¯ÆğÀ´ÊÇÃ«²£Á§ÑùÊ½µÄ¡£×ÖÌåÎª*/
+/*è‡ªå®šä¹‰åœ†å½¢button,æŒ‰ä¸‹å»æ˜¯é€æ˜çš„çš„ã€‚å¼¹èµ·æ¥æ˜¯æ¯›ç»ç’ƒæ ·å¼çš„ã€‚*/
 .button.button-none-circle {
 
     background-color: rgba(200, 200, 200, 0.27);
     color: white;
-    border-radius: 50px;
+    min-width: 1em;
+    min-height: 1em;
+    border-radius: 2em;
     border: 1px solid white;
     height: 4em;
     width: 4em;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .button.button-none-circle:hover {
@@ -170,6 +173,35 @@ div{
     border: 1px solid rgba(203, 208, 219, 0.12);
     color: #ffffff;
 }
+/*è‡ªå®šä¹‰åœ†å½¢button,æŒ‰ä¸‹å»æ˜¯é¢œè‰²ä¼šå˜æµ…ä¸€ç‚¹ã€‚èƒŒæ™¯ä¸ºè¿”å›logo*/
+.button.button-none-circle-back {
+
+    background-color: rgba(200, 200, 200, 0.27);
+    background-image:url("../img/backImage.png");
+    background-size: 4em 4em;
+    padding: 0;
+    min-width: 1em;
+    min-height: 1em;
+    color: white;
+    border-radius: 2em;
+    border:1px solid rgba(200, 200, 200, 0.27);
+    height: 4em;
+    width: 4em;
+    font-size: 15px;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.button.button-none-circle-back:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.button.button-none-circle-back.active, .button.button-none-circle-back.activated {
+    background-color: rgba(184, 175, 201, 0.08);
+    border: 1px solid rgba(203, 208, 219, 0.12);
+    color: #ffffff;
+}
 
 input[type='checkbox'] {
     visibility: hidden;
@@ -178,7 +210,7 @@ input[type='checkbox'] {
 input[type='checkbox']:checked + label {
     background: red;
 }
-
+/*gridåˆ—ç§checkboxæ ·å¼*/
 .col-checkbox-div {
     border-radius: 5em;
     background: rgba(200, 200, 200, 0.27);
@@ -188,16 +220,16 @@ input[type='checkbox']:checked + label {
     flex-flow: column;
     align-items: center;
     color: white;
-    font-family: Î¢ÈíÑÅºÚ;
+    font-family: å¾®è½¯é›…é»‘;
     margin: 5px 10px;
 }
-
+/*å‚ç›´æ’åˆ—ï¼Œæ°´å¹³å±…ä¸­å®¹å™¨*/
 .centerContent {
     display: flex;
     justify-content: center;
     flex-flow: column;
     align-items: center;
     color: white;
-    font-family: Î¢ÈíÑÅºÚ;
+    font-family: å¾®è½¯é›…é»‘;
 "
 }
