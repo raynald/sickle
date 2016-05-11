@@ -1,0 +1,1 @@
+mongod --dbpath <your mongodb data path>
