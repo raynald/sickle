@@ -299,11 +299,47 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-  .state('welcome', {
-    url: '/welcome',
-    abstract: true,
-    templateUrl: 'templates/welcome.html'
-  })
+
+      .state('guide_index', {
+        url: '/guide_index',
+        templateUrl: 'templates/guide_index.html'
+      })
+      .state('guide_01', {
+        url: '/guide_01',
+        templateUrl: 'templates/guide_01.html'
+      })
+      .state('guide_02', {
+        url: '/guide_02',
+        templateUrl: 'templates/guide_02.html'
+      })
+      .state('guide_03', {
+        url: '/guide_03',
+        templateUrl: 'templates/guide_03.html'
+      })
+      .state('guide_04', {
+        url: '/guide_04',
+        templateUrl: 'templates/guide_04.html'
+      })
+      .state('guide_05', {
+        url: '/guide_05',
+        templateUrl: 'templates/guide_05.html'
+      })
+      .state('guide_06', {
+        url: '/guide_06',
+        templateUrl: 'templates/guide_06.html'
+      })
+      .state('guide_07', {
+        url: '/guide_07',
+        templateUrl: 'templates/guide_07.html'
+      })
+      .state('guide_08', {
+        url: '/guide_08',
+        templateUrl: 'templates/guide_08.html'
+      })
+      .state('guide_09', {
+        url: '/guide_09',
+        templateUrl: 'templates/guide_09.html'
+      })
   // setup an abstract state for the tabs directive
   .state('tab', {
         url: '/tab',
@@ -362,7 +398,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/welcome');
+  $urlRouterProvider.otherwise('/guide_01');
 
 })
 // fitlers
@@ -426,7 +462,7 @@ function getMockMessages() {
 }
 
 // configure moment relative time
-moment.locale('en', {
+/*moment.locale('en', {
   relativeTime: {
     future: "in %s",
     past: "%s ago",
@@ -442,4 +478,4 @@ moment.locale('en', {
     y: "a year",
     yy: "%d years"
   }
-});
+});*/
