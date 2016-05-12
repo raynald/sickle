@@ -452,6 +452,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   }
 ])
+.directive('guideTwoButton',function(){
+    return{
+        restrict:'E',
+        /*这是guide页面最上面的两个button  保存和跳过*/
+        template:'<div><button class="button button-none-circle" style="margin-top: 1em;margin-left: 1em;">跳过</button><button class="button button-none-circle" style="margin-top: 1em;margin-right: 1em;float: right">保存</button></div>',
+        replace:true
+    };
+})
 
 function onProfilePicError(ele) {
   this.ele.src = ''; // set a fallback
