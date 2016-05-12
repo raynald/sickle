@@ -1,0 +1,46 @@
+<ion-view view-title="Main" class="tab-main">
+  <ion-content>
+    <div class="main-self">
+      <button>config</button>
+      <img class="avatar" ng-src="img/adam.jpg">
+      <table class="dashboard">
+        <tbody>
+        <tr>
+          <td>被关注</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>被浏览</td>
+          <td>15</td>
+        </tr>
+
+        </tbody>
+        <button class="button button-clover">相亲名片</button>
+      </table>
+    </div>
+    <div>
+      <div class="bar bar-stable">
+        <div class="button-bar">
+          <a class="button button-balanced main-filter">最近</a>
+          <a class="button button-clear main-filter">热门</a>
+          <a class="button button-clear main-filter">筛选</a>
+        </div>
+      </div>
+      <div class="persons-list">
+        <ion-list>
+          <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.id}}">
+            <img ng-src="{{person.face}}">
+            <h2>{{person.job}}</h2>
+            <p>{{person.gender}} | {{person.address}} | {{person.birthday}} | {{person.degree}} | {{person.height}}</p>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+            <button class="button button-clover">chat</button>
+            <button class="button button-clover">profile</button>
+            <ion-option-button class="button-assertive" ng-click="remove(person)">
+              Delete
+            </ion-option-button>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
