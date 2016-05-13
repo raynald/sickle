@@ -30,8 +30,18 @@ buildscript {
     // installed version of Gradle. This dependency is documented at
     // http://tools.android.com/tech-docs/new-build-system/version-compatibility
     // and https://issues.apache.org/jira/browse/CB-8143
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0-beta1'
+    if (gradle.gradleVersion >= "2.2") {
+        dependencies {
+            classpath 'com.android.tools.build:gradle:1.0.0+'
+        }
+    } else if (gradle.gradleVersion >= "2.1") {
+        dependencies {
+            classpath 'com.android.tools.build:gradle:0.14.0+'
+        }
+    } else {
+        dependencies {
+            classpath 'com.android.tools.build:gradle:0.12.0+'
+        }
     }
 }
 
@@ -41,7 +51,7 @@ repositories {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.8'
+    gradleVersion = '2.2.1'
 }
 
 // Configuration properties. Set these via environment variables, build-extras.gradle, or gradle.properties.
@@ -163,15 +173,9 @@ android {
 
     defaultConfig {
         versionCode cdvVersionCode ?: Integer.parseInt("" + privateHelpers.extractIntFromManifest("versionCode") + "0")
-        applicationId privateHelpers.extractStringFromManifest("package")
-
         if (cdvMinSdkVersion != null) {
             minSdkVersion cdvMinSdkVersion
         }
-    }
-
-    lintOptions {
-        abortOnError false;
     }
 
     compileSdkVersion cdvCompileSdkVersion
@@ -198,15 +202,15 @@ android {
             }
         }
     } else if (!cdvVersionCode) {
-        def minSdkVersion = cdvMinSdkVersion ?: privateHelpers.extractIntFromManifest("minSdkVersion")
-        // Vary versionCode by the two most common API levels:
-        // 14 is ICS, which is the lowest API level for many apps.
-        // 20 is Lollipop, which is the lowest API level for the updatable system webview.
-        if (minSdkVersion >= 20) {
-            defaultConfig.versionCode += 9
-        } else if (minSdkVersion >= 14) {
-            defaultConfig.versionCode += 8
-        }
+      def minSdkVersion = cdvMinSdkVersion ?: privateHelpers.extractIntFromManifest("minSdkVersion")
+      // Vary versionCode by the two most common API levels:
+      // 14 is ICS, which is the lowest API level for many apps.
+      // 20 is Lollipop, which is the lowest API level for the updatable system webview.
+      if (minSdkVersion >= 20) {
+        defaultConfig.versionCode += 9
+      } else if (minSdkVersion >= 14) {
+        defaultConfig.versionCode += 8
+      }
     }
 
     compileOptions {
@@ -219,8 +223,7 @@ android {
             release {
                 // These must be set or Gradle will complain (even if they are overridden).
                 keyAlias = ""
-                keyPassword = "__unset"
-                // And these must be set to non-empty in order to have the signing step added to the task graph.
+                keyPassword = "__unset" // And these must be set to non-empty in order to have the signing step added to the task graph.
                 storeFile = null
                 storePassword = "__unset"
             }
@@ -243,7 +246,6 @@ dependencies {
     debugCompile project(path: "CordovaLib", configuration: "debug")
     releaseCompile project(path: "CordovaLib", configuration: "release")
     // SUB-PROJECT DEPENDENCIES END
-    compile 'com.android.support:appcompat-v7:23.3.0'
 }
 
 def promptForReleaseKeyPassword() {
