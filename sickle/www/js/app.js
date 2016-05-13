@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
-var app = angular.module("guideApp",["ionic"]);
+var app = angular.module('guideApp',['ionic']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,18 +23,7 @@ app.run(function($ionicPlatform) {
     }
   });
 });
-app.config(function($stateProvider){
-    $stateProvider
-        .state("guide1",{
-            templateUrl:"guide_01.html"
-        })
-        .state("guide2",{
-            templateUrl:"guide_02.html"
-        });
-})
-    .controller('guideCtrl',function($scope,$state) {
-      $state.go('guide2')
-    });
+
 
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
@@ -274,7 +263,7 @@ angular.module('monospaced.elastic', [])
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

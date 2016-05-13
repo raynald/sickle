@@ -48,31 +48,34 @@
         });
     }).config(function($stateProvider){
         $stateProvider
-                .state("guide1",{
+                .state("guide_01",{
                     templateUrl:"guide_01.html"
-                }).state("guide2",{
+                }).state("guide_02",{
                     templateUrl:"guide_02.html"
-                }).state("guide3",{
+                }).state("guide_03",{
                     templateUrl:"guide_03.html"
-                }).state("guide4",{
+                }).state("guide_04",{
                     templateUrl:"guide_04.html"
-                }).state("guide5",{
+                }).state("guide_05",{
                     templateUrl:"guide_05.html"
-                }).state("guide6",{
+                }).state("guide_06",{
                     templateUrl:"guide_06.html"
-                }).state("guide7",{
+                }).state("guide_07",{
                     templateUrl:"guide_07.html"
-                }).state("guide8",{
+                }).state("guide_08",{
                     templateUrl:"guide_08.html"
-                }).state("guide9",{
+                }).state("guide_09",{
                     templateUrl:"guide_09.html"
-                }).state("guide10",{
-                    templateUrl:"guide_10.html"
-                }).state("guide11",{
-                    templateUrl:"guide_11.html"
                 });
     }).controller('guideCtrl',function($scope,$state){
-        $state.go('guide1');
-    })
+        $state.go('guide_06');
+    }).directive('guideTwoButton',function(){
+        return{
+            restrict:'E',
+            /*这是guide页面最上面的两个button  保存和跳过*/
+            template:'<div><button class="button button-none-circle" style="margin-top: 1em;margin-left: 1em;">跳过</button><button class="button button-none-circle" style="margin-top: 1em;margin-right: 1em;float: right">保存</button></div>',
+            replace:true
+        };
+    });
 </script>
 </html>
