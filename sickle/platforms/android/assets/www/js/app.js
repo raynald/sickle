@@ -3,8 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-<<<<<<< HEAD
-var app = angular.module("guideApp",["ionic"]);
+
+var app = angular.module('guideApp',['ionic']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,17 +23,8 @@ app.run(function($ionicPlatform) {
     }
   });
 });
-app.config(function($stateProvider){
-    $stateProvider
-        .state("guide1",{
-            templateUrl:"guide_01.html"
-        })
-        .state("guide2",{
-            templateUrl:"guide_02.html"
-        });
-}).controller('guideCtrl',function($scope,$state){
-    $state.go('guide2');
-=======
+
+
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
@@ -272,7 +263,7 @@ angular.module('monospaced.elastic', [])
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -297,11 +288,47 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-  .state('welcome', {
-    url: '/welcome',
-    abstract: true,
-    templateUrl: 'templates/welcome.html'
-  })
+
+      .state('guide_index', {
+        url: '/guide_index',
+        templateUrl: 'templates/guide_index.html'
+      })
+      .state('guide_01', {
+        url: '/guide_01',
+        templateUrl: 'templates/guide_01.html'
+      })
+      .state('guide_02', {
+        url: '/guide_02',
+        templateUrl: 'templates/guide_02.html'
+      })
+      .state('guide_03', {
+        url: '/guide_03',
+        templateUrl: 'templates/guide_03.html'
+      })
+      .state('guide_04', {
+        url: '/guide_04',
+        templateUrl: 'templates/guide_04.html'
+      })
+      .state('guide_05', {
+        url: '/guide_05',
+        templateUrl: 'templates/guide_05.html'
+      })
+      .state('guide_06', {
+        url: '/guide_06',
+        templateUrl: 'templates/guide_06.html'
+      })
+      .state('guide_07', {
+        url: '/guide_07',
+        templateUrl: 'templates/guide_07.html'
+      })
+      .state('guide_08', {
+        url: '/guide_08',
+        templateUrl: 'templates/guide_08.html'
+      })
+      .state('guide_09', {
+        url: '/guide_09',
+        templateUrl: 'templates/guide_09.html'
+      })
   // setup an abstract state for the tabs directive
   .state('tab', {
         url: '/tab',
@@ -360,7 +387,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/welcome');
+  $urlRouterProvider.otherwise('/guide_01');
 
 })
 // fitlers
@@ -414,6 +441,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   }
 ])
+.directive('guideTwoButton',function(){
+    return{
+        restrict:'E',
+        /*这是guide页面最上面的两个button  保存和跳过*/
+        template:'<div><button class="button button-none-circle" style="margin-top: 1em;margin-left: 1em;">跳过</button><button class="button button-none-circle" style="margin-top: 1em;margin-right: 1em;float: right">保存</button></div>',
+        replace:true
+    };
+})
 
 function onProfilePicError(ele) {
   this.ele.src = ''; // set a fallback
@@ -424,7 +459,7 @@ function getMockMessages() {
 }
 
 // configure moment relative time
-moment.locale('en', {
+/*moment.locale('en', {
   relativeTime: {
     future: "in %s",
     past: "%s ago",
@@ -440,5 +475,4 @@ moment.locale('en', {
     y: "a year",
     yy: "%d years"
   }
->>>>>>> refs/remotes/origin/master
-});
+});*/
