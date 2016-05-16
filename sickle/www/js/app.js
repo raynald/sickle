@@ -387,7 +387,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/guide_01');
+  $urlRouterProvider.otherwise('/guide_03');
 
 })
 // fitlers

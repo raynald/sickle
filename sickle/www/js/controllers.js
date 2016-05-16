@@ -233,10 +233,12 @@ angular.module('starter.controllers', ['ngCordova'])
    };
 })
     .controller('RadioCtrl',function($scope){
-      $scope.isChecked = false;
+      $scope.Check = false;
+      $scope.nonCheck = true;
       $scope.check = function(){
-        $scope.isChecked = !$scope.isChecked;
-      }
+        $scope.Check = !$scope.Check;
+        $scope.nonCheck = !$scope.nonCheck;
+      };
     })
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
