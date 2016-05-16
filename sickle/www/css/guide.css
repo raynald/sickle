@@ -203,25 +203,15 @@ div{
     color: #ffffff;
 }
 
-input[type='checkbox'] {
-    visibility: hidden;
-}
-
-input[type='checkbox']:checked + label {
-    background: red;
-}
-/*grid列种checkbox样式*/
-.col-checkbox-div {
-    border-radius: 5em;
-    background: rgba(200, 200, 200, 0.27);
-    border: 1px solid white;
+/*grid列中checkbox样式*/
+.col-33.col-checkbox-div {
     display: flex;
     justify-content: center;
     flex-flow: column;
     align-items: center;
     color: white;
-    font-family: 微软雅黑;
     margin: 5px 10px;
+    width: 100%;
 }
 /*垂直排列，水平居中容器*/
 .centerContent {
@@ -230,6 +220,39 @@ input[type='checkbox']:checked + label {
     flex-flow: column;
     align-items: center;
     color: white;
-    font-family: 微软雅黑;
-"
+    width: 100%;
+}
+
+/*
+ *增加checkBox css样式，选中为毛玻璃样式，
+ *没选中为透明带一个白色边框，通过RadioCtrl
+ *的check的值可以知道当前checkBox是否选中，
+ *true：选中，false：没选中*/
+.customCheckBox{
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    border-radius: 30px;
+    border: 1px solid white;
+    height: 50px;
+    padding: 0.4em 0;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    text-align: center;
+
+}
+.customCheckBoxChecked{
+    background-color: rgba(200, 200, 200, 0.27);
+    color: white;
+    border-radius: 30px;
+
+    height: 50px;
+    padding: 0.4em 0;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    text-align: center;
+
 }
