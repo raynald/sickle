@@ -366,6 +366,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
         }
       }
     })
+      .state('tab.person-detail', {
+          url: '/persons/:personId',
+          views: {
+              'tab-chats': {
+                  templateUrl: 'templates/person-detail.html',
+                  controller: 'PersonDetailCtrl'
+              }
+          }
+      })
 
     .state('tab.main', {
           url: '/main',

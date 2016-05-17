@@ -20,6 +20,9 @@ angular.module('starter.controllers', ['ngCordova'])
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
 })
+    .controller('PersonDetailCtrl', function($scope, $stateParams, Persons) {
+      $scope.person = Persons.get($stateParams.personId);
+    })
 .controller('UserMessagesCtrl', ['$scope', '$rootScope', '$state',
   '$stateParams', 'MockService', '$ionicActionSheet',
   '$ionicPopup', '$ionicScrollDelegate', '$timeout', '$interval',

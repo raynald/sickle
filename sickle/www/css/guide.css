@@ -53,7 +53,18 @@ div{
     height: 6em;
     margin-top: -1em;
 }
+.button-clover{
+    background-color:transparent;
+    border-radius:25px;
+    color:#ae0009;
+    border:1px #ae0009 solid;
+}
 
+.button-clover.active{
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: #ffffff;
+}
 /*自定义圆角button,按下去是红色的。弹起来是透明的带有1px的白色边框。字体为*/
 .button.button-none-red {
 

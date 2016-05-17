@@ -15,13 +15,13 @@
         </tr>
 
         </tbody>
-        <button class="button button-clover">相亲名片</button>
+        <button class="button button-clover active ion-ios-person">相亲名片</button>
       </table>
     </div>
-    <div>
+    <div class="main-list">
       <div class="bar bar-stable">
         <div class="button-bar">
-          <a class="button button-balanced main-filter">最近</a>
+          <a class="button button-clear main-filter">最近</a>
           <a class="button button-clear main-filter">热门</a>
           <a class="button button-clear main-filter">筛选</a>
         </div>
@@ -33,8 +33,8 @@
             <h2>{{person.job}}</h2>
             <p>{{person.gender}} | {{person.address}} | {{person.birthday}} | {{person.degree}} | {{person.height}}</p>
             <i class="icon ion-chevron-right icon-accessory"></i>
-            <button class="button button-clover">chat</button>
-            <button class="button button-clover">profile</button>
+            <button class="button button-clover ion-chatbox-working" ui-sref="#tab/chats/{{person.id}}">聊一聊</button>
+            <button class="button button-clover ion-ios-person" ui-sref="#tab/persons/{{person.id}}">相亲名片</button>
             <ion-option-button class="button-assertive" ng-click="remove(person)">
               Delete
             </ion-option-button>

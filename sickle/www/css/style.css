@@ -72,11 +72,13 @@
 /* Empty. Add your own CSS if you like */
 .welcome{
   background-image: url('../img/welcome-bg.jpg');
+
 }
 .main-self{
   height: 194px;
   width:100%;
-  background-image: url('../img/ben.png');
+  background: url('../img/ben.png') no-repeat;
+  background-size: cover;
 
 }
 .avatar{
@@ -84,12 +86,7 @@
   height:50px;
   border-radius:25px;
 }
-.button-clover{
-  background-color:red;
-  border-radius:25px;
 
-
-}
 .dashboard{
   color:white;
 }
