@@ -1,0 +1,71 @@
+#logo{
+    margin: 100px 50px 0px 120px;
+    width: 100px;
+
+}
+.list{
+    border-radius: 8px;
+    background-color: transparent;
+}
+.item1{
+    margin: 30px 20px;
+    padding: 5px 0;
+    background-color: transparent;
+    border: 1px solid aliceblue;
+    border-radius: 22px;                /* 圆角边框 */
+    width: 305px;
+    height: 50px;
+    color: #d1d3d6;
+    font-weight: 100;
+    font-size: 25px;
+    letter-spacing: 15px;
+    text-align: center;
+}
+.item2{
+    margin: 10px 20px;
+    padding: 5px 0;
+    background-color: transparent;
+    border: 1px solid aliceblue;
+    border-radius: 22px;                /* 圆角边框 */
+    width: 200px;
+    height: 50px;
+    color: #d1d3d6;
+    font-weight: 100;
+    font-size: 25px;
+   letter-spacing: 15px;
+   text-align: center;
+}
+.button-energized{
+    margin: 10px 0px;
+    padding: 0px;
+    border-radius: 22px;
+    width: 85px;
+    height: 40px;
+    font-size:15px ;
+    background-color: transparent;
+    color: #fafafa;
+}
+.button-login{
+    margin:20px 70px;
+    width: 200px;
+    height:50px;
+    color: #d1d3d6;
+    border-radius: 25px;
+    background-color: transparent;
+}
+.loginselect{
+    margin: 0px 150px;
+    color: #d1d3d6;
+    width: 100px;
+}
+.header{
+    margin: 0px;
+    height: 200px;
+}
+.subbar{
+    margin: 120px 0px;
+}
+.pictures{
+    width: 30px;
+}
+

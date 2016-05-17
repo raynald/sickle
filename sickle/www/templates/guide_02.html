@@ -1,8 +1,30 @@
 <ion-view view-title="guide_02">
     <ion-content class="guideContentBackground2">
-        <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;">
-            <img class="imgWhiteLogo" src="img/logo_white.png">
-            <button  class="button button-none" style="margin-top:50%;" ui-sref="guide_03">next page</button>
-        </div>
-    </ion-content>
-</ion-view>
+        <div class="bar-header">
+            <img src="img/guideBackground.png">
+              <div class="scroll-content ">
+                  <div class="row responsive-sm padding remvoeBP">
+                      <div class="col">
+                          <div class="app-logo"><img id="logo" src="img/logo_white.png"></div>
+                          <label class="item1 item-input icon ion-android-call"><input class="login" type="text" ng-model="user.username" placeholder="请输入11位手机号码" > </label>
+                          <table>
+                              <tr>
+                                  <td>
+                                      <label class="item2 item-input icon  ion-eye "><input class="login" type="password" ng-model="user.password" placeholder="验证码信息" >
+                                      </label>
+                                  </td>
+                                  <td>
+                                      <button class="button-energized" type="submit">获取验证码</button>
+                                  </td>
+                              </tr>
+                          </table>
+
+                          <div class="loginButton"><button class="button-login ion-unlocked  " ng-click="login(user);" > 快速登录</button>  </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </ion-content>
+  </ion-view>
+
+
