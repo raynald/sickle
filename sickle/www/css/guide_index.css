@@ -45,6 +45,39 @@
     background-color: transparent;
     color: #fafafa;
 }
+.button-energized:hover {
+    text-decoration: none;
+}
+
+.button-energized.active, .button-energized.activated {
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: #ffffff;
+}
+
+.button-energized.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #ddd;
+}
+
+.button-energized.button-icon {
+    border-color: transparent;
+    background: none;
+}
+
+.button-energized.button-outline {
+    border-color: #ddd;
+    background: transparent;
+    color: #ddd;
+}
+
+.button-energized.button-outline.active, .button-energized.button-outline.activated {
+    background-color: #ddd;
+    box-shadow: none;
+    color: #fff;
+}
 .button-login{
     margin:20px 70px;
     width: 200px;
