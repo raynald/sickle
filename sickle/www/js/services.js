@@ -113,6 +113,78 @@ angular.module('starter.services', [])
     height:'167cm',
     tags:['can make food', 'single child'],
     target:['80-89','taller than 175cm']
+  },{
+    id: 5,
+    name: 'Mike Harrington1',
+    face: 'img/mike.png',
+    job: 'bank clerk',
+    gender:'female',
+    address:'Shanghai',
+    birthday:'1989',
+    degree:'master',
+    height:'167cm',
+    tags:['can make food', 'single child'],
+    target:['80-89','taller than 175cm']
+  },{
+    id: 6,
+    name: 'Mike Harrington2',
+    face: 'img/mike.png',
+    job: 'bank clerk',
+    gender:'female',
+    address:'Shanghai',
+    birthday:'1989',
+    degree:'master',
+    height:'167cm',
+    tags:['can make food', 'single child'],
+    target:['80-89','taller than 175cm']
+  },{
+    id: 7,
+    name: 'Mike Harrington2',
+    face: 'img/mike.png',
+    job: 'bank clerk',
+    gender:'female',
+    address:'Shanghai',
+    birthday:'1989',
+    degree:'master',
+    height:'167cm',
+    tags:['can make food', 'single child'],
+    target:['80-89','taller than 175cm']
+  },{
+    id: 8,
+    name: 'Mike Harrington2',
+    face: 'img/mike.png',
+    job: 'bank clerk',
+    gender:'female',
+    address:'Shanghai',
+    birthday:'1989',
+    degree:'master',
+    height:'167cm',
+    tags:['can make food', 'single child'],
+    target:['80-89','taller than 175cm']
+  },{
+    id: 9,
+    name: 'Mike Harrington2',
+    face: 'img/mike.png',
+    job: 'bank clerk',
+    gender:'female',
+    address:'Shanghai',
+    birthday:'1989',
+    degree:'master',
+    height:'167cm',
+    tags:['can make food', 'single child'],
+    target:['80-89','taller than 175cm']
+  },{
+    id: 10,
+    name: 'Mike Harrington2',
+    face: 'img/mike.png',
+    job: 'bank clerk',
+    gender:'female',
+    address:'Shanghai',
+    birthday:'1989',
+    degree:'master',
+    height:'167cm',
+    tags:['can make food', 'single child'],
+    target:['80-89','taller than 175cm']
   }];
 
   return {

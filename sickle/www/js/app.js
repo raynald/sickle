@@ -338,12 +338,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.subscribe', {
+    url: '/subscribe',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-subscribe': {
+        templateUrl: 'templates/tab-subscribe.html',
+        controller: 'SubscribeCtrl'
       }
     }
   })
@@ -397,6 +397,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/guide_03');
+  //$ionicConfigProvider.tabs.position('bottom');
 
 })
 // fitlers

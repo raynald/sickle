@@ -1,6 +1,11 @@
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('DashCtrl', function($scope) {})
+.controller('SubscribeCtrl', function($scope,Persons) {
+    $scope.persons = Persons.all();
+    $scope.remove = function(person) {
+      Persons.remove(person);
+    };
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
