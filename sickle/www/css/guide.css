@@ -49,8 +49,9 @@ div{
 }
 
 .imgLogoIcon {
-    width: 6em;
-    height: 6em;
+    width: 60px;
+ //   width: 6em;
+//    height: 6em;
     margin-top: -1em;
 }
 
@@ -110,7 +111,8 @@ div{
     border: 2px solid white;
     height: 50px;
     width: 80%;
-    font-size: 17px;
+//    font-size: 17px;
+    font-size: 1em;
 
 }
 
