@@ -8,12 +8,11 @@
                 <p style="font-size: 2em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
             </div>
             <label style="margin-top: 1em">——&nbsp;基本资料&nbsp;——</label>
-            <button class="button button-none-red" ui-sref="tab.subscribe">goto main</button>
             <ul ng-controller="InputCtrl" style="width: 90%">
                 <li ng-repeat="data in datas">
-                    <div ng-class="{true:'customInputFilled',false:'customInputNotFilled'}[data.isFilled]" ng-controller="InputCtrl" ng-click="showSetHeightPopup()">
+                    <div ng-class="{true:'customInputFilled',false:'customInputNotFilled'}[data.isFilled]"  ng-click="do(data.functionId)">
                         <p style="float: left">{{data.info}}</p>
-                        <p style="float: right;">{{data.value}}</p>
+                        <p style="float: right;">{{data.value!=null?data.value:"未填写"}}</p>
                     </div>
                 </li>
             </ul>

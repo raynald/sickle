@@ -263,7 +263,7 @@ angular.module('monospaced.elastic', [])
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova','ionic-datepicker','ionic-citypicker'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -399,7 +399,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   $urlRouterProvider.otherwise('/guide_03');
   //$ionicConfigProvider.tabs.position('bottom');
 
-})
+},function (ionicDatePickerProvider) {
+        var datePickerObj = {
+            inputDate: new Date(),
+            setLabel: 'Set',
+            todayLabel: 'Today',
+            closeLabel: 'Close',
+            mondayFirst: true,
+  /*          weeksList: ["日", "M", "T", "W", "T", "F", "S"],
+            monthsList: ["一月", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],*/
+            templateType: 'popup',
+            from: new Date(2012, 8, 1),
+            to: new Date(2018, 8, 1),
+            showTodayButton: true,
+            dateFormat: 'dd MMMM yyyy',
+            closeOnSelect: false,
+            disableWeekdays: [6]
+        };
+        ionicDatePickerProvider.configDatePicker(datePickerObj);
+    })
 // fitlers
 .filter('nl2br', ['$filter',
   function($filter) {
