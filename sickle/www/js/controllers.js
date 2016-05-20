@@ -247,6 +247,100 @@ angular.module('starter.controllers', ['ngCordova'])
         $scope.Check = !$scope.Check;
         $scope.nonCheck = !$scope.nonCheck;
       };
+    }).controller('InputCtrl',function($scope,$ionicPopup){
+      $scope.datas = {
+        userHeight:{
+          value:"未填写",
+          info:"*身高",
+          isFilled : false
+        },
+        userBorn:{
+          value:"未填写",
+          info:"*出生年月",
+          isFilled:false
+        },
+        userHome:{
+          value:"未填写",
+          info:"*居住地",
+          isFilled : false
+        },
+        userHouseholdegister :{
+          value:"未填写",
+          info:"*户籍",
+          isFilled:false
+        },
+        userHRousing:{
+          value:"未填写",
+          info:"*住房情况",
+          isFilled : false
+        },
+        userEducation:{
+          value:"未填写",
+          info:"*学历",
+          isFilled:false
+        },
+        userJobCategory:{
+          value:"未填写",
+          info:"*单位性质",
+          isFilled : false
+        },
+        userJob:{
+          value:"未填写",
+          info:"*职业职务",
+          isFilled:false
+        },
+        userMonthlyIncome:{
+          value:"未填写",
+          info:"*月收入",
+          isFilled : false
+        },
+        userMaritalStatus:{
+          value:"未填写",
+          info:"*婚姻状况",
+          isFilled:false
+        }
+      };
+      $scope.showSetHeightPopup = function() {
+
+        var HeightPopup = $ionicPopup.show({
+
+          template: '<input type="number" ng-model="datas.userHeight.value" style="background-color: #6E6E6E !important;border-radius: 1em;height: 3em!important;font-size: 1.5em;padding-left: 2em;text-align: center;">',
+
+          title: '请输入个人身高',
+
+          scope: $scope,
+
+          buttons: [{text: '取消',type:'button-red-none'}, {
+
+            text: '<b>确定</b>',
+
+            type: 'button-red-none',
+
+            onTap: function(e) {
+
+              if (!$scope.datas.userHeight.value) {
+                //don't allow the user to close unless he enters wifi password
+                e.preventDefault();
+
+              } else {
+                return $scope.datas.userHeight;
+              }
+            }
+          }
+          ]
+        });
+
+        HeightPopup.then(function() {
+
+          if ($scope.datas.userHeight.value != "未填写") {
+            console.log($scope.datas.userHeight.value);
+            $scope.datas.userHeight.value +='cm';
+            $scope.datas.userHeight.isFilled = true;
+          }
+        });
+
+      };
+
     })
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
