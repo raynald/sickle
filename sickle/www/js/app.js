@@ -369,7 +369,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
       .state('tab.person-detail', {
           url: '/persons/:personId',
           views: {
-              'tab-chats': {
+              'tab-main': {
                   templateUrl: 'templates/person-detail.html',
                   controller: 'PersonDetailCtrl'
               }
