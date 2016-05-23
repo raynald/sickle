@@ -1,5 +1,6 @@
 <ion-view view-title="guide_03">
     <ion-content class="guideContentBackground2">
+<<<<<<< HEAD
         <img class="back-button-left" src="img/back-left.png" ui-sref="guide_02">
         <img class="back-button-rightt" src="img/back-right.png" ui-sref="guide_04">
         <div class="centerContent">
@@ -17,6 +18,14 @@
                             </ul>
                         </div>
                     </div>
+=======
+        <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;">
+            <img class="imgWhiteLogo" src="img/logo_white.png" style="margin-top: 10em">
+            <button  class="button button-none" style="margin-top:50%;" ui-sref="guide_04">next page</button>
+            <div ng-class="{'customCheckBox':nonCheck,'customCheckBoxChecked':Check}"
+                 ng-controller="RadioCtrl" ng-click="check()">测试</div>
+
+>>>>>>> master
         </div>
     </ion-content>
 </ion-view>
