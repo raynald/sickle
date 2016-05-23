@@ -2,12 +2,8 @@
    margin: 0px 50px 80px 120px;
     width: 100px;
 }
-.list{
-    border-radius: 8px;
-    background-color: transparent;
-}
-.item1{
-    margin: 30px 20px;
+.item1.item-input{
+    margin: 30px 30px;
     padding: 5px 0;
     background-color: transparent;
     border: 1px solid aliceblue;
@@ -20,8 +16,8 @@
     letter-spacing: 15px;
     text-align: center;
 }
-.item2{
-    margin: 10px 20px;
+.item2.item-input{
+    margin: 10px 30px;
     padding: 5px 0;
     background-color: transparent;
     border: 1px solid aliceblue;
@@ -34,6 +30,7 @@
    letter-spacing: 15px;
    text-align: center;
 }
+
 .button-energized{
     margin: 10px 0px;
     padding: 0px;

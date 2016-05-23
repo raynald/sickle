@@ -32,7 +32,7 @@ div{
 }
 
 .guideContentBackground2 {
-    background: url("../img/guideBackground.png") no-repeat;
+    background: url("../img/guideBackground.png")  no-repeat;
     background-size: cover;
 }
 
