@@ -547,7 +547,7 @@ angular.module('monospaced.elastic', [])
 });
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ionic-datepicker', 'ionic-citypicker'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'ionic-datepicker', 'ionic-citypicker','CoderYuan'])
 
     .run(function ($ionicPlatform) {
         $ionicPlatform.ready(function () {
