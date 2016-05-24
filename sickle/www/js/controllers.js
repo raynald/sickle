@@ -240,6 +240,48 @@ angular.module('starter.controllers', ['ngCordova'])
             Persons.remove(person);
         };
     })
+    /*---选择城市，暂时用输入代替-- by Annabel*/
+    .controller("CityCtrl",function($scope,$ionicPopup){
+        $scope.vm = {};
+        $scope.vm.chooseCity ="上海";
+      $scope.choose =function(){
+            var CityPopup = $ionicPopup.show({
+
+                template: '<input type="text" ng-model="vm.chooseCity" style="background-color: #6E6E6E !important;border-radius: 1em;height: 3em!important;font-size: 1.5em;text-align: center;">',
+
+                title: '请输入城市',
+
+                scope: $scope,
+
+                buttons: [{text: '取消', type: 'button-red-none'}, {
+
+                    text: '<b>确定</b>',
+
+                    type: 'button-red-none',
+
+                    onTap: function (e) {
+
+                       if (!$scope.vm.chooseCity) {
+                            e.preventDefault();
+
+                       } else {
+                           console.log($scope.vm.chooseCity);
+                           return $scope.vm.chooseCity;
+                       }
+                    }
+                }
+                ]
+            });
+
+           CityPopup.then(function () {
+
+                if ($scope.chooseCity!= null) {
+                    console.log($scope.chooseCity);
+                }
+            });
+        }
+    })
+
     /*radioBox控制器-----jiefly*/
     .controller('RadioCtrl', function ($scope) {
         $scope.Check = false;
