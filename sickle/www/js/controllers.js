@@ -27,6 +27,45 @@ angular.module('starter.controllers', ['ngCordova'])
     })
     .controller('PersonDetailCtrl', function ($scope, $stateParams, Persons) {
         $scope.person = Persons.get($stateParams.personId);
+    }).controller('PersonDetailTest',function($scope){
+        $scope.person = {
+            job:'国企银行职员',
+            include:'张先生的女儿  26岁 167cm',
+            face:'img/mike.png'
+        }
+
+        $scope.datas = {
+            userNum:{
+                value: 1024,
+                info:"亲家号"
+            },
+            userHome: {
+                value: "上海杨浦",
+                info: "居住地",
+            },
+            userHouseholdegister: {
+                value: "上海市",
+                info: "户籍",
+            },
+            userHousing: {
+                value: "以购房（无贷款）",
+                info: "住房情况",
+            },
+            userEducation: {
+                value: "硕士",
+                info: "学历",
+            },
+            userMonthlyIncome: {
+                value: "10000以上",
+                info: "月收入",
+            },
+            userMaritalStatus: {
+                value: "未婚",
+                info: "婚姻状况",
+            }
+        };
+        //用于改变左侧的tag的样式
+        $scope.currentTag = 0;
     })
     .controller('UserMessagesCtrl', ['$scope', '$rootScope', '$state',
         '$stateParams', 'MockService', '$ionicActionSheet',

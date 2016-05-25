@@ -6,17 +6,89 @@
 -->
 <ion-view id="personDetailView"
           cache-view="false"
-          view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{person.job}}</div>">
+          view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{person.job}}</div>"
+            class="scroll-x">
     <div class="loader-center" ng-if="!doneLoading">
         <div class="loader">
             <i class="icon ion-loading-c"></i>
         </div>
     </div>
-    <ion-content class="padding">
-        <p>hhh{{person.job}}</p>
-        <p>hhh{{person==null}}</p>
 
-        <img ng-src="{{person.face}}" class="avatar">
+    <ion-content ng-controller="PersonDetailTest" scroll="false"> <!--class="padding"-->
+        <!--<p>hhh{{person.job}}</p>
+        <p>hhh{{person==null}}</p>-->
+           <div class="centerContent Avatar" >
+               <!--相亲名片logo-->
+               <div style="width: 13em;margin-top: 2em">
+                   <img class="imgLogoIcon"  src="img/logo_icon.png" style="float: left;height: 5em;width: 5em;">
+
+                   <p style="font-size: 1.4em;padding-top: 2em;font-weight: bold">相亲名片</p>
+               </div>
+               <!--个人头像-->
+               <img ng-src="{{person.face}}" style="width: 10em;height: 10em;border-radius: 5em;margin-top: 1em">
+               <!--工作情况-->
+               <p style="font-size: 1.5em;margin-top: 0.5em">{{person.job}}</p>
+               <!--个人信息概括-->
+               <a style="color: #cccccc">{{person.include}}</a>
+           </div>
+        <div class="row">
+            <!--左侧tag-->
+            <div class="col" style="background-color: #ffffff;font-size: 1em;">
+                <div class="centerContent">
+                    <div style="border-radius: 2em;margin-top: 1.5em;
+                    width: 4em;height:4em;text-align: center;background-color:
+                    darkred;color: white;font-weight: lighter">
+                        <p style="margin-top: 0.5em;">基本<br/>资料</p>
+                    </div>
+                    <div style="border-radius: 2em;margin-top: 1.5em;
+                    width: 4em;height:4em;text-align: center;background-color:
+                    darkred;color: white;font-weight: lighter">
+                        <p style="margin-top: 0.5em;">个性<br/>资料</p>
+                    </div>
+                    <div style="border-radius: 2em;margin-top: 1.5em;
+                    width: 4em;height:4em;text-align: center;background-color:
+                    darkred;color: white;font-weight: lighter">
+                        <p style="margin-top: 0.5em;">生活<br/>照片</p>
+                    </div>
+                    <div style="border-radius: 2em;margin-top: 1.5em;
+                    width: 4em;height:4em;text-align: center;background-color:
+                    darkred;color: white;font-weight: lighter">
+                        <p style="margin-top: 0.5em;">择偶<br/>条件</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-75">
+                <!--右侧内容区-->
+                <ion-scroll scrollbar-y="false"  paging="false" style="overflow:hidden;height: 23em" >
+                    <!--基本资料-->
+                    <p style="font-weight: bold;font-size:1.2em;color: black">基本资料</p>
+                    <div delegate-handle="baseInfo">
+                        <ul class="list">
+                            <li class="item" ng-repeat="data in datas" style="padding: 10px">
+                                <p style="float: left;color: rgba(42, 42, 43, 0.53)">{{data.info}}</p>
+                                <p style="float: right;color: black;font-weight: normal">{{data.value}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--个性资料-->
+                    <div delegate-handle="personalInfo">
+                        <div class="row">
+                            <div class="col col-person-tag">fsda</div>
+                            <div class="col col-person-tag">fsda</div>
+                            <div class="col col-person-tag">fsda</div>
+
+                        </div>
+                    </div>
+                    <!--生活照片-->
+                    <div delegate-handle="dailyPhoto"></div>
+                    <!--择偶条件-->
+                    <div delegate-handle="maritalFiler"></div>
+                </ion-scroll>
+            </div>
+
+
+        </div>
+       <!-- <img ng-src="{{person.face}}" class="avatar">-->
         <!--        <p>
                     {{chat.lastText}}
                 </p>

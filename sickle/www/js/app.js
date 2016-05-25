@@ -762,7 +762,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         };
     })
 
-function onProfilePicError(ele) {
+
+    function onProfilePicError(ele) {
     this.ele.src = ''; // set a fallback
 }
 
