@@ -27,12 +27,73 @@ angular.module('starter.controllers', ['ngCordova'])
     })
     .controller('PersonDetailCtrl', function ($scope, $stateParams, Persons) {
         $scope.person = Persons.get($stateParams.personId);
-    }).controller('PersonDetailTest',function($scope){
+    }).controller('PersonDetailTest',function($scope,$ionicScrollDelegate,$timeout){
+        $scope.customScrollTo =  function(){setTimeout(function () {
+            var deletate = $ionicScrollDelegate;
+            deletate.scrollTop();
+        },10);}
+            /*function(to){
+            $timeout($ionicScrollDelegate.$getByHandle('baseInfo').scrollTop());
+            console.log(to);
+              switch(to){
+                     case 0:
+                        break;
+                     case 1:
+                         break;
+                     case 2:
+                         break;
+                     case 3:
+                         break;
+             }
+        };*/
+
         $scope.person = {
             job:'国企银行职员',
             include:'张先生的女儿  26岁 167cm',
-            face:'img/mike.png'
+            face:'img/mike.png',
+            tag:{
+                group1:{
+                    ta1l:"五百强",
+                    tat2:"上市公司",
+                    tag3:"名校毕业"
+                },
+                group2:{
+                    ta1l:"会做饭",
+                    tat2:"会撒娇",
+                    tag3:"会打游戏"
+                }
+            }
         }
+        $scope.filterDatas = {
+            userAge:{
+                info:"年龄",
+                value:"不限"
+            },
+            userHeight: {
+                info: "身高",
+                value:"不限"
+            },
+            userEducation: {
+                value:"不限",
+                info: "学历"
+            },
+            userHouseholdegister: {
+                value:"不限",
+                info: "户籍"
+            },
+            userHousing: {
+                value:"不限",
+                info: "住房情况"
+            },
+            userMonthlyIncome: {
+                value:"不限",
+                info: "月收入"
+            },
+            userMaritalStatus: {
+                value:"不限",
+                info: "婚姻状况"
+            }
+        };
 
         $scope.datas = {
             userNum:{

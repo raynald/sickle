@@ -366,8 +366,9 @@ div{
     background-color: rgba(24, 24, 24, 0.27);
     color: black;
     border-radius: 3em;
-    height: 2em;
     font-weight: bold;
     padding: 0.4em 0.7em;
+    text-align: center;
+    margin-right: 1em;
     text-align: center;
 }
