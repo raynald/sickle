@@ -108,3 +108,46 @@
     height: 50px;
 }
 
+#left{
+    float:left;
+    margin: 10px 0;
+    width:80px;
+    height:500px;
+}
+#right{
+    float:right;
+    margin: 10px 0;
+    width:280px;
+    height:500px;
+}
+.info{
+    display: block;
+    margin: 6px 5px;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    border: 2px solid transparent;
+    border-radius: 60px;
+ //   background: #1ECD97;
+    color: #080808;
+    letter-spacing: 1px;
+    font-size: 10px;
+
+}
+.info:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+.info.active{
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: #ffffff;
+}
+.personInfo{
+    width: 80px;
+    height: 30px;
+    border: 1px solid aliceblue;
+    border-radius: 12px;
+}
+
+

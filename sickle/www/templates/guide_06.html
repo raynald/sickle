@@ -3,21 +3,20 @@
         <img class="back-button-left" src="img/back-left.png" ui-sref="guide_05">
         <img class="back-button-rightt" src="img/back-right.png" ui-sref="guide_07">
         <div class="centerContent">
-                <div class="row responsive-sm padding remvoeBP">
-                    <div class="col">
+        <div class="row responsive-sm padding remvoeBP">
+                   <div class="col">
                         <div class="app-logo"><img id="logo" src="img/logo_white.png"></div>
                         <p class="loginselect">我要找：</p>
-                        <ul ng-controller="CityCtrl" style="width: 90%">
+                       <ul ng-controller="CityCtrl" style="width: 90%">
                             <li>
-                                <button class="button button-none-red" style=" margin:20px 53px ; width: 250px;height:50px;" type="submit">{{vm.chooseCity}}</button>
+                             <button class="button button-none-red" style=" margin:20px 53px ; width: 250px;height:50px;" type="submit">{{vm.chooseCity}}</button>
                             </li>
                             <li>
-                                <button class="button button-none-red" style=" margin:20px 53px ; width: 250px;height:50px;" type="submit" ng-click="choose()" >选择城市</button>
+                               <button class="button button-none-red" style=" margin:20px 53px ; width: 250px;height:50px;" type="submit" ng-click="choose()" >选择城市</button>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
     </ion-content>
 </ion-view>

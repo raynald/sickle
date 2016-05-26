@@ -241,7 +241,8 @@ angular.module('starter.controllers', ['ngCordova'])
         };
     })
     /*---选择城市，暂时用输入代替-- by Annabel*/
-    .controller("CityCtrl",function($scope,$ionicPopup){
+
+.controller("CityCtrl",function($scope,$ionicPopup){
         $scope.vm = {};
         $scope.vm.chooseCity ="上海";
       $scope.choose =function(){
@@ -530,10 +531,128 @@ angular.module('starter.controllers', ['ngCordova'])
             closeOnSelect: false,       //Optional
             templateType: 'modal',       //Optional
         };
+
         /*******************************时间选择器*****************************/
 
     })
-    .controller('AccountCtrl', function ($scope) {
+
+    .controller('selectCityCtrl', function ($rootScope, $scope, $state, $filter, $ionicHistory, selectCitySvc, storageSvc, scollImageSvc, classIficationItemSvc) {
+
+ //       $scope.currentCity = selectCitySvc.getCurrentCity();
+
+ //       $scope.allRegions = selectCitySvc.getCacheAllAreas();
+
+        $scope.allProvinces = [
+            {Id: 0, RegionName: '请选择省份'}
+        ];
+
+        $scope.cities = [
+            {Id: 0, RegionName: '请选择城市'}
+        ];
+
+        $scope.areas = [
+            {Id: 0, RegionName: '请选择区/县'}
+        ];
+
+        $scope.data = {
+            selectName: "",
+            currentProvinceId: 0,
+            currentCityId: 0,
+            currentAreaId: 0
+        };
+
+        function getSelectedRegionId() {
+            var regionId = $scope.data.currentAreaId;
+            if (regionId == 0) {
+                regionId = $scope.data.currentCityId;
+            }
+            if (regionId == 0) {
+                regionId = $scope.data.currentProvinceId;
+            }
+            return regionId;
+        }
+
+        function updateSelectRegionName() {
+            var currentRegion = $filter('filter')($scope.allRegions, {Id: getSelectedRegionId()}, true)[0];
+            if (currentRegion) {
+                $scope.data.selectName = currentRegion.RegionName
+            } else {
+                $scope.data.selectName = '';
+            }
+        }
+
+        $scope.switchProvince = function (currentProvinceId) {
+            console.log(currentProvinceId);
+            $scope.data.currentCityId = 0;
+            $scope.data.currentAreaId = 0;
+
+            $scope.cities.splice(1);
+            $scope.areas.splice(1);
+
+            var cities = $filter('filter')($scope.allRegions, {RegionType: 1, ParentId: currentProvinceId});
+            for (var i in cities) {
+                $scope.cities.push(cities[i]);
+            }
+
+            updateSelectRegionName();
+        };
+
+        $scope.switchCity = function (currentCityId) {
+            $scope.data.currentAreaId = 0;
+
+            $scope.areas.splice(1);
+
+            var areas = $filter('filter')($scope.allRegions, {RegionType: 2, ParentId: currentCityId});
+            for (var i in areas) {
+                $scope.areas.push(areas[i]);
+            }
+
+            updateSelectRegionName();
+        };
+
+        //增加当切换县区的时候更换服务区名
+        $scope.switchArea = function (currentAreaId) {
+            updateSelectRegionName();
+        };
+
+        var allProvinces = $filter('filter')($scope.allRegions, {RegionType: 0});
+        for (var i in allProvinces) {
+            $scope.allProvinces.push(allProvinces[i]);
+        }
+
+        if ($scope.currentCity.RegionType == 0) {
+            // 如果上次选择省份
+            $scope.data.currentProvinceId = $scope.currentCity.Id;
+            $scope.switchProvince($scope.currentCity.Id);
+        } else if ($scope.currentCity.RegionType == 1) {
+            var province = $filter('filter')($scope.allRegions, {Id: $scope.currentCity.ParentId}, true)[0];
+            $scope.data.currentProvinceId = province.Id;
+            //省份
+            $scope.switchProvince(province.Id);
+            $scope.data.currentCityId = $scope.currentCity.Id;
+            $scope.switchCity($scope.currentCity.Id);
+        } else if ($scope.currentCity.RegionType == 2) {
+            // 如果上次选择县区
+            var city = $filter('filter')($scope.allRegions, {Id: $scope.currentCity.ParentId}, true)[0];
+            var province = $filter('filter')($scope.allRegions, {Id: city.ParentId}, true)[0];
+
+            $scope.data.currentProvinceId = province.Id;
+            $scope.switchProvince(province.Id);
+            $scope.data.currentCityId = city.Id;
+            $scope.switchCity(city.Id);
+            $scope.data.currentAreaId = $scope.currentCity.Id;
+        }
+        $scope.user = {
+            province: "" || storageSvc.load('province.RegionName'),
+            city: "" || storageSvc.load('city.RegionName'),
+            area: "" || storageSvc.load('area.RegionName'),
+            currentCity: "" || storageSvc.load('selectCitySvc.getCurrentCity()')
+
+        };
+
+    })
+
+.controller('AccountCtrl', function ($scope) {
         $scope.settings = {
             enableFriends: true
         };
