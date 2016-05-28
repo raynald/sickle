@@ -10,7 +10,8 @@
             '$compile', '$ionicScrollDelegate', '$ionicBackdrop', '$q',
             function ($timeout, $compile, $ionicScrollDelegate, $ionicBackdrop, $q) {
                 return {
-                    template: '<div>{{selectDateTime.show}}</div>',
+                   /* template: '<div>{{selectDateTime.show}}</div>',*/
+                    template: '<button class="button button-none-red" style="margin-top: 1em">{{selectDateTime.show}}</button>',
                     restrict: 'AE',
                     replace: true,
                     scope: {

@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <ion-content ng-controller="PersonDetailTest" scroll="false"> <!--class="padding"-->
+    <ion-content ng-controller="PersonDetailTest" scroll="false" on-scroll="getScrollPosition()"> <!--class="padding"-->
         <!--<p>hhh{{person.job}}</p>
         <p>hhh{{person==null}}</p>-->
            <div class="centerContent Avatar" >
@@ -25,44 +25,42 @@
                    <p style="font-size: 1.4em;padding-top: 2em;font-weight: bold">相亲名片</p>
                </div>
                <!--个人头像-->
-               <img ng-src="{{person.face}}" style="width: 10em;height: 10em;border-radius: 5em;margin-top: 1em">
+               <img ng-src="{{person.face}}" style="width: 30%;height: 41%;border-radius: 10em;">
                <!--工作情况-->
                <p style="font-size: 1.5em;margin-top: 0.5em">{{person.job}}</p>
                <!--个人信息概括-->
-               <a style="color: #cccccc">{{person.include}}</a>
+               <a style="color: #cccccc">{{person.include}}{{currentHeight}}</a>
            </div>
         <div class="row">
             <!--左侧tag-->
             <div class="col" style="background-color: #ffffff;font-size: 1em;">
                 <div class="centerContent">
-                    <div style="border-radius: 2em;margin-top: 1.5em;
-                    width: 4em;height:4em;text-align: center;background-color:
-                    darkred;color: white;font-weight: lighter" ng-click="customScrollTo(currentTag)" >
-                        <p style="margin-top: 0.5em;" >基本<br/>资料</p>
+                    <div ng-class="{'personDetailTag':tagState[0],'personDetailTagNo':!tagState[0]}" ng-click="customScrollTo(0)">
+                        <p style="margin-top: 0.5em;">基本<br/>资料</p>
                     </div>
-                    <div style="border-radius: 2em;margin-top: 1.5em;
-                    width: 4em;height:4em;text-align: center;background-color:
-                    darkred;color: white;font-weight: lighter">
+                    <div ng-class="{'personDetailTag':tagState[1],'personDetailTagNo':!tagState[1]}" ng-click="customScrollTo(1)">
                         <p style="margin-top: 0.5em;">个性<br/>资料</p>
                     </div>
-                    <div style="border-radius: 2em;margin-top: 1.5em;
-                    width: 4em;height:4em;text-align: center;background-color:
-                    darkred;color: white;font-weight: lighter">
+                    <div ng-class="{'personDetailTag':tagState[2],'personDetailTagNo':!tagState[2]}" ng-click="customScrollTo(2)">
                         <p style="margin-top: 0.5em;">生活<br/>照片</p>
                     </div>
-                    <div style="border-radius: 2em;margin-top: 1.5em;
-                    width: 4em;height:4em;text-align: center;background-color:
-                    darkred;color: white;font-weight: lighter">
+                    <div ng-class="{'personDetailTag':tagState[3],'personDetailTagNo':!tagState[3]}" ng-click="customScrollTo(3)">
                         <p style="margin-top: 0.5em;">择偶<br/>条件</p>
                     </div>
+
                 </div>
             </div>
             <div class="col col-75">
                 <!--右侧内容区-->
-                <ion-scroll scrollbar-y="false"  paging="false" style="overflow:hidden;height: 23em" >
+                <!--这里的高度应该根据不同机型设定不同的值。。可以在进入程序的时候获取当前机型的屏幕宽高，然后所有的高度都按百分比来设置-->
+                <ion-scroll scrollbar-y="false"  style="overflow:hidden;height: 28em;" id="test" on-scroll="checkTag()">
                     <!--基本资料-->
-                    <p style="font-weight: bold;font-size:1.2em;color: black">基本资料</p>
-                    <div style="width:800px;height:2px;margin:0px auto;padding:0px;background-color:#636363;overflow:hidden;"></div>
+                    <div>
+                        <p style="float: left;font-weight: bold;font-size:1.2em;color: black">基本资料</p>
+                        <!--跳转到修改资料页面（待完成）-->
+                        <p style="float: right;font-size: 0.8em;color: red;">修改></p>
+                    </div>
+                    <div style="width:1800px;height:2px;margin:0em auto;padding:0em;background-color:#636363;overflow:hidden;"></div>
 
                     <div delegate-handle="baseInfo">
                         <ul class="list">
@@ -74,7 +72,10 @@
                     </div>
                     <!--个性资料-->
                     <div delegate-handle="personalInfo" style="margin-top: 4em">
-                        <p style="font-weight: bold;font-size:1.2em;color: black">个性资料</p>
+                        <div>
+                            <p style="float: left;font-weight: bold;font-size:1.2em;color: black">个性资料</p>
+                            <p style="float: right;font-size: 0.8em;color: red;">修改></p>
+                        </div>
                         <div style="width:800px;height:2px;margin:0px auto;padding:0px;background-color:#636363;overflow:hidden;"></div>
                         <div class="row">
                             <div class="col col-person-tag" ng-repeat="data in person.tag.group1 ">{{data}}</div>
@@ -84,8 +85,11 @@
                         </div>
                     </div>
                     <!--生活照片-->
-                    <div delegate-handle="dailyPhoto" style="margin-top: 4em">
-                        <p style="font-weight: bold;font-size:1.2em;color: black">生活照片</p>
+                    <div delegate-handle="dailyPhoto" style="margin-top: 4em" id="dailyPhoto">
+                        <div>
+                            <p style="float: left;font-weight: bold;font-size:1.2em;color: black">生活照片</p>
+                            <p style="float: right;font-size: 0.8em;color: red;">修改></p>
+                        </div>
                         <div style="width:800px;height:2px;margin:0px auto;padding:0px;background-color:#636363;overflow:hidden;"></div>
                         <div class="row">
                             <div class="col">
@@ -110,7 +114,10 @@
 
                     <!--择偶条件-->
                     <div delegate-handle="maritalFiler" style="margin-top: 4em">
-                        <p style="font-weight: bold;font-size:1.2em;color: black">择偶条件</p>
+                        <div>
+                            <p style="float: left;font-weight: bold;font-size:1.2em;color: black">择偶条件</p>
+                            <p style="float: right;font-size: 0.8em;color: red;">修改></p>
+                        </div>
                         <div style="width:800px;height:2px;margin:0px auto;padding:0px;background-color:#636363;overflow:hidden;"></div>
                         <div delegate-handle="baseInfo">
                             <ul class="list">

@@ -366,3 +366,31 @@ a.autolinker {
   font-size: 64px;
 }
 
+
+/*相亲名片左侧tag样式---选中*/
+.personDetailTag{
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    width: 5em;
+    height:5em;
+    background-color: darkred;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+/*相亲名片左侧tag样式---未选中*/
+.personDetailTagNo{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    border-radius: 2em;
+    width: 4em;
+    height:4em;
+    background-color: rgba(24, 0, 0, 0);
+    color: black;
+    font-weight: lighter
+}

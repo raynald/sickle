@@ -27,6 +27,169 @@ angular.module('starter.controllers', ['ngCordova'])
     })
     .controller('PersonDetailCtrl', function ($scope, $stateParams, Persons) {
         $scope.person = Persons.get($stateParams.personId);
+    }).controller('PersonDetailTest',function($scope,$ionicScrollDelegate){
+        var setTagFlag = function(to){
+            for(var i=0;i<4;i++){
+                if(to == i){
+                    $scope.tagState[i] = true;
+                }else{
+                    $scope.tagState[i] = false;
+                }
+            }
+        };
+        $scope.customScrollTo =  function(to){
+            /*获取当前滑动的高度*/
+            $scope.currentHeight = $ionicScrollDelegate.getScrollPosition().top;
+            var deletate = $ionicScrollDelegate;
+                setTagFlag(to)
+            switch(to){
+                case 0:
+                    deletate.scrollTo(0,$scope.tagHeight.tag0,true);
+                    break;
+                case 1:
+                    deletate.scrollTo(0,$scope.tagHeight.tag1,true);
+                    break;
+                case 2:
+                    deletate.scrollTo(0,$scope.tagHeight.tag2,true);
+                    break;
+                case 3:
+                    deletate.scrollTo(0,$scope.tagHeight.tag3,true);
+                    break;
+            }
+        };
+
+
+            /*function(to){
+            $timeout($ionicScrollDelegate.$getByHandle('baseInfo').scrollTop());
+            console.log(to);
+              switch(to){
+                     case 0:
+                        break;
+                     case 1:
+                         break;
+                     case 2:
+                         break;
+                     case 3:
+                         break;
+             }
+        };*/
+
+        $scope.person = {
+            job:'国企银行职员',
+            include:'张先生的女儿  26岁 167cm',
+            face:'img/mike.png',
+            tag:{
+                group1:{
+                    ta1l:"五百强",
+                    tat2:"上市公司",
+                    tag3:"名校毕业"
+                },
+                group2:{
+                    ta1l:"会做饭",
+                    tat2:"会撒娇",
+                    tag3:"会打游戏"
+                }
+            }
+        };
+        $scope.filterDatas = {
+            userAge:{
+                info:"年龄",
+                value:"不限"
+            },
+            userHeight: {
+                info: "身高",
+                value:"不限"
+            },
+            userEducation: {
+                value:"不限",
+                info: "学历"
+            },
+            userHouseholdegister: {
+                value:"不限",
+                info: "户籍"
+            },
+            userHousing: {
+                value:"不限",
+                info: "住房情况"
+            },
+            userMonthlyIncome: {
+                value:"不限",
+                info: "月收入"
+            },
+            userMaritalStatus: {
+                value:"不限",
+                info: "婚姻状况"
+            }
+        };
+
+        $scope.datas = {
+            userNum:{
+                value: 1024,
+                info:"亲家号"
+            },
+            userHome: {
+                value: "上海杨浦",
+                info: "居住地"
+            },
+            userHouseholdegister: {
+                value: "上海市",
+                info: "户籍"
+            },
+            userHousing: {
+                value: "以购房（无贷款）",
+                info: "住房情况"
+            },
+            userEducation: {
+                value: "硕士",
+                info: "学历"
+            },
+            userMonthlyIncome: {
+                value: "10000以上",
+                info: "月收入"
+            },
+            userMaritalStatus: {
+                value: "未婚",
+                info: "婚姻状况"
+            }
+        };
+        //用于改变左侧的tag的样式
+        $scope.tagState = [true,false,false,false];
+
+        $scope.tagHeight = {
+            tag0:0,
+            tag1:380,
+            tag2:560,
+            tag3:950
+        };
+        var beforeHeight;
+        $scope.checkTag = function(){
+            var height = $ionicScrollDelegate.getScrollPosition().top;
+            beforeHeight = height;
+            console.log(height);
+            if(height<380){
+                //console.log('before---------'+$scope.tagState);
+                if(!$scope.tagState[0])
+                    setTagFlag(0);
+               //console.log('after---------'+$scope.tagState);
+            }else if(380<=height<560){
+                if(!$scope.tagState[1])
+                //console.log('before'+$scope.tagState);
+                    setTagFlag(1);
+               // console.log($scope.tagState);
+            }else if(560<=height<950){
+               // console.log('before'+$scope.tagState);
+                if(!$scope.tagState[2])
+                    setTagFlag(2);
+               // console.log($scope.tagState);
+            }else if(height>=950){
+               // console.log('before'+$scope.tagState);
+                if(!$scope.tagState[3])
+                 setTagFlag(3);
+               // console.log($scope.tagState);
+            }
+
+        }
+
     })
     .controller('UserMessagesCtrl', ['$scope', '$rootScope', '$state',
         '$stateParams', 'MockService', '$ionicActionSheet',
