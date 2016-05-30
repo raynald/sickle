@@ -242,6 +242,11 @@ div{
     width: 100%;
 }
 
+.centerContent.Avatar{
+    background: url("../img/avatarBackground.png") ;
+    height: 40%;
+}
+
 /*
  *增加checkBox css样式，选中为毛玻璃样式，
  *没选中为透明带一个白色边框，通过RadioCtrl
@@ -355,4 +360,17 @@ div{
 /*设置日期选择插件的头部高度*/
 .header{
     height: 3em !important;
+}
+
+
+/*个人信息tag*/
+.col-person-tag {
+    background-color: rgba(24, 24, 24, 0.27);
+    color: black;
+    border-radius: 3em;
+    font-weight: bold;
+    padding: 0.4em 0.7em;
+    text-align: center;
+    margin-right: 1em;
+    text-align: center;
 }

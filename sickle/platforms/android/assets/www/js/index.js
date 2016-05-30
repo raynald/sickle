@@ -24,7 +24,25 @@ function init() {
     console.log("Setting up");
     app.initialize();
 }
+window.onload=function(){
+    var oDiv=document.getElementById("main-bar");
+    var H= 0;
+    var Y=oDiv;
+    while(Y){
+        H+=Y.offsetTop;
+        Y=Y.offsetParent;
 
+    }
+    window.onscroll=function () {
+        var s=document.body.scrollTop||document.documentElement.scrollTop;
+        if(s>H){
+            oDiv.className="bar main-bar-fix-position";
+        }else{
+            oDiv.className="bar";
+        }
+
+    }
+}
 var app = {
 
     // Application Constructor
@@ -38,6 +56,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function () {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+
     },
     // deviceready Event Handler
     //

@@ -35,7 +35,7 @@
         <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;">
             <img class="imgWhiteLogo" src="img/logo_white.png">
             <button  class="button button-none" style="margin-top:50%;" ui-sref="guide_03">next page</button>
-            <ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>
+            <!--<ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>
             <ionic-city-picker options='vm.CityPickData2'></ionic-city-picker>
             <ionic-city-picker options='vm.CityPickData3'></ionic-city-picker>
             <ionic-city-picker options='vm.CityPickData4'></ionic-city-picker>
@@ -45,7 +45,8 @@
             <div class="button button-positive button-block" ng-click="vm.sync()">
                 同步{{vm.CityPickData2.areaData}}
             </div>
-            <div></div>
+            <div></div>-->
+            <time-picker title="我是程序员"  time-picker-result="result" hideTime="true"></time-picker>
         </div>
     </ion-content>
 </ion-view>

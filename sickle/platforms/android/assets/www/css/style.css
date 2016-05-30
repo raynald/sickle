@@ -1,3 +1,6 @@
+.tab-nav{
+    color:#ae0009;
+}
 #logo{
     margin: 100px 50px 0px 120px;
     width: 100px;
@@ -70,33 +73,115 @@
 }
 /*************/
 /* Empty. Add your own CSS if you like */
-.welcome{
-  background-image: url('../img/welcome-bg.jpg');
-}
 .main-self{
   height: 194px;
   width:100%;
-  background-image: url('../img/ben.png');
+  background: url('../img/ben.png') no-repeat;
+  background-size: cover;
 
 }
-.avatar{
-  width:50px;
-  height:50px;
-  border-radius:25px;
+.avatar-self{
+  width:100px;
+  height:100px;
+  border-radius:50px;
+    border:solid 2px white;
+    margin-top:30px;
+    position:absolute;
+    left:50%;
+    margin-left:-50px;
 }
-.button-clover{
-  background-color:red;
-  border-radius:25px;
 
-
-}
-.dashboard{
+.self-dashboard{
   color:white;
+    font-size:2px;
+    width:80px;
+    position:absolute;
+    left:50%;
+    margin-left:-40px;
+    margin-top:90px;
+}
+.dashboard-key{
+    text-align:left;
+}
+.dashboard-value{
+    text-align:right;
+}
+.self-profile{
+    position:absolute;
+    right:5%;
+    top:130px;
+    /*margin-left:70%;
+    margin-top:80px;*/
+}
+.self-setting{
+    background: transparent;
+    color:white;
+    width:20px;
+    height:20px;
+}
+.main-filter{
+    border-right:1px solid #d4ddd8;
+    border-bottom:1px solid #d4ddd8;
+    background-color: #f0f0f0;
+
+}
+.main-filter.active{
+    border-bottom:2px solid #ae0009;
+    color:#ae0009;
+    background-color: #f0f0f0;
+    font-weight:bold;
 }
 
+.main-bar-fix-position{
+    position:fixed;
+    _position:absolute;
+    top:0;
+    z-index:300;
+}
+#main-bar{
+    background-color: #f0f0f0;
+    padding:0px 0px 0px 0px;
+    height:35px;
+}
+.main-button-bar{
+    height:100%;
+    width:100%;
 
 
+}
 
+#subscribe-bar{
+    background-color: #f0f0f0;
+    padding:0px 0px 0px 0px;
+    height:50px;
+    position:fixed;
+    top:0px;
+}
+.subscribe-button-bar{
+    height:100%;
+    width:100%;
+}
+.subscribe-filter{
+    border-right:1px solid #d4ddd8;
+    border-bottom:1px solid #d4ddd8;
+    background-color: #f0f0f0;
+    color:#ae0009;
+    text-align:center;
+    font-weight:bold;
+}
+.subscribe-filter.active{
+    background-color: #ae0009;
+    color:white;
+    text-align:center;
+    font-weight:bold;
+}
+.persons-list-subscribe{
+    padding-top:50px;
+}
+
+.persons-list-main{
+    padding-top:35px;
+}
 /****************************/
 body {
   cursor: url('http://ionicframework.com/img/finger.png'), auto;
@@ -281,3 +366,31 @@ a.autolinker {
   font-size: 64px;
 }
 
+
+/*相亲名片左侧tag样式---选中*/
+.personDetailTag{
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    width: 5em;
+    height:5em;
+    background-color: darkred;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+/*相亲名片左侧tag样式---未选中*/
+.personDetailTagNo{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+    border-radius: 2em;
+    width: 4em;
+    height:4em;
+    background-color: rgba(24, 0, 0, 0);
+    color: black;
+    font-weight: lighter
+}

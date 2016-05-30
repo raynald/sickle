@@ -53,7 +53,24 @@ div{
     height: 6em;
     margin-top: -1em;
 }
+.button-clover{
+    background-color:transparent;
+    border-radius:25px;
+    color:#ae0009;
+    border:1px #ae0009 solid;
 
+}
+
+.button-clover.active{
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: #ffffff;
+}
+.avatar-clover{
+    border:solid 1px #ae0009;
+    width:50px;
+    height:50px;
+}
 /*自定义圆角button,按下去是红色的。弹起来是透明的带有1px的白色边框。字体为*/
 .button.button-none-red {
 
@@ -203,25 +220,15 @@ div{
     color: #ffffff;
 }
 
-input[type='checkbox'] {
-    visibility: hidden;
-}
-
-input[type='checkbox']:checked + label {
-    background: red;
-}
-/*grid列种checkbox样式*/
-.col-checkbox-div {
-    border-radius: 5em;
-    background: rgba(200, 200, 200, 0.27);
-    border: 1px solid white;
+/*grid列中checkbox样式*/
+.col-33.col-checkbox-div {
     display: flex;
     justify-content: center;
     flex-flow: column;
     align-items: center;
     color: white;
-    font-family: 微软雅黑;
     margin: 5px 10px;
+    width: 100%;
 }
 /*垂直排列，水平居中容器*/
 .centerContent {
@@ -230,6 +237,138 @@ input[type='checkbox']:checked + label {
     flex-flow: column;
     align-items: center;
     color: white;
-    font-family: 微软雅黑;
-"
+    width: 100%;
+}
+
+.centerContent.Avatar{
+    background: url("../img/avatarBackground.png") ;
+    height: 40%;
+}
+
+/*
+ *增加checkBox css样式，选中为毛玻璃样式，
+ *没选中为透明带一个白色边框，通过RadioCtrl
+ *的check的值可以知道当前checkBox是否选中，
+ *true：选中，false：没选中*/
+.customCheckBox{
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    border-radius: 30px;
+    border: 1px solid white;
+    height: 50px;
+    padding: 0.4em 0;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    text-align: center;
+
+}
+.customCheckBoxChecked{
+    background-color: rgba(200, 200, 200, 0.27);
+    color: white;
+    border-radius: 30px;
+
+    height: 50px;
+    padding: 0.4em 0;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    text-align: center;
+}
+
+/*
+ *增加基本资料中的条目 css样式，没有填内容的话为毛玻璃样式，
+ *填了内容之后为透明带一个白色边框，
+ */
+.customInputFilled{
+    width: 100%;
+    margin: 0.5em 0;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    border-radius: 30px;
+    border: 1px solid white;
+    height: 2em;
+    padding: 0.4em 0.7em;
+    font-size: 17px;
+    text-align: center;
+}
+.customInputNotFilled{
+    width: 100%;
+    margin: 0.5em 0;
+    background-color: rgba(200, 200, 200, 0.27);
+    color: white;
+    border-radius: 30px;
+    height: 2em;
+    padding: 0.4em 0.7em;
+    font-size: 17px;
+    text-align: center;
+}
+
+/*自定义圆角button,按下去是红色的字体为白色的。弹起来是白色的带有1px的红色边框字体为红色的*/
+.button.button-red-none {
+
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ae0009;
+    border-radius: 30px;
+    border: 1px solid #ae0009;
+    height: 50px;
+    width: 80%;
+    font-size: 17px;
+}
+.button.button-red-none.active, .button.button-red-none.activated {
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: white;
+}
+
+/*身高输入框的样式*/
+.popup {
+    width: 80% !important;
+    height: 22em;
+    border-radius: 2em !important;
+    background-color:white !important;
+}
+.popup-buttons{
+    margin-top:4em;
+}
+.popup-title{
+    font-size: 1.6em;
+    font-weight: bold;
+    color: black;
+}
+.popup-body{
+    margin-top: 5em;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+}
+/*设置日期选择插件的头部和底部背景颜色*/
+.ionic_datepicker_modal .header, .ionic_datepicker_modal .footer {
+    background-color: #ae0009 !important;
+}
+/*设置选中的日期块的背景颜色*/
+.ionic_datepicker_modal .selected_date {
+    background-color: #ae0009 !important;
+    border-radius: 4em;
+    border: 1px solid rgba(174, 0, 9, 0) !important;
+}
+/*设置日期选择插件的头部高度*/
+.header{
+    height: 3em !important;
+}
+
+
+/*个人信息tag*/
+.col-person-tag {
+    background-color: rgba(24, 24, 24, 0.27);
+    color: black;
+    border-radius: 3em;
+    font-weight: bold;
+    padding: 0.4em 0.7em;
+    text-align: center;
+    margin-right: 1em;
+    text-align: center;
 }

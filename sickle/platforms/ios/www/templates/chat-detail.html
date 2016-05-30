@@ -4,73 +4,79 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
+<ion-nav-bar class="bar-stable">
+    <ion-nav-back-button>
+        fanhui
+    </ion-nav-back-button>
+</ion-nav-bar>
 <ion-view id="userMessagesView"
           cache-view="false"
-          view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{chat.name}}</div>" >
-  <div class="loader-center" ng-if="!doneLoading">
-    <div class="loader">
-      <i class="icon ion-loading-c"></i>
+          view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{chat.name}}</div>">
+    <div class="loader-center" ng-if="!doneLoading">
+        <div class="loader">
+            <i class="icon ion-loading-c"></i>
+        </div>
     </div>
-  </div>
-  <ion-content class="padding">
-    <img ng-src="{{chat.face}}" class="avatar">
-    <p>
-      {{chat.lastText}}
-    </p>
-    <div ng-repeat="message in messages" class="message-wrapper"
-         on-hold="onMessageHold($event, $index, message)">
+    <ion-content class="padding">
+        <img ng-src="{{chat.face}}" class="avatar">
+        <p>
+            {{chat.lastText}}
+        </p>
+        <div ng-repeat="message in messages" class="message-wrapper"
+             on-hold="onMessageHold($event, $index, message)">
 
-      <div ng-if="user._id !== message.userId">
+            <div ng-if="user._id !== message.userId">
 
-        <img ng-click="viewProfile(message)" class="profile-pic left"
-             ng-src="{{toUser.pic}}" onerror="onProfilePicError(this)" />
+                <img ng-click="viewProfile(message)" class="profile-pic left"
+                     ng-src="{{toUser.pic}}" onerror="onProfilePicError(this)"/>
 
-        <div class="chat-bubble left">
+                <div class="chat-bubble left">
 
-          <div class="message" ng-bind-html="message.text | nl2br" autolinker>
-          </div>
+                    <div class="message" ng-bind-html="message.text | nl2br" autolinker>
+                    </div>
 
-          <div class="message-detail">
+                    <div class="message-detail">
                               <span ng-click="viewProfile(message)"
                                     class="bold">{{toUser.username}}</span>,
-            <span am-time-ago="message.date"></span>
-          </div>
+                        <span am-time-ago="message.date"></span>
+                    </div>
 
-        </div>
-      </div>
+                </div>
+            </div>
 
-      <div ng-if="user._id === message.userId">
+            <div ng-if="user._id === message.userId">
 
-        <img ng-click="viewProfile(message)" class="profile-pic right"
-             ng-src="{{user.pic}}" onerror="onProfilePicError(this)" />
+                <img ng-click="viewProfile(message)" class="profile-pic right"
+                     ng-src="{{user.pic}}" onerror="onProfilePicError(this)"/>
 
-        <div class="chat-bubble right">
+                <div class="chat-bubble right">
 
-          <div class="message" ng-bind-html="message.text | nl2br" autolinker>
-          </div>
+                    <div class="message" ng-bind-html="message.text | nl2br" autolinker>
+                    </div>
 
-          <div class="message-detail">
+                    <div class="message-detail">
                               <span ng-click="viewProfile(message)"
                                     class="bold">{{user.username}}</span>,
-            <span am-time-ago="message.date"></span>
-          </div>
+                        <span am-time-ago="message.date"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="cf"></div>
 
         </div>
-
-      </div>
-
-      <div class="cf"></div>
-
-    </div>
-  </ion-content>
-  <form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate>
-    <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
-      <label class="item-input-wrapper">
-        <textarea ng-model="input.message" value="" placeholder="Send {{toUser.username}} a message..." required minlength="1" maxlength="1500" msd-elastic></textarea>
-      </label>
-      <button class="button button-icon icon ion-android-send" type="submit"
-              ng-disabled="!input.message || input.message === ''">
-      </button>
-    </ion-footer-bar>
-  </form>
+    </ion-content>
+    <form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate>
+        <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+            <label class="item-input-wrapper">
+                <textarea ng-model="input.message" value="" placeholder="Send {{toUser.username}} a message..." required
+                          minlength="1" maxlength="1500" msd-elastic></textarea>
+            </label>
+            <button class="button button-icon icon ion-android-send" type="submit"
+                    ng-disabled="!input.message || input.message === ''">
+            </button>
+        </ion-footer-bar>
+    </form>
 </ion-view>
