@@ -394,3 +394,8 @@ a.autolinker {
     color: black;
     font-weight: lighter
 }
+
+.col-static-column{
+    background-color: #ffffff;
+    font-size: 1em;
+}

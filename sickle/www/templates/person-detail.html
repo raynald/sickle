@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <ion-content ng-controller="PersonDetailTest" scroll="false" on-scroll="getScrollPosition()"> <!--class="padding"-->
+    <ion-content ng-controller="PersonDetailTest" scroll="false" on-scroll="checkTag()" overflow-scroll=’true’> <!--class="padding"-->
         <!--<p>hhh{{person.job}}</p>
         <p>hhh{{person==null}}</p>-->
            <div class="centerContent Avatar" >
@@ -33,7 +33,7 @@
            </div>
         <div class="row">
             <!--左侧tag-->
-            <div class="col" style="background-color: #ffffff;font-size: 1em;">
+            <div class="col col-static-column"  id="staticColum">
                 <div class="centerContent">
                     <div ng-class="{'personDetailTag':tagState[0],'personDetailTagNo':!tagState[0]}" ng-click="customScrollTo(0)">
                         <p style="margin-top: 0.5em;">基本<br/>资料</p>
@@ -47,20 +47,19 @@
                     <div ng-class="{'personDetailTag':tagState[3],'personDetailTagNo':!tagState[3]}" ng-click="customScrollTo(3)">
                         <p style="margin-top: 0.5em;">择偶<br/>条件</p>
                     </div>
-
                 </div>
             </div>
+            <!--右侧内容区-->
             <div class="col col-75">
-                <!--右侧内容区-->
                 <!--这里的高度应该根据不同机型设定不同的值。。可以在进入程序的时候获取当前机型的屏幕宽高，然后所有的高度都按百分比来设置-->
-                <ion-scroll scrollbar-y="false"  style="overflow:hidden;height: 28em;" id="test" on-scroll="checkTag()">
+                <ion-scroll scrollbar-y="false"  style="overflow:hidden;height: 28em" id="test" on-scroll="checkTag()">
                     <!--基本资料-->
                     <div>
                         <p style="float: left;font-weight: bold;font-size:1.2em;color: black">基本资料</p>
                         <!--跳转到修改资料页面（待完成）-->
                         <p style="float: right;font-size: 0.8em;color: red;">修改></p>
                     </div>
-                    <div style="width:1800px;height:2px;margin:0em auto;padding:0em;background-color:#636363;overflow:hidden;"></div>
+                    <div style="width:1800px;height:2px;margin:0 auto;padding:0;background-color:#636363;overflow:hidden;"></div>
 
                     <div delegate-handle="baseInfo">
                         <ul class="list">

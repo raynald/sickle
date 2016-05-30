@@ -41,7 +41,7 @@ angular.module('starter.controllers', ['ngCordova'])
             /*获取当前滑动的高度*/
             //$scope.currentHeight = $ionicScrollDelegate.getScrollPosition().top;
             var deletate = $ionicScrollDelegate;
-                setTagFlag(to)
+                setTagFlag(to);
             switch(to){
                 case 0:
                     deletate.scrollTo(0,$scope.tagHeight.tag0,true);
@@ -161,23 +161,23 @@ angular.module('starter.controllers', ['ngCordova'])
             tag2:560,
             tag3:950
         };
-        var beforeHeight;
+
+        var staticColumn = document.getElementById("staticColum");
         $scope.checkTag = function(){
-            var height = $ionicScrollDelegate.getScrollPosition().top;
-            beforeHeight = height;
-            console.log(height);
-            if(height<380){
+            $scope.height = $ionicScrollDelegate.getScrollPosition().top;
+            console.log($scope.height);
+            if($scope.height<380){
                 //console.log('before---------'+$scope.tagState);
                 if(!$scope.tagState[0])
                     setTagFlag(0);
                //console.log('after---------'+$scope.tagState);
-            }else if(380<=height<560){
+            }else if(380<=$scope.height<560){
                 if(!$scope.tagState[1])
                     setTagFlag(1);
-            }else if(560<=height<950){
+            }else if(560<=$scope.height<950){
                 if(!$scope.tagState[2])
                     setTagFlag(2);
-            }else if(height>=950){
+            }else if($scope.height>=950){
                 if(!$scope.tagState[3])
                  setTagFlag(3);
             }
@@ -197,7 +197,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 _id: '534b8e5aaa5e7afc1b23e69b',
                 pic: 'http://ionicframework.com/img/docs/venkman.jpg',
                 username: 'Venkman'
-            }
+            };
 
             // this could be on $rootScope rather than in $stateParams
             $scope.user = {
