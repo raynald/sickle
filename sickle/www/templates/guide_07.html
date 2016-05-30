@@ -1,23 +1,29 @@
 <ion-view view-title="guide_07">
-    <ion-content class="guideContentBackground2">
-        <img class="back-button-left" src="img/back-left.png" ui-sref="guide_05">
-        <img class="back-button-rightt" src="img/back-right.png" ui-sref="guide_08">
-        <div class="centerContent " >
-            <div class="col">
-                <div class="app-logo"><img id="logo" src="img/logo_white.png"></div>
-                <label class="item1 item-input icon ion-android-person "><input class="login " type="text"  ng-model="user.lastname" placeholder="请输入您的姓氏" > </label>
-                <table>
-                    <tr>
-                        <td>
-                           <button class="button-energized" style="margin: 10px 30px;padding: 10px;width: 120px;" type="submit">先生</button>
-                        </td>
-                        <td>
-                            <button class="button-energized" style="margin: 10px 30px;padding: 10px;width: 120px;" type="submit">女士</button>
-                        </td>
-                    </tr>
-                </table>
+<!--    <ion-content class="guideContentBackground2">-->
+    <ion-content>
+        <div class="bar-header">
+            <img src="img/avatarBackground.png">
+            <div class="scroll-content ">
+                    <img class="back-button-left" src="img/back-left.png" ui-sref="guide_05">
+                    <img class="back-button-rightt" src="img/back-right.png" ui-sref="guide_08">
+                    <div class="centerContent " >
+                        <div class="col">
+                            <div class="app-logo"><img id="logo" src="img/logo_white.png"></div>
+                            <label class="item1 item-input icon ion-android-person "><input class="login " type="text"  ng-model="user.lastname" placeholder="请输入您的姓氏" > </label>
+                            <table>
+                                <tr>
+                                    <td>
+                                       <button class="button-energized" style="margin: 10px 30px;padding: 10px;width: 120px;" type="submit">先生</button>
+                                    </td>
+                                    <td>
+                                        <button class="button-energized" style="margin: 10px 30px;padding: 10px;width: 120px;" type="submit">女士</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p style="margin: 0px 30px 0px 150px;font-size: 0.1cm;fo">填写姓氏，性别，方便联系后称谓 </p>
+                    </div>
+                </div>
             </div>
-            <p style="margin: 0px 30px 0px 150px;font-size: 0.1cm;fo">填写姓氏，性别，方便联系后称谓 </p>
-        </div>
     </ion-content>
 </ion-view>

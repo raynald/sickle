@@ -30,6 +30,10 @@
    letter-spacing: 15px;
    text-align: center;
 }
+.login{
+   background-color: transparent;
+
+}
 
 .button-energized{
     margin: 10px 0px;
