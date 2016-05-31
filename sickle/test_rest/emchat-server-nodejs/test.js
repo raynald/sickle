@@ -12,7 +12,7 @@
 var easemob=require('./easemob');
 
 
-var i=0;
+var i=11;
 switch(i){
 	case 10://获取token
 		easemob.getToken(function(data){

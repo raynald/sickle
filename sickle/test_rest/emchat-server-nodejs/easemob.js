@@ -38,7 +38,7 @@ var http_request = function (json) {
     //请求参数
     var options = {
         host: 'a1.easemob.com',
-        path: '/org_name/app_name' + json.path,
+        path: '/sickle/sickle' + json.path,
         method: json.method,
         headers:json.headers
     };
