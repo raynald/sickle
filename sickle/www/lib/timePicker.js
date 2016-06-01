@@ -8,10 +8,10 @@
         .directive('timePicker', [
             '$timeout',
             '$compile', '$ionicScrollDelegate', '$ionicBackdrop', '$q',
-            function ($timeout, $compile, $ionicScrollDelegate, $ionicBackdrop, $q) {
+            function ($timeout, $compile, $ionicScrollDelegate, $ionicBackdrop, $q,InputCtrl) {
                 return {
                    /* template: '<div>{{selectDateTime.show}}</div>',*/
-                    template: '<button class="button button-none-red" style="margin-top: 1em">{{selectDateTime.show}}</button>',
+                    template: '<div class="customInputFilled" ><p style="float: left">{{datas.userBorn.info}}</p><p style="float: right;">{{datas.userBorn.value}}</p><div/>',
                     restrict: 'AE',
                     replace: true,
                     scope: {
@@ -50,9 +50,9 @@
                         var options = {
                             title: attrs.title || "时间选择",
                             height: 40,// 每个滑动 li 的高度 这里如果也配置的话 要修改css文件中的高度的定义
-                            dateNum: parseInt(attrs.datenum) || 20,//可选日期数量
+                            dateNum: parseInt(attrs.datenum) || 12,//可选日期数量
                             timeNum: parseInt(attrs.timenum) || 24,//可选时间数量
-                            yearNum: parseInt(attrs.yearnum) || 50,// 可选年份数量
+                            yearNum: parseInt(attrs.yearnum) || 40,// 可选年份数量
                             DateTime: attrs.datetime && new Date(attrs.datetime) || new Date(), //开始时间日期  不给默认是当天
                             timeSpan: attrs.timespan && parseInt(attrs.timespan) || 15, //时间间隔 默认 15分钟一个间隔 15/30
                             minuteSkip: attrs.minuteskip && parseInt(attrs.minuteskip),//当前时间多少分钟后 可选 15 30  ！！！注意 这个设置会覆盖 datetime中设定的时间部分的值
@@ -135,13 +135,14 @@
                         }
 
                         //年份初始化
+                        //年份为1998年~1998-40
                         function initYear(options) {
                             var sYear = options.DateTime.getFullYear();
                             var text, data, top;
                             prependLi(scope.yearList, 3, "b")
                             for (var i = 0; i < options.yearNum; i++) {
-                                text = sYear + i;
-                                data = sYear + i;
+                                text = sYear - i-18;
+                                data = sYear - i-18;
                                 top = options.height + scope.yearList[scope.yearList.length - 1].top;
                                 scope.yearList.push(createDateTimeLi(0, top, data, false, text))
                             }
@@ -163,11 +164,29 @@
                                 m = prependZero(m, 10);
                                 d = prependZero(d, 10);
                                 if (parseInt(d) == getDateAfterNum(dateTimeNow, 0)) {
-                                    text = "今天";
+                                    text = "一月";
                                 } else if (parseInt(d) == getDateAfterNum(dateTimeNow, 1)) {
-                                    text = "明天";
+                                    text = "二月";
                                 } else if (parseInt(d) == getDateAfterNum(dateTimeNow, 2)) {
-                                    text = "后天";
+                                    text = "三月";
+                                } else if (parseInt(d) == getDateAfterNum(dateTimeNow, 3)) {
+                                    text = "四月";
+                                }else if (parseInt(d) == getDateAfterNum(dateTimeNow, 4)) {
+                                    text = "五月";
+                                }else if (parseInt(d) == getDateAfterNum(dateTimeNow, 5)) {
+                                    text = "六月";
+                                }else if (parseInt(d) == getDateAfterNum(dateTimeNow, 6)) {
+                                    text = "七月";
+                                }else if (parseInt(d) == getDateAfterNum(dateTimeNow, 7)) {
+                                    text = "八月";
+                                }else if (parseInt(d) == getDateAfterNum(dateTimeNow, 8)) {
+                                    text = "九月";
+                                }else if (parseInt(d) == getDateAfterNum(dateTimeNow, 9)) {
+                                    text = "十月";
+                                }else if (parseInt(d) == getDateAfterNum(dateTimeNow, 10)) {
+                                    text = "十一月";
+                                }else if (parseInt(d) == getDateAfterNum(dateTimeNow, 11)) {
+                                    text = "十二月";
                                 }
                                 else {
                                     var text = m + "月" + d + "日";
@@ -403,9 +422,9 @@
                             if (!time) {
                                 time = scope.selectDateTime.time.item.data;
                             }
-                            var result = year + "-" + date + " " + time;
+                            var result = year + "年" + scope.selectDateTime.date.item.text;
                             scope.timePickerResult = result;
-                            //console.log(result)
+                            //console.log(scope.selectDateTime.date.item.text)
                             return result;
 
                         }
@@ -443,7 +462,7 @@
                             var datetime = getSelectDateTime();
                             setSelectDateTimeShow();
                             hide();
-                            //   console.log(datetime)
+                            console.log(scope.timePickerResult)
                         }
                         scope.cancel = function () {
                             hide();

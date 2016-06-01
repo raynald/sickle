@@ -323,6 +323,20 @@ div{
     color: white;
 }
 
+/*.button.button-red-none-50{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ae0009;
+    border-radius: 30px;
+    border: 1px solid #ae0009;
+    height: 50px;
+    width: 15em !important;
+    font-size: 17px;
+}
+.button.button-red-none-50.active, .button.button-red-none-50.activated {
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: white;
+}*/
 /*身高输入框的样式*/
 .popup {
     width: 80% !important;
@@ -331,7 +345,7 @@ div{
     background-color:white !important;
 }
 .popup-buttons{
-    margin-top:4em;
+    margin-bottom:1em;
 }
 .popup-title{
     font-size: 1.6em;
@@ -339,11 +353,12 @@ div{
     color: black;
 }
 .popup-body{
-    margin-top: 5em;
-    display: flex;
-    justify-content: center;
-    flex-flow: column;
-    align-items: center;
+     /*margin-top: 5em;*/
+    height: 17em;
+     display: flex;
+     justify-content: center;
+     flex-flow: column;
+     align-items: center;
 }
 /*设置日期选择插件的头部和底部背景颜色*/
 .ionic_datepicker_modal .header, .ionic_datepicker_modal .footer {
