@@ -387,3 +387,29 @@ div{
     margin-right: 1em;
     text-align: center;
 }
+/*main tab tags*/
+.person-tag{
+    background-color: rgba(24, 24, 24, 0.27);
+    color: black;
+    border-radius: 3em;
+    font-weight: bold;
+    padding: 0.4em 0.7em;
+    text-align: center;
+    margin-right: 1em;
+    text-align: center;
+    display: inline-block;
+}
+
+.person-target-tag{
+    background-color: #EEEEEE;
+    color: black;
+    border-radius: 3em;
+    border-color: rgba(24, 24, 24, 0.27);
+    border-width: 1px;
+    font-weight: bold;
+    padding: 0.4em 0.7em;
+    text-align: center;
+    margin-right: 1em;
+    text-align: center;
+    display: inline-block;
+}

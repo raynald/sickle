@@ -33,8 +33,14 @@
               <img class="avatar-clover" ng-src="{{person.face}}">
               <h2>{{person.job}}</h2>
               <p>{{person.gender}} | {{person.address}} | {{person.birthday}} | {{person.degree}} | {{person.height}}</p>
-              <div class="person-tags"></div>
-              <div class="target-tags"></div>
+              <div class="person-tags">
+                <div class="person-tag" ng-repeat="tag in person.tags ">{{tag}}</div>
+              </div>
+              
+              <div class="target-tags">
+                <p style="margin-left:-2em; display:inline-block;">寻觅</p>
+                <div class="person-target-tag" ng-repeat="target in person.tags ">{{target}}</div>
+              </div>
               <i class="icon ion-chevron-right icon-accessory"></i>
               <button class="button button-clover ion-chatbox-working" href="#/tab/chats/{{person.id}}">聊一聊</button>
               <button class="button button-clover ion-ios-person" href="#/tab/persons/{{person.id}}">相亲名片</button>
