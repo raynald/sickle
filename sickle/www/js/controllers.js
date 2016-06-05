@@ -1,9 +1,22 @@
 angular.module('starter.controllers', ['ngCordova'])
 
     .controller('SubscribeCtrl', function ($scope, Persons) {
-        $scope.persons = Persons.getSubscribe();
+        $scope.activeButton="subscribing";
+        $scope.persons = [];
         $scope.remove = function (person) {
             Persons.remove(person);
+        };
+        $scope.filterSwitch =  function(filter){
+            $scope.activeButton=filter;
+            switch(filter){
+                case 'subscribing':
+                    $scope.persons=[];
+                    break;
+                case 'subscribed':
+                    $scope.persons=[];
+                    break;
+               
+            }
         };
     })
 
@@ -392,9 +405,27 @@ angular.module('starter.controllers', ['ngCordova'])
     })
 
     .controller('MainCtrl', function ($scope, Persons) {
+        $scope.activeButton='recent';
+       
         $scope.persons = Persons.all();
         $scope.remove = function (person) {
             Persons.remove(person);
+        };
+        $scope.filterSwitch =  function(filter){
+            $scope.activeButton = filter;
+
+            switch(filter){
+                case 'recent':
+                    $scope.persons=Persons.allSortBy('createdAt');
+                    break;
+                case 'hot':
+                    $scope.persons=Persons.allSortBy('createdAt');
+                    break;
+                case 'filter':
+                    $scope.persons=Persons.all();
+                    break;
+            }
+          
         };
     })
     /*radioBox控制器-----jiefly*/

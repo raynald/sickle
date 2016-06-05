@@ -421,6 +421,25 @@ angular.module('starter.services', [])
                  })*/
 
             },
+            allSortBy:function (sortBy) {
+                var persons = [];
+                var Person = Bmob.Object.extend("person");
+                var query = new Bmob.Query(Person);
+                query.find().descending(sortBy).then(function (results) {
+                    console.log(persons);
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+
+                        var person = object.attributes;
+                        person.id = object.id;
+                        persons.push(person);
+                    }
+                    return persons;
+                });
+
+
+                return persons;
+            },
             remove: function (person) {
                 //persons.splice(persons.indexOf(person), 1);
             },
@@ -433,18 +452,12 @@ angular.module('starter.services', [])
                 var person = {};
                 var Person = Bmob.Object.extend("person");
                 var query = new Bmob.Query(Person);
-                query.get(personId, {
-                    success: function (object) {
-
-                        person = object.attributes;
-                        person.id = object.id;
-                        return person;
-                    },
-                    error: function (object, error) {
-                        alert("error");
-                        return null;
-                    }
+                query.get(personId).then(function (object) {
+                    person = object.attributes;
+                    person.id = object.id;
+                    return person;
                 });
+                return person;
 
             }
         };

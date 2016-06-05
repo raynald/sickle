@@ -21,9 +21,9 @@
 
       <div id="main-bar" class="bar">
         <div class="button-bar main-button-bar">
-          <a class="button main-filter active">最近</a>
-          <a class="button main-filter">热门</a>
-          <a class="button main-filter">筛选</a>
+          <a class="button main-filter recent" ng-class="{ 'active': activeButton === 'recent' }" ng-click="filterSwitch('recent')">最近</a>
+          <a class="button main-filter hot" ng-class="{ 'active': activeButton === 'hot' }" ng-click="filterSwitch('hot')">热门</a>
+          <a class="button main-filter filter"  ng-class="{ 'active': activeButton === 'filter' }" ng-click="filterSwitch('filter')">筛选</a>
         </div>
       </div>
 
@@ -39,7 +39,7 @@
               
               <div class="target-tags">
                 <p style="margin-left:-2em; display:inline-block;">寻觅</p>
-                <div class="person-target-tag" ng-repeat="target in person.tags ">{{target}}</div>
+                <div class="person-target-tag" ng-repeat="target in person.targets ">{{target}}</div>
               </div>
               <i class="icon ion-chevron-right icon-accessory"></i>
               <button class="button button-clover ion-chatbox-working" href="#/tab/chats/{{person.id}}">聊一聊</button>
