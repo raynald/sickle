@@ -41,6 +41,9 @@ angular.module('starter.controllers', ['ngCordova'])
     .controller('PersonDetailCtrl', function ($scope, $stateParams, Persons) {
         $scope.person = Persons.get($stateParams.personId);
     }).controller('PersonDetailTest',function($scope,$ionicScrollDelegate){
+        //通过设置这个属性来切换是自己和别人的相亲页面的样式
+        //true：自己的相亲名片，false：别人的相亲名片
+        $scope.isSelfPersonDetail = true;
         var setTagFlag = function(to){
             for(var i=0;i<4;i++){
                 if(to == i){
@@ -71,25 +74,10 @@ angular.module('starter.controllers', ['ngCordova'])
             }
         };
 
-
-            /*function(to){
-            $timeout($ionicScrollDelegate.$getByHandle('baseInfo').scrollTop());
-            console.log(to);
-              switch(to){
-                     case 0:
-                        break;
-                     case 1:
-                         break;
-                     case 2:
-                         break;
-                     case 3:
-                         break;
-             }
-        };*/
-
         $scope.person = {
             job:'国企银行职员',
             include:'张先生的女儿  26岁 167cm',
+            id:666666,
             face:'img/mike.png',
             tag:{
                 group1:{
