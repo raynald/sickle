@@ -496,4 +496,16 @@ angular.module('starter.services', [])
 
             return me;
         }
-    ]);
+    ])
+    .factory('guideData',function(){
+        var service = {};
+        service.guide08ExtraText = null;
+        service.guide09ExtraText = null;
+        /*页面8中十二个选项,默认为不选中*/
+        service.guide08RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false];
+        /*页面9中十五个选项*/
+        service.guide09RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
+        service.guide09checkedButtonNum = 0;
+
+        return service;
+    });

@@ -429,12 +429,27 @@ angular.module('starter.controllers', ['ngCordova'])
         };
     })
     /*radioBox控制器-----jiefly*/
-    .controller('RadioCtrl', function ($scope) {
-        $scope.Check = false;
-        $scope.nonCheck = true;
-        $scope.check = function () {
-            $scope.Check = !$scope.Check;
-            $scope.nonCheck = !$scope.nonCheck;
+    .controller('RadioCtrl', function ($scope,guideData) {
+        $scope.check = function (type,index) {
+            if(type == 8){
+                guideData.guide08RadioButton[index] = !guideData.guide08RadioButton[index];
+                $scope.Check = guideData.guide08RadioButton[index];
+                console.log(guideData.guide08RadioButton);
+            }else if(type == 9){
+                if(guideData.guide09checkedButtonNum>=9){
+                    if(!guideData.guide09RadioButton[index]){
+                        return;
+                    }
+                }
+                guideData.guide09RadioButton[index] = !guideData.guide09RadioButton[index];
+                if(guideData.guide09RadioButton[index]){
+                    guideData.guide09checkedButtonNum++;
+                }else{
+                    guideData.guide09checkedButtonNum--;
+                }
+                $scope.Check = guideData.guide09RadioButton[index];
+                console.log(guideData.guide09RadioButton);
+            }
         };
     })
     /*基本资料输入项--------------jiefly*/
@@ -1002,6 +1017,15 @@ $scope.setValue = function(type,value){
         /*******************************时间选择器*****************************/
 
     })
+    .controller('GuideExtraInfoCtrl', function ($scope,guideData) {
+        $scope.guide08ExtraText = null;
+        $scope.guide09ExtraText = null;
+        $scope.Log = function(){
+            guideData.guide08ExtraText = $scope.guide08ExtraText;
+            guideData.guide09ExtraText = $scope.guide09ExtraText;
+            console.log("8:"+guideData.guide08ExtraText+"9:"+guideData.guide09ExtraText);
+        }
+    })
     .controller('AccountCtrl', function ($scope) {
         $scope.settings = {
             enableFriends: true
@@ -1053,5 +1077,4 @@ $scope.setValue = function(type,value){
         console.log('sync')
         vm.CityPickData4.areaData = vm.CityPickData2.areaData
     }
-})
-;
+});
