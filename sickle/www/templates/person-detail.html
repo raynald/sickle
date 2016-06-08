@@ -32,24 +32,24 @@
                <!--工作情况（只有在查看别人名片的时候才显示）-->
                <p style="font-size: 1.5em;margin-top: 0.5em" ng-hide="isSelfPersonDetail">{{person.job}}</p>
                <!--个人信息概括（只有在查看别人名片的时候才显示）-->
-               <a style="color: #cccccc" ng-hide="isSelfPersonDetail">{{person.include}}{{currentHeight}}</a>
+               <a style="color: #cccccc" ng-hide="isSelfPersonDetail">{{person.include}}</a>
                <!--亲家号（只有在查看自己的名片的时候才显示）-->
-               <a style="color: #cccccc;margin-top: 1em" ng-show="isSelfPersonDetail">亲家号：{{person.id}}</a>
+               <a style="color: #cccccc;margin-top: 1em" ng-show="isSelfPersonDetail">亲家号：{{person.id}}{{tagState}}</a>
            </div>
         <div class="row">
             <!--左侧tag-->
             <div class="col col-static-column"  id="staticColum">
                 <div class="centerContent">
-                    <div ng-class="{'personDetailTag':tagState[0],'personDetailTagNo':!tagState[0]}" ng-click="customScrollTo(0)">
+                    <div id="tag1" ng-class="{'personDetailTag':tagState[0],'personDetailTagNo':!tagState[0]}" ng-click="customScrollTo(0,0)">
                         <p style="margin-top: 0.5em;">基本<br/>资料</p>
                     </div>
-                    <div ng-class="{'personDetailTag':tagState[1],'personDetailTagNo':!tagState[1]}" ng-click="customScrollTo(1)">
+                    <div ng-class="{'personDetailTag':tagState[1],'personDetailTagNo':!tagState[1]}" ng-click="customScrollTo(0,1)">
                         <p style="margin-top: 0.5em;">个性<br/>资料</p>
                     </div>
-                    <div ng-class="{'personDetailTag':tagState[2],'personDetailTagNo':!tagState[2]}" ng-click="customScrollTo(2)">
+                    <div ng-class="{'personDetailTag':tagState[2],'personDetailTagNo':!tagState[2]}" ng-click="customScrollTo(0,2)">
                         <p style="margin-top: 0.5em;">生活<br/>照片</p>
                     </div>
-                    <div ng-class="{'personDetailTag':tagState[3],'personDetailTagNo':!tagState[3]}" ng-click="customScrollTo(3)">
+                    <div ng-class="{'personDetailTag':tagState[3],'personDetailTagNo':!tagState[3]}" ng-click="customScrollTo(0,3)">
                         <p style="margin-top: 0.5em;">择偶<br/>条件</p>
                     </div>
                 </div>

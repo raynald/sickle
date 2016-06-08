@@ -40,40 +40,32 @@ angular.module('starter.controllers', ['ngCordova'])
     })
     .controller('PersonDetailCtrl', function ($scope, $stateParams, Persons) {
         $scope.person = Persons.get($stateParams.personId);
-    }).controller('PersonDetailTest',function($scope,$ionicScrollDelegate){
+    }).controller('PersonDetailTest',function($scope,$ionicScrollDelegate,$timeout){
+        //用于改变左侧的tag的样式
+        $scope.tagState = [true,false,false,false];
         //通过设置这个属性来切换是自己和别人的相亲页面的样式
+
         //true：自己的相亲名片，false：别人的相亲名片
         $scope.isSelfPersonDetail = true;
         var setTagFlag = function(to){
             for(var i=0;i<4;i++){
-                if(to == i){
-                    $scope.tagState[i] = true;
+                if(i==to){
+                    $scope.tagState[to] = true;
                 }else{
                     $scope.tagState[i] = false;
                 }
             }
+            console.log($scope.tagState);
         };
-        $scope.customScrollTo =  function(to){
+        $scope.customScrollTo =  function(flag,to){
             /*获取当前滑动的高度*/
-            //$scope.currentHeight = $ionicScrollDelegate.getScrollPosition().top;
-            var deletate = $ionicScrollDelegate;
+            if(flag ==0){
                 setTagFlag(to);
-            switch(to){
-                case 0:
-                    deletate.scrollTo(0,$scope.tagHeight.tag0,true);
-                    break;
-                case 1:
-                    deletate.scrollTo(0,$scope.tagHeight.tag1,true);
-                    break;
-                case 2:
-                    deletate.scrollTo(0,$scope.tagHeight.tag2,true);
-                    break;
-                case 3:
-                    deletate.scrollTo(0,$scope.tagHeight.tag3,true);
-                    break;
+                $ionicScrollDelegate.scrollTo(0,$scope.tagHeight[to],true);
+            }else{
+
             }
         };
-
         $scope.person = {
             job:'国企银行职员',
             include:'张先生的女儿  26岁 167cm',
@@ -153,36 +145,32 @@ angular.module('starter.controllers', ['ngCordova'])
                 info: "婚姻状况"
             }
         };
-        //用于改变左侧的tag的样式
-        $scope.tagState = [true,false,false,false];
 
-        $scope.tagHeight = {
-            tag0:0,
-            tag1:380,
-            tag2:560,
-            tag3:950
-        };
+        $scope.tagHeight = [0,380,560,950];
 
-        var staticColumn = document.getElementById("staticColum");
         $scope.checkTag = function(){
             $scope.height = $ionicScrollDelegate.getScrollPosition().top;
             console.log($scope.height);
-            if($scope.height<380){
-                //console.log('before---------'+$scope.tagState);
-                if(!$scope.tagState[0])
-                    setTagFlag(0);
-               //console.log('after---------'+$scope.tagState);
-            }else if(380<=$scope.height<560){
-                if(!$scope.tagState[1])
-                    setTagFlag(1);
-            }else if(560<=$scope.height<950){
-                if(!$scope.tagState[2])
-                    setTagFlag(2);
-            }else if($scope.height>=950){
-                if(!$scope.tagState[3])
-                 setTagFlag(3);
-            }
+            //设置一个定时器，看200ms的高度和当前高度是否相同，相同的话则认定为滑动停止
+            var height = $scope.height;
+            $timeout(
+                function(){
+                    if(height == $scope.height){
+                        console.log("没滑动");
+                        if(height<200){
+                            setTagFlag(0);
+                        }else if(height>=200&&height<480){
+                            setTagFlag(1)
+                        }else if(height>=480&&height<860){
+                            setTagFlag(2)
+                        }else if(height>=860){
+                            setTagFlag(3)
+                        }
+                    }
+                    //手动刷新数据
+                    $scope.$apply();
 
+                },500,false);
         }
 
     })
