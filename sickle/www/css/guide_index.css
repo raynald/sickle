@@ -1,15 +1,18 @@
-#logo{
-   margin: 0px 50px 80px 120px;
+.logo{
+ //   margin: 0px 50px 80px 120px;
+    margin: 0px 13% 12% 32%;
     width: 100px;
 }
 .item1.item-input{
-    margin: 30px 30px;
-    padding: 5px 0;
+   margin: 30px 30px;
+//    margin: 1.875em 8%;
+    padding:0.31em 0;
     background-color: transparent;
     border: 1px solid aliceblue;
     border-radius: 22px;                /* 圆角边框 */
-    width: 305px;
+//    width: 305px;
     height: 50px;
+    width: 80%;
     color: #d1d3d6;
     font-weight: 100;
     font-size: 25px;
@@ -19,10 +22,12 @@
 .item2.item-input{
     margin: 10px 30px;
     padding: 5px 0;
+//    margin: 0.625em 15%;
     background-color: transparent;
     border: 1px solid aliceblue;
     border-radius: 22px;                /* 圆角边框 */
-    width: 200px;
+//    width: 200px;
+    width: 65%;
     height: 50px;
     color: #d1d3d6;
     font-weight: 100;
@@ -37,11 +42,14 @@
 
 .button-energized{
     margin: 10px 0px;
+ //   margin: 2.6% 0;
     padding: 0px;
-    border-radius: 22px;
-    width: 85px;
+    border-radius: 20px;
+ //   border-radius:5.8%;
+   width: 65px;
+ //   width:90%;
     height: 40px;
-    font-size:15px ;
+    font-size:10px ;
     background-color: transparent;
     color: #fafafa;
 }
@@ -87,7 +95,8 @@
     background-color: transparent;
 }
 .loginselect{
-    margin: 0px 150px;
+//    margin: 0px 150px;
+    margin: 0px 40%;
     color: #d1d3d6;
     width: 100px;
 }
@@ -102,14 +111,15 @@
     width: 30px;
 }
 .back-button-left{
-    margin: 1.5% 3.6%;
-    width: 50px;
-    height: 50px;
+    height: 3.125em;
+    margin-top: 1em;
+    margin-left: 1em;
 }
 .back-button-right{
-    margin: 1.5% 3.6% 1.5% 60%;
-    width: 50px;
-    height: 50px;
+    height: 3.125em;
+    margin-top: 1em;
+    margin-right: 1em;
+    float: right
 }
 
 #left{
