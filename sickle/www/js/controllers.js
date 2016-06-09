@@ -428,10 +428,10 @@ angular.module('starter.controllers', ['ngCordova'])
                
                template: '关注后才能聊天是否现在关注?',
                buttons: [
-               { text: '取消' },
+               { text: '取消', type:'button-red-none'},
                {
-                 text: '<b class="button-clover active">关注</b>',
-                 
+                 text: '<b>关注</b>',
+                 type: 'button-red-none active',
                  onTap: function(e) {
                    /*if (!$scope.data.wifi) {
                      //不允许用户关闭，除非他键入wifi密码
