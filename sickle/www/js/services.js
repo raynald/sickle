@@ -199,13 +199,40 @@ angular.module('starter.services', [])
                 var user = Bmob.User.current();
                 user.set("child", person);
                 user.save();
+                person.set("parent",user);
+
+
+
+// MyUser user = BmobUser.getCurrentUser(this, MyUser.class);
+// // 创建帖子信息
+// Post post = new Post();
+// post.setContent(content);
+// //添加一对一关联
+// post.setAuthor(user);
+// post.save(this, new SaveListener() {
+
+//     @Override
+//     public void onSuccess() {
+//         // TODO Auto-generated method stub
+//         ...
+//     }
+
+//     @Override
+//     public void onFailure(int code, String msg) {
+//         // TODO Auto-generated method stub
+//         ...
+//     }
+// });
+
             },
             subscribe: function (person) {
                 var user = Bmob.User.current();
+                console.log(user);
                 var relation = user.relation("subscribes");
                 relation.add(person);
                 user.save();
-            }
+            },
+
         };
 
     })
@@ -425,7 +452,7 @@ angular.module('starter.services', [])
                 var persons = [];
                 var Person = Bmob.Object.extend("person");
                 var query = new Bmob.Query(Person);
-                query.find().descending(sortBy).then(function (results) {
+                query.descending(sortBy).then(function (results) {
                     console.log(persons);
                     for (var i = 0; i < results.length; i++) {
                         var object = results[i];

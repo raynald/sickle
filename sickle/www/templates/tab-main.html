@@ -24,6 +24,16 @@
           <a class="button main-filter recent" ng-class="{ 'active': activeButton === 'recent' }" ng-click="filterSwitch('recent')">最近</a>
           <a class="button main-filter hot" ng-class="{ 'active': activeButton === 'hot' }" ng-click="filterSwitch('hot')">热门</a>
           <a class="button main-filter filter"  ng-class="{ 'active': activeButton === 'filter' }" ng-click="filterSwitch('filter')">筛选</a>
+          <script id="filter.html" type="text/ng-template">
+            <div class="modal">
+              <ion-header-bar>
+                <h1 class="title">我的模型标题</h1>
+              </ion-header-bar>
+              <ion-content>
+                Hello!
+              </ion-content>
+            </div>
+          </script>
         </div>
       </div>
 
@@ -42,7 +52,7 @@
                 <div class="person-target-tag" ng-repeat="target in person.targets ">{{target}}</div>
               </div>
               <i class="icon ion-chevron-right icon-accessory"></i>
-              <button class="button button-clover ion-chatbox-working" href="#/tab/chats/{{person.id}}">聊一聊</button>
+              <button class="button button-clover ion-chatbox-working" href="#" ng-click="showConfirm({{person}})">聊一聊</button>
               <button class="button button-clover ion-ios-person" href="#/tab/persons/{{person.id}}">相亲名片</button>
               <ion-option-button class="button-assertive" ng-click="remove(person)">
                 Delete
