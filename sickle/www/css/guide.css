@@ -174,7 +174,7 @@ div{
     min-width: 1em;
     min-height: 1em;
     border-radius: 2em;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     height: 4em;
     width: 4em;
     font-size: 13px;
@@ -195,15 +195,16 @@ div{
 
     background-color: rgba(200, 200, 200, 0.27);
     background-image:url("../img/backImage.png");
+    background-position: center;
     background-size: 4em 4em;
-    padding: 0;
+    padding: 8px !important;
     min-width: 1em;
     min-height: 1em;
     color: white;
     border-radius: 2em;
     border:1px solid rgba(200, 200, 200, 0.27);
-    height: 4em;
-    width: 4em;
+    height: 4em !important;
+    width: 4em !important;
     font-size: 15px;
     margin-top: 1em;
     margin-left: 1em;

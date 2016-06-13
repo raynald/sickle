@@ -1,6 +1,6 @@
 <ion-view>
-    <ion-content class="guideContentBackground2">
-        <guide-two-button ui-sref="guide_08"></guide-two-button>
+    <ion-content class="guideContentBackground2" ng-controller="InputCtrl">
+        <guide-two-button ui-sref="guide_08" ng-click="save()"></guide-two-button>
         <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;color: white;font-family: 微软雅黑;">
             <div style="width: 15em">
                 <img class="imgLogoIcon" src="img/logo_icon.png" style="float: left">
@@ -8,7 +8,7 @@
                 <p style="font-size: 2em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
             </div>
             <label style="margin-top: 1em">——&nbsp;基本资料&nbsp;——</label>
-            <ul ng-controller="InputCtrl" style="width: 90%">
+            <ul  style="width: 90%">
                 <li ng-repeat="data in datas">
                     <div ng-class="{true:'customInputFilled',false:'customInputNotFilled'}[data.isFilled]"  ng-click="do(data.functionId)">
                         <p style="float: left">{{data.info}}</p>

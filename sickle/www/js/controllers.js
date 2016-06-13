@@ -355,7 +355,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 footerBar.style.height = newFooterHeight + 'px';
             });
 
-        }]).controller("GetPicCtrl", function ($scope, $cordovaCamera) {
+        }]).controller("GetPicCtrl", function ($scope, $cordovaCamera,guideData) {
         $scope.takePicture = function () {
             var options = {
                 quality: 75,
@@ -371,6 +371,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
             $cordovaCamera.getPicture(options).then(function (imageData) {
                 $scope.imgURI = "data:image/jpeg;base64," + imageData;
+                guideData.photoUri = $scope.imgURI;
             }, function (err) {
                 // An error occured. Show a message to the user
             });
@@ -535,7 +536,7 @@ angular.module('starter.controllers', ['ngCordova'])
         };
     })
     /*基本资料输入项--------------jiefly*/
-    .controller('InputCtrl', function ($scope, $ionicPopup, ionicDatePicker) {
+    .controller('InputCtrl', function ($scope, $ionicPopup, ionicDatePicker,guideData) {
         $scope.datas = {
             userHeight: {
                 value: null,
@@ -652,7 +653,7 @@ $scope.setValue = function(type,value){
         /*****************************学历****************************************/
         $scope.showEducationPopup = function () {
             $scope.closePopup = function(value){
-                console.log("close Popup")
+                console.log("close Popup");
                 $scope.datas.userEducation.value = value;
                 EducationPopup.close();
                 if ($scope.datas.userEducation.value != null) {
@@ -663,7 +664,7 @@ $scope.setValue = function(type,value){
             };
             var EducationPopup = $ionicPopup.show({
 
-                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in educationLevel"> <li> <button class="button button-red-none" style="width: 17em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in educationLevel"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
 
                 title: '请选择学历',
 
@@ -714,7 +715,7 @@ $scope.setValue = function(type,value){
             };
             var JobCategoryPopup = $ionicPopup.show({
 
-                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in JobCategoryList"> <li> <button class="button button-red-none" style="width: 17em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in JobCategoryList"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
 
                 title: '请选择单位性质',
 
@@ -764,7 +765,7 @@ $scope.setValue = function(type,value){
             };
             var MaritalStatusPopup = $ionicPopup.show({
 
-                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in MaritalStatusList"> <li> <button class="button button-red-none" style="width: 17em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in MaritalStatusList"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
 
                 title: '请选择单位性质',
 
@@ -814,7 +815,7 @@ $scope.setValue = function(type,value){
             };
             var MonthlyIncomePopup = $ionicPopup.show({
 
-                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in MonthlyIncomeList"> <li> <button class="button button-red-none" style="width: 17em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in MonthlyIncomeList"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
 
                 title: '请选择单位性质',
 
@@ -864,7 +865,7 @@ $scope.setValue = function(type,value){
             };
             var HousingPopup = $ionicPopup.show({
 
-                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in HousingList"> <li> <button class="button button-red-none" style="width: 17em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in HousingList"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
 
                 title: '请选择住房情况',
 
@@ -1097,7 +1098,11 @@ $scope.setValue = function(type,value){
             templateType: 'modal',       //Optional
         };
         /*******************************时间选择器*****************************/
-
+        $scope.save = function(){
+            guideData.person = $scope.datas;
+            console.log(guideData.person);
+            console.log("click");
+        };
     })
     .controller('GuideExtraInfoCtrl', function ($scope,guideData) {
         $scope.guide08ExtraText = null;

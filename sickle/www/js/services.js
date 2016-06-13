@@ -526,13 +526,80 @@ angular.module('starter.services', [])
     ])
     .factory('guideData',function(){
         var service = {};
+        /*页面8中的附加信息*/
         service.guide08ExtraText = null;
+        /*页面9中的附加信息*/
         service.guide09ExtraText = null;
         /*页面8中十二个选项,默认为不选中*/
         service.guide08RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false];
         /*页面9中十五个选项*/
         service.guide09RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
+        /*页面9中已选中项数目*/
         service.guide09checkedButtonNum = 0;
-
+        /*上传图片的uri*/
+        service.photoUri = null;
+        /*个人基本资料*/
+        service.person = {
+            personHeight: {
+                value: null,
+                info: "*身高",
+                isFilled: false,
+                functionId: 0
+            },
+            personBorn: {
+                value: null,
+                info: "*出生年月",
+                isFilled: false,
+                functionId: 1
+            },
+            personHome: {
+                value: null,
+                info: "*居住地",
+                isFilled: false,
+                functionId: 2
+            },
+            personHouseholdegister: {
+                value: null,
+                info: "*户籍",
+                isFilled: false,
+                functionId: 3
+            },
+            personHousing: {
+                value: null,
+                info: "*住房情况",
+                isFilled: false,
+                functionId: 4
+            },
+            personEducation: {
+                value: null,
+                info: "*学历",
+                isFilled: false,
+                functionId: 5
+            },
+            personJobCategory: {
+                value: null,
+                info: "*单位性质",
+                isFilled: false,
+                functionId: 6
+            },
+            personJob: {
+                value: null,
+                info: "*职业职务",
+                isFilled: false,
+                functionId: 7
+            },
+            personMonthlyIncome: {
+                value: null,
+                info: "*月收入",
+                isFilled: false,
+                functionId: 8
+            },
+            personMaritalStatus: {
+                value: null,
+                info: "*婚姻状况",
+                isFilled: false,
+                functionId: 9
+            }
+        };
         return service;
     });
