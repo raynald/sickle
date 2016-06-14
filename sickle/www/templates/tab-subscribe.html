@@ -2,8 +2,8 @@
   <ion-content>
       <div id="subscribe-bar" class="bar">
         <div class="button-bar subscribe-button-bar">
-          <a class="button subscribe-filter active">我的关注</a>
-          <a class="button subscribe-filter">关注我的</a>
+          <a class="button subscribe-filter subscribing" ng-class="{ 'active': activeButton === 'subscribing' }" ng-click="filterSwitch('subscribing')">我的关注</a>
+          <a class="button subscribe-filter subscribed" ng-class="{ 'active': activeButton === 'subscribed' }" ng-click="filterSwitch('subscribed')">关注我的</a>
         </div>
       </div>
 

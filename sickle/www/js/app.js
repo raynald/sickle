@@ -586,6 +586,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
         $ionicConfigProvider.platform.ios.views.transition('ios');
         $ionicConfigProvider.platform.android.views.transition('android');
+        //用来修复person-detail页面android机型不能滑动单独区域的bug（还需要在ion-content tag中加上overflow-scroll=’true’）
+        $ionicConfigProvider.scrolling.jsScrolling(true);
 
 
         $stateProvider

@@ -1,9 +1,22 @@
 angular.module('starter.controllers', ['ngCordova'])
 
     .controller('SubscribeCtrl', function ($scope, Persons) {
-        $scope.persons = Persons.getSubscribe();
+        $scope.activeButton="subscribing";
+        $scope.persons = [];
         $scope.remove = function (person) {
             Persons.remove(person);
+        };
+        $scope.filterSwitch =  function(filter){
+            $scope.activeButton=filter;
+            switch(filter){
+                case 'subscribing':
+                    $scope.persons=[];
+                    break;
+                case 'subscribed':
+                    $scope.persons=[];
+                    break;
+               
+            }
         };
     })
 
@@ -27,56 +40,36 @@ angular.module('starter.controllers', ['ngCordova'])
     })
     .controller('PersonDetailCtrl', function ($scope, $stateParams, Persons) {
         $scope.person = Persons.get($stateParams.personId);
-    }).controller('PersonDetailTest',function($scope,$ionicScrollDelegate){
+    }).controller('PersonDetailTest',function($scope,$ionicScrollDelegate,$timeout){
+        //用于改变左侧的tag的样式
+        $scope.tagState = [true,false,false,false];
+        //通过设置这个属性来切换是自己和别人的相亲页面的样式
+
+        //true：自己的相亲名片，false：别人的相亲名片
+        $scope.isSelfPersonDetail = true;
         var setTagFlag = function(to){
             for(var i=0;i<4;i++){
-                if(to == i){
-                    $scope.tagState[i] = true;
+                if(i==to){
+                    $scope.tagState[to] = true;
                 }else{
                     $scope.tagState[i] = false;
                 }
             }
+            console.log($scope.tagState);
         };
-        $scope.customScrollTo =  function(to){
+        $scope.customScrollTo =  function(flag,to){
             /*获取当前滑动的高度*/
-            //$scope.currentHeight = $ionicScrollDelegate.getScrollPosition().top;
-            var deletate = $ionicScrollDelegate;
-                setTagFlag(to)
-            switch(to){
-                case 0:
-                    deletate.scrollTo(0,$scope.tagHeight.tag0,true);
-                    break;
-                case 1:
-                    deletate.scrollTo(0,$scope.tagHeight.tag1,true);
-                    break;
-                case 2:
-                    deletate.scrollTo(0,$scope.tagHeight.tag2,true);
-                    break;
-                case 3:
-                    deletate.scrollTo(0,$scope.tagHeight.tag3,true);
-                    break;
+            if(flag ==0){
+                setTagFlag(to);
+                $ionicScrollDelegate.scrollTo(0,$scope.tagHeight[to],true);
+            }else{
+
             }
         };
-
-
-            /*function(to){
-            $timeout($ionicScrollDelegate.$getByHandle('baseInfo').scrollTop());
-            console.log(to);
-              switch(to){
-                     case 0:
-                        break;
-                     case 1:
-                         break;
-                     case 2:
-                         break;
-                     case 3:
-                         break;
-             }
-        };*/
-
         $scope.person = {
             job:'国企银行职员',
             include:'张先生的女儿  26岁 167cm',
+            id:666666,
             face:'img/mike.png',
             tag:{
                 group1:{
@@ -152,36 +145,32 @@ angular.module('starter.controllers', ['ngCordova'])
                 info: "婚姻状况"
             }
         };
-        //用于改变左侧的tag的样式
-        $scope.tagState = [true,false,false,false];
 
-        $scope.tagHeight = {
-            tag0:0,
-            tag1:380,
-            tag2:560,
-            tag3:950
-        };
-        var beforeHeight;
+        $scope.tagHeight = [0,380,560,950];
+
         $scope.checkTag = function(){
-            var height = $ionicScrollDelegate.getScrollPosition().top;
-            beforeHeight = height;
-            console.log(height);
-            if(height<380){
-                //console.log('before---------'+$scope.tagState);
-                if(!$scope.tagState[0])
-                    setTagFlag(0);
-               //console.log('after---------'+$scope.tagState);
-            }else if(380<=height<560){
-                if(!$scope.tagState[1])
-                    setTagFlag(1);
-            }else if(560<=height<950){
-                if(!$scope.tagState[2])
-                    setTagFlag(2);
-            }else if(height>=950){
-                if(!$scope.tagState[3])
-                 setTagFlag(3);
-            }
+            $scope.height = $ionicScrollDelegate.getScrollPosition().top;
+            console.log($scope.height);
+            //设置一个定时器，看200ms的高度和当前高度是否相同，相同的话则认定为滑动停止
+            var height = $scope.height;
+            $timeout(
+                function(){
+                    if(height == $scope.height){
+                        console.log("没滑动");
+                        if(height<200){
+                            setTagFlag(0);
+                        }else if(height>=200&&height<480){
+                            setTagFlag(1)
+                        }else if(height>=480&&height<860){
+                            setTagFlag(2)
+                        }else if(height>=860){
+                            setTagFlag(3)
+                        }
+                    }
+                    //手动刷新数据
+                    $scope.$apply();
 
+                },500,false);
         }
 
     })
@@ -197,7 +186,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 _id: '534b8e5aaa5e7afc1b23e69b',
                 pic: 'http://ionicframework.com/img/docs/venkman.jpg',
                 username: 'Venkman'
-            }
+            };
 
             // this could be on $rootScope rather than in $stateParams
             $scope.user = {
@@ -366,7 +355,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 footerBar.style.height = newFooterHeight + 'px';
             });
 
-        }]).controller("GetPicCtrl", function ($scope, $cordovaCamera) {
+        }]).controller("GetPicCtrl", function ($scope, $cordovaCamera,guideData) {
         $scope.takePicture = function () {
             var options = {
                 quality: 75,
@@ -382,6 +371,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
             $cordovaCamera.getPicture(options).then(function (imageData) {
                 $scope.imgURI = "data:image/jpeg;base64," + imageData;
+                guideData.photoUri = $scope.imgURI;
             }, function (err) {
                 // An error occured. Show a message to the user
             });
@@ -391,10 +381,134 @@ angular.module('starter.controllers', ['ngCordova'])
 
     })
 
-    .controller('MainCtrl', function ($scope, Persons) {
+    .controller('MainCtrl', function ($scope, $ionicModal,$ionicPopup,Persons,Users) {
+        $scope.activeButton='recent';
+       
         $scope.persons = Persons.all();
         $scope.remove = function (person) {
             Persons.remove(person);
+        };
+
+                 // 触发一个按钮点击，或一些其他目标
+        $scope.showPopup = function() {
+           $scope.data = {}
+
+           // 一个精心制作的自定义弹窗
+           var myPopup = $ionicPopup.show({
+             template: '<h2>关注后才能聊天</h2><h2>是否现在关注？</h2>',
+             
+             scope: $scope,
+             buttons: [
+               { text: '取消' },
+               {
+                 text: '<b class="button-clover active">关注</b>',
+                 
+                 onTap: function(e) {
+                   /*if (!$scope.data.wifi) {
+                     //不允许用户关闭，除非他键入wifi密码
+                     e.preventDefault();
+                   } else {
+                     return $scope.data.wifi;
+                   }*/
+                   return "";
+                 }
+               },
+             ]
+           });
+           myPopup.then(function(res) {
+             console.log('Tapped!', res);
+           });
+           $timeout(function() {
+              myPopup.close(); //由于某种原因3秒后关闭弹出
+           }, 3000);
+           };
+
+           // 一个确认对话框
+           $scope.showConfirm = function(person) {
+             var confirmPopup = $ionicPopup.confirm({
+               
+               template: '关注后才能聊天是否现在关注?',
+               buttons: [
+               { text: '取消', type:'button-red-none'},
+               {
+                 text: '<b>关注</b>',
+                 type: 'button-red-none active',
+                 onTap: function(e) {
+                   /*if (!$scope.data.wifi) {
+                     //不允许用户关闭，除非他键入wifi密码
+                     e.preventDefault();
+                   } else {
+                     return $scope.data.wifi;
+                   }*/
+                   console.log(person);
+                   Users.subscribe(person);
+                   return "";
+                 }
+               },
+             ]
+             });
+             confirmPopup.then(function(res) {
+               if(res) {
+                 console.log('You are sure');
+               } else {
+                 console.log('You are not sure');
+               }
+             });
+           };
+
+           // 一个提示对话框
+           $scope.showAlert = function() {
+             var alertPopup = $ionicPopup.alert({
+               title: 'Don\'t eat that!',
+               template: 'It might taste good'
+             });
+             alertPopup.then(function(res) {
+               console.log('Thank you for not eating my delicious ice cream cone');
+             });
+           };
+         
+
+        $ionicModal.fromTemplateUrl('filter.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+        $scope.openModal = function() {
+            $scope.modal.show();
+        };
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+        //当我们用到模型时，清除它！
+        $scope.$on('$destroy', function() {
+            $scope.modal.remove();
+        });
+        // 当隐藏的模型时执行动作
+        $scope.$on('modal.hide', function() {
+            // 执行动作
+        });
+        // 当移动模型时执行动作
+        $scope.$on('modal.removed', function() {
+            // 执行动作
+        });
+
+       
+        $scope.filterSwitch =  function(filter){
+            $scope.activeButton = filter;
+
+            switch(filter){
+                case 'recent':
+                    $scope.persons=Persons.allSortBy('createdAt');
+                    break;
+                case 'hot':
+                    $scope.persons=Persons.allSortBy('createdAt');
+                    break;
+                case 'filter':
+                    this.openModal();
+                    break;
+            }
+          
         };
     })
     /*---选择城市，暂时用输入代替-- by Annabel*/
@@ -441,16 +555,31 @@ angular.module('starter.controllers', ['ngCordova'])
     })
 
     /*radioBox控制器-----jiefly*/
-    .controller('RadioCtrl', function ($scope) {
-        $scope.Check = false;
-        $scope.nonCheck = true;
-        $scope.check = function () {
-            $scope.Check = !$scope.Check;
-            $scope.nonCheck = !$scope.nonCheck;
+    .controller('RadioCtrl', function ($scope,guideData) {
+        $scope.check = function (type,index) {
+            if(type == 8){
+                guideData.guide08RadioButton[index] = !guideData.guide08RadioButton[index];
+                $scope.Check = guideData.guide08RadioButton[index];
+                console.log(guideData.guide08RadioButton);
+            }else if(type == 9){
+                if(guideData.guide09checkedButtonNum>=9){
+                    if(!guideData.guide09RadioButton[index]){
+                        return;
+                    }
+                }
+                guideData.guide09RadioButton[index] = !guideData.guide09RadioButton[index];
+                if(guideData.guide09RadioButton[index]){
+                    guideData.guide09checkedButtonNum++;
+                }else{
+                    guideData.guide09checkedButtonNum--;
+                }
+                $scope.Check = guideData.guide09RadioButton[index];
+                console.log(guideData.guide09RadioButton);
+            }
         };
     })
     /*基本资料输入项--------------jiefly*/
-    .controller('InputCtrl', function ($scope, $ionicPopup, ionicDatePicker) {
+    .controller('InputCtrl', function ($scope, $ionicPopup, ionicDatePicker,guideData) {
         $scope.datas = {
             userHeight: {
                 value: null,
@@ -525,14 +654,297 @@ angular.module('starter.controllers', ['ngCordova'])
                 case 2:
                     $scope.showHomePopup();
                     break;
+                case 3:
+                    $scope.showHouseholdegisterPopup();
+                    break;
+                case 4:
+                    $scope.showHousingPopup();
+                    break;
+                case 5:
+                    $scope.showEducationPopup();
+                    break;
+                case 6:
+                    $scope.showJobCategoryPopup();
+                    break;
                 case 7:
                     $scope.showJobPopup();
+                    break;
+                case 8:
+                    $scope.showMonthlyIncomePopup();
+                    break;
+                case 9:
+                    $scope.showMaritalStatusPopup();
                     break;
                 default :
                     console.log(id);
                     break;
             }
         };
+$scope.MonthlyIncomeList = ["小于3千","3千以上","5千以上","7千以上","9千以上","1万以上","1万2千以上","1万4千以上","1万6千以上","1万8千以上","2万以上","2万五千以上","三万以上","五万以上","十万以上","百万以上"];
+$scope.MaritalStatusList = ["有婚史（无子女）","有婚史（有子女）","未婚"];
+$scope.educationLevel = ["博士","硕士","本科","大专","高中","初中"];
+$scope.JobCategoryList = ["政府机关","事业单位","外企","国企","私企","自己创业","其他"];
+$scope.HousingList = ["以购房（无贷款）","以购房（有贷款）","和父母同住","住房","有能力购房","其他"];
+$scope.setValue = function(type,value){
+    switch(type){
+        case 1:
+            $scope.showEducationPopup.hide();
+            console.log(value);
+            break;
+    }
+};
+        /*****************************学历****************************************/
+        $scope.showEducationPopup = function () {
+            $scope.closePopup = function(value){
+                console.log("close Popup");
+                $scope.datas.userEducation.value = value;
+                EducationPopup.close();
+                if ($scope.datas.userEducation.value != null) {
+                    console.log($scope.datas.userEducation.value);
+                    $scope.datas.userEducation.isFilled = true;
+                    console.log($scope.datas.userEducation.isFilled);
+                }
+            };
+            var EducationPopup = $ionicPopup.show({
+
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in educationLevel"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+
+                title: '请选择学历',
+
+                scope: $scope,
+
+                buttons: [{text: '取消', type: 'button-red-none'},{
+
+                    text: '<b>确定</b>',
+
+                    type: 'button-red-none',
+
+                    onTap: function (e) {
+
+                        if (!$scope.datas.userEducation.value) {
+                            //e.preventDefault();
+
+                        } else {
+                            return $scope.datas.userEducation;
+                        }
+                    }
+                }
+                ]
+            });
+
+            EducationPopup.then(function () {
+
+                if ($scope.datas.userEducation.value != null) {
+                    console.log($scope.datas.userEducation.value);
+                    /*$scope.datas.userHeight.value +='cm';*/
+                    $scope.datas.userEducation.isFilled = true;
+                    console.log($scope.datas.userEducation.isFilled);
+                }
+            });
+        };
+        /*********************************************************************/
+
+        /*****************************单位性质****************************************/
+        $scope.showJobCategoryPopup = function () {
+            $scope.closePopup = function(value){
+                console.log("close Popup")
+                $scope.datas.userJobCategory.value = value;
+                JobCategoryPopup.close();
+                if ($scope.datas.userJobCategory.value != null) {
+                    console.log($scope.datas.userJobCategory.value);
+                    $scope.datas.userJobCategory.isFilled = true;
+                    console.log($scope.datas.userJobCategory.isFilled);
+                }
+            };
+            var JobCategoryPopup = $ionicPopup.show({
+
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in JobCategoryList"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+
+                title: '请选择单位性质',
+
+                scope: $scope,
+
+                buttons: [{text: '取消', type: 'button-red-none'},{
+
+                    text: '<b>确定</b>',
+
+                    type: 'button-red-none',
+
+                    onTap: function (e) {
+
+                        if (!$scope.datas.userJobCategory.value) {
+                            //e.preventDefault();
+
+                        } else {
+                            return $scope.datas.userJobCategory;
+                        }
+                    }
+                }
+                ]
+            });
+
+            JobCategoryPopup.then(function () {
+
+                if ($scope.datas.userJobCategory.value != null) {
+                    console.log($scope.datas.userJobCategory.value);
+                    /*$scope.datas.userHeight.value +='cm';*/
+                    $scope.datas.userJobCategory.isFilled = true;
+                    console.log($scope.datas.userJobCategory.isFilled);
+                }
+            });
+        };
+        /*********************************************************************/
+        /*****************************婚姻状况****************************************/
+        $scope.showMaritalStatusPopup = function () {
+            $scope.closePopup = function(value){
+                console.log("close Popup")
+                $scope.datas.userMaritalStatus.value = value;
+                MaritalStatusPopup.close();
+                if ($scope.datas.userMaritalStatus.value != null) {
+                    console.log($scope.datas.userMaritalStatus.value);
+                    $scope.datas.userMaritalStatus.isFilled = true;
+                    console.log($scope.datas.userMaritalStatus.isFilled);
+                }
+            };
+            var MaritalStatusPopup = $ionicPopup.show({
+
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in MaritalStatusList"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+
+                title: '请选择单位性质',
+
+                scope: $scope,
+
+                buttons: [{text: '取消', type: 'button-red-none'},{
+
+                    text: '<b>确定</b>',
+
+                    type: 'button-red-none',
+
+                    onTap: function (e) {
+
+                        if (!$scope.datas.userMaritalStatus.value) {
+                            //e.preventDefault();
+
+                        } else {
+                            return $scope.datas.userMaritalStatus;
+                        }
+                    }
+                }
+                ]
+            });
+
+            MaritalStatusPopup.then(function () {
+
+                if ($scope.datas.userJobCategory.value != null) {
+                    console.log($scope.datas.userMaritalStatus.value);
+                    /*$scope.datas.userHeight.value +='cm';*/
+                    $scope.datas.userJobCategory.isFilled = true;
+                    console.log($scope.datas.userMaritalStatus.isFilled);
+                }
+            });
+        };
+        /*********************************************************************/
+        /*****************************月收入****************************************/
+        $scope.showMonthlyIncomePopup = function () {
+            $scope.closePopup = function(value){
+                console.log("close Popup")
+                $scope.datas.userMonthlyIncome.value = value;
+                MonthlyIncomePopup.close();
+                if ($scope.datas.userMonthlyIncome.value != null) {
+                    console.log($scope.datas.userMonthlyIncome.value);
+                    $scope.datas.userMonthlyIncome.isFilled = true;
+                    console.log($scope.datas.userMonthlyIncome.isFilled);
+                }
+            };
+            var MonthlyIncomePopup = $ionicPopup.show({
+
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in MonthlyIncomeList"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+
+                title: '请选择单位性质',
+
+                scope: $scope,
+
+                buttons: [{text: '取消', type: 'button-red-none'},{
+
+                    text: '<b>确定</b>',
+
+                    type: 'button-red-none',
+
+                    onTap: function (e) {
+
+                        if (!$scope.datas.userMonthlyIncome.value) {
+                            //e.preventDefault();
+
+                        } else {
+                            return $scope.datas.userMonthlyIncome;
+                        }
+                    }
+                }
+                ]
+            });
+
+            MonthlyIncomePopup.then(function () {
+
+                if ($scope.datas.userMonthlyIncome.value != null) {
+                    console.log($scope.datas.userMonthlyIncome.value);
+                    /*$scope.datas.userHeight.value +='cm';*/
+                    $scope.datas.userMonthlyIncome.isFilled = true;
+                    console.log($scope.datas.userMonthlyIncome.isFilled);
+                }
+            });
+        };
+        /*********************************************************************/
+        /*****************************住房情况****************************************/
+        $scope.showHousingPopup = function () {
+            $scope.closePopup = function(value){
+                console.log("close Popup")
+                $scope.datas.userHousing.value = value;
+                HousingPopup.close();
+                if ($scope.datas.userHousing.value != null) {
+                    console.log($scope.datas.userHousing.value);
+                    $scope.datas.userHousing.isFilled = true;
+                    console.log($scope.datas.userHousing.isFilled);
+                }
+            };
+            var HousingPopup = $ionicPopup.show({
+
+                template: '<ion-scroll scrollbar-y="false"  style="overflow:hidden;position: relative;padding-top:1em" ng-controller="InputCtrl"> <ul ng-repeat="data in HousingList"> <li> <button class="button button-red-none" style="width: 16em !important;margin-top: 1em" ng-click="closePopup(data)">{{data}}</b></li></ul></ion-scroll>',
+
+                title: '请选择住房情况',
+
+                scope: $scope,
+
+                buttons: [{text: '取消', type: 'button-red-none'},{
+
+                    text: '<b>确定</b>',
+
+                    type: 'button-red-none',
+
+                    onTap: function (e) {
+
+                        if (!$scope.datas.userHousing.value) {
+                            //e.preventDefault();
+
+                        } else {
+                            return $scope.datas.userHousing;
+                        }
+                    }
+                }
+                ]
+            });
+
+            HousingPopup.then(function () {
+
+                if ($scope.datas.userHousing.value != null) {
+                    console.log($scope.datas.userHousing.value);
+                    /*$scope.datas.userHeight.value +='cm';*/
+                    $scope.datas.userHousing.isFilled = true;
+                    console.log($scope.datas.userHousing.isFilled);
+                }
+            });
+        };
+        /*********************************************************************/
+
         /*******************************居住地填写*****************************/
         $scope.showHomePopup = function () {
             var HomePopup = $ionicPopup.show({
@@ -571,8 +983,48 @@ angular.module('starter.controllers', ['ngCordova'])
                     console.log($scope.datas.userHome.isFilled);
                 }
             });
-        }
+        };
         /*******************************居住地填写*****************************/
+        /******************************户籍填写*****************************/
+        $scope.showHouseholdegisterPopup = function () {
+            var HomePopup = $ionicPopup.show({
+
+                template: '<input type="text" ng-model="datas.userHouseholdegister.value" style="background-color: #6E6E6E !important;border-radius: 1em;height: 3em!important;font-size: 1.5em;text-align: center;">',
+
+                title: '请输入个人居住地',
+
+                scope: $scope,
+
+                buttons: [{text: '取消', type: 'button-red-none'}, {
+
+                    text: '<b>确定</b>',
+
+                    type: 'button-red-none',
+
+                    onTap: function (e) {
+
+                        if (!$scope.datas.userHouseholdegister.value) {
+                            e.preventDefault();
+
+                        } else {
+                            return $scope.datas.userHouseholdegister;
+                        }
+                    }
+                }
+                ]
+            });
+
+            HomePopup.then(function () {
+
+                if ($scope.datas.userHouseholdegister.value != null) {
+                    console.log($scope.datas.userHouseholdegister.value);
+                    /*$scope.datas.userHeight.value +='cm';*/
+                    $scope.datas.userHouseholdegister.isFilled = true;
+                    console.log($scope.datas.userHouseholdegister.isFilled);
+                }
+            });
+        };
+        /*******************************户籍填写*****************************/
         /*******************************职位填写*****************************/
         $scope.showJobPopup = function () {
             var JobPopup = $ionicPopup.show({
@@ -690,7 +1142,20 @@ angular.module('starter.controllers', ['ngCordova'])
         };
 
         /*******************************时间选择器*****************************/
-
+        $scope.save = function(){
+            guideData.person = $scope.datas;
+            console.log(guideData.person);
+            console.log("click");
+        };
+    })
+    .controller('GuideExtraInfoCtrl', function ($scope,guideData) {
+        $scope.guide08ExtraText = null;
+        $scope.guide09ExtraText = null;
+        $scope.Log = function(){
+            guideData.guide08ExtraText = $scope.guide08ExtraText;
+            guideData.guide09ExtraText = $scope.guide09ExtraText;
+            console.log("8:"+guideData.guide08ExtraText+"9:"+guideData.guide09ExtraText);
+        }
     })
 
     .controller('selectCityCtrl', function ($rootScope, $scope, $state, $filter, $ionicHistory, selectCitySvc, storageSvc, scollImageSvc, classIficationItemSvc) {
@@ -860,5 +1325,4 @@ angular.module('starter.controllers', ['ngCordova'])
         console.log('sync')
         vm.CityPickData4.areaData = vm.CityPickData2.areaData
     }
-})
-;
+});

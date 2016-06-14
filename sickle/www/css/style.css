@@ -394,3 +394,15 @@ a.autolinker {
     color: black;
     font-weight: lighter
 }
+
+.col-static-column{
+  background-color: #ffffff;
+  font-size: 1em;
+}
+.person-tags{
+  margin-top: 10px;
+}
+.target-tags{
+  margin-top: 10px;
+  margin-bottom: 15px;
+}

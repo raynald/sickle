@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 .idea/
-=======
 .idea
 *.class
 **/node_modules/
 **/.project
 **/bower_components
->>>>>>> refs/remotes/origin/master
 sickle/platforms
+sickle/plugins
+platforms

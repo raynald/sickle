@@ -199,13 +199,40 @@ angular.module('starter.services', [])
                 var user = Bmob.User.current();
                 user.set("child", person);
                 user.save();
+                person.set("parent",user);
+
+
+
+// MyUser user = BmobUser.getCurrentUser(this, MyUser.class);
+// // 创建帖子信息
+// Post post = new Post();
+// post.setContent(content);
+// //添加一对一关联
+// post.setAuthor(user);
+// post.save(this, new SaveListener() {
+
+//     @Override
+//     public void onSuccess() {
+//         // TODO Auto-generated method stub
+//         ...
+//     }
+
+//     @Override
+//     public void onFailure(int code, String msg) {
+//         // TODO Auto-generated method stub
+//         ...
+//     }
+// });
+
             },
             subscribe: function (person) {
                 var user = Bmob.User.current();
+                console.log(user);
                 var relation = user.relation("subscribes");
                 relation.add(person);
                 user.save();
-            }
+            },
+
         };
 
     })
@@ -421,6 +448,25 @@ angular.module('starter.services', [])
                  })*/
 
             },
+            allSortBy:function (sortBy) {
+                var persons = [];
+                var Person = Bmob.Object.extend("person");
+                var query = new Bmob.Query(Person);
+                query.descending(sortBy).then(function (results) {
+                    console.log(persons);
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+
+                        var person = object.attributes;
+                        person.id = object.id;
+                        persons.push(person);
+                    }
+                    return persons;
+                });
+
+
+                return persons;
+            },
             remove: function (person) {
                 //persons.splice(persons.indexOf(person), 1);
             },
@@ -433,18 +479,12 @@ angular.module('starter.services', [])
                 var person = {};
                 var Person = Bmob.Object.extend("person");
                 var query = new Bmob.Query(Person);
-                query.get(personId, {
-                    success: function (object) {
-
-                        person = object.attributes;
-                        person.id = object.id;
-                        return person;
-                    },
-                    error: function (object, error) {
-                        alert("error");
-                        return null;
-                    }
+                query.get(personId).then(function (object) {
+                    person = object.attributes;
+                    person.id = object.id;
+                    return person;
                 });
+                return person;
 
             }
         };
@@ -483,4 +523,83 @@ angular.module('starter.services', [])
 
             return me;
         }
-    ]);
+    ])
+    .factory('guideData',function(){
+        var service = {};
+        /*页面8中的附加信息*/
+        service.guide08ExtraText = null;
+        /*页面9中的附加信息*/
+        service.guide09ExtraText = null;
+        /*页面8中十二个选项,默认为不选中*/
+        service.guide08RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false];
+        /*页面9中十五个选项*/
+        service.guide09RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
+        /*页面9中已选中项数目*/
+        service.guide09checkedButtonNum = 0;
+        /*上传图片的uri*/
+        service.photoUri = null;
+        /*个人基本资料*/
+        service.person = {
+            personHeight: {
+                value: null,
+                info: "*身高",
+                isFilled: false,
+                functionId: 0
+            },
+            personBorn: {
+                value: null,
+                info: "*出生年月",
+                isFilled: false,
+                functionId: 1
+            },
+            personHome: {
+                value: null,
+                info: "*居住地",
+                isFilled: false,
+                functionId: 2
+            },
+            personHouseholdegister: {
+                value: null,
+                info: "*户籍",
+                isFilled: false,
+                functionId: 3
+            },
+            personHousing: {
+                value: null,
+                info: "*住房情况",
+                isFilled: false,
+                functionId: 4
+            },
+            personEducation: {
+                value: null,
+                info: "*学历",
+                isFilled: false,
+                functionId: 5
+            },
+            personJobCategory: {
+                value: null,
+                info: "*单位性质",
+                isFilled: false,
+                functionId: 6
+            },
+            personJob: {
+                value: null,
+                info: "*职业职务",
+                isFilled: false,
+                functionId: 7
+            },
+            personMonthlyIncome: {
+                value: null,
+                info: "*月收入",
+                isFilled: false,
+                functionId: 8
+            },
+            personMaritalStatus: {
+                value: null,
+                info: "*婚姻状况",
+                isFilled: false,
+                functionId: 9
+            }
+        };
+        return service;
+    });
