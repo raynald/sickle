@@ -73,8 +73,8 @@
 }
 /*************/
 /* Empty. Add your own CSS if you like */
-.main-self{
-  height: 194px;
+.main-self {
+  height: 260px;
   width:100%;
   background: url('../img/ben.png') no-repeat;
   background-size: cover;
@@ -406,3 +406,46 @@ a.autolinker {
   margin-top: 10px;
   margin-bottom: 15px;
 }
+
+/*自定义设置button,按下去中间颜色变为黑色。背景为设置logo*/
+.button.button-none-circle-set {
+
+    background-color: rgba(200, 200, 200, 0.27);
+    background-image:url("../img/setBackground.png");
+    background-position: center;
+    background-size: 2em 2em;
+    padding: 8px !important;
+    min-width: 1em;
+    min-height: 1em;
+    color: white;
+    border-radius: 1em;
+    border:1px solid rgba(200, 200, 200, 0.27);
+    height: 2em !important;
+    width: 2em !important;
+    font-size: 15px;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.button.button-none-circle-set.active, .button.button-none-circle-set.activated{
+    background-color: rgb(1, 1, 1);
+}
+
+/*自定义编辑相亲名片button,*/
+.button.button-edit-personal-detail {
+
+    background-color: rgba(255, 255, 255, 0);
+    background-image:url("../img/editSelfDetailBackground.png");
+    background-size: 100%;
+    background-position: center;
+    background-repeat:no-repeat;
+    border-radius: 40px;
+    width: 9em;
+    margin-top: 160px;
+    margin-left: 60%;
+}
+.button.button-edit-personal-detail.active, .button.button-edit-personal-detail.activated {
+
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
