@@ -632,6 +632,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 url: '/guide_09',
                 templateUrl: 'templates/guide_09.html'
             })
+   /*         .state('guide_uncomplete',{
+                url: '/guide_uncomplete',
+                templateUrl: 'templates/guide_06.html'
+            })*/
+            .state('guide_10',{
+                url: '/guide_10',
+                templateUrl: 'templates/guide_10.html'
+            })
+            .state('guide_11',{
+                url: '/guide_11',
+                templateUrl: 'templates/guide_11.html'
+            })
             // setup an abstract state for the tabs directive
             .state('tab', {
                 url: '/tab',

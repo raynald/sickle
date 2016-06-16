@@ -1,0 +1,167 @@
+.logo{
+ //   margin: 0px 50px 80px 120px;
+    margin: 0px 13% 12% 32%;
+    width: 100px;
+}
+.item1.item-input{
+   margin: 30px 30px;
+//    margin: 1.875em 8%;
+    padding:0.31em 0;
+    background-color: transparent;
+    border: 1px solid aliceblue;
+    border-radius: 22px;                /* 圆角边框 */
+//    width: 305px;
+    height: 50px;
+    width: 80%;
+    color: #d1d3d6;
+    font-weight: 100;
+    font-size: 25px;
+    letter-spacing: 15px;
+    text-align: center;
+}
+.item2.item-input{
+    margin: 10px 30px;
+    padding: 5px 0;
+//    margin: 0.625em 15%;
+    background-color: transparent;
+    border: 1px solid aliceblue;
+    border-radius: 22px;                /* 圆角边框 */
+//    width: 200px;
+    width: 65%;
+    height: 50px;
+    color: #d1d3d6;
+    font-weight: 100;
+    font-size: 25px;
+   letter-spacing: 15px;
+   text-align: center;
+}
+.login{
+   background-color: transparent;
+
+}
+
+.button-energized{
+    margin: 10px 0px;
+ //   margin: 2.6% 0;
+    padding: 0px;
+    border-radius: 20px;
+ //   border-radius:5.8%;
+   width: 65px;
+ //   width:90%;
+    height: 40px;
+    font-size:10px ;
+    background-color: transparent;
+    color: #fafafa;
+}
+.button-energized:hover {
+    text-decoration: none;
+}
+
+.button-energized.active, .button-energized.activated {
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: #ffffff;
+}
+
+.button-energized.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #ddd;
+}
+
+.button-energized.button-icon {
+    border-color: transparent;
+    background: none;
+}
+
+.button-energized.button-outline {
+    border-color: #ddd;
+    background: transparent;
+    color: #ddd;
+}
+
+.button-energized.button-outline.active, .button-energized.button-outline.activated {
+    background-color: #ddd;
+    box-shadow: none;
+    color: #fff;
+}
+.button-login{
+    margin:20px 70px;
+    width: 200px;
+    height:50px;
+    color: #d1d3d6;
+    border-radius: 25px;
+    background-color: transparent;
+}
+.loginselect{
+//    margin: 0px 150px;
+    margin: 0px 40%;
+    color: #d1d3d6;
+    width: 100px;
+}
+.header{
+    margin: 0px;
+    height: 200px;
+}
+.subbar{
+    margin: 120px 0px;
+}
+.pictures{
+    width: 30px;
+}
+.back-button-left{
+    height: 3.125em;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+.back-button-right{
+    height: 3.125em;
+    margin-top: 1em;
+    margin-right: 1em;
+    float: right
+}
+
+#left{
+    float:left;
+    margin: 10px 0;
+    width:80px;
+    height:500px;
+}
+#right{
+    float:right;
+    margin: 10px 0;
+    width:280px;
+    height:500px;
+}
+.info{
+    display: block;
+    margin: 6px 5px;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    border: 2px solid transparent;
+    border-radius: 60px;
+ //   background: #1ECD97;
+    color: #080808;
+    letter-spacing: 1px;
+    font-size: 10px;
+
+}
+.info:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+.info.active{
+    background-color: #ae0009;
+    border: 1px solid #ae0009;
+    color: #ffffff;
+}
+.personInfo{
+    width: 80px;
+    height: 30px;
+    border: 1px solid aliceblue;
+    border-radius: 12px;
+}
+
+

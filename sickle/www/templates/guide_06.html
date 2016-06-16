@@ -1,21 +1,27 @@
-<ion-view view-title="guide_06" ng-controller="GetPicCtrl">
+<ion-view view-title="guide_06">
     <ion-content class="guideContentBackground2">
+<<<<<<< HEAD
+        <img class="back-button-left" src="img/back-left.png" ui-sref="guide_05">
+        <img class="back-button-right" src="img/back-right.png" ui-sref="guide_07">
+=======
         <!--<button class="button button-none-circle-back" ui-sref="guide_05"></button>-->
         <button class="button button-none-circle" ui-sref="guide_05" style="margin: 1em;">返回</button>
+>>>>>>> master
         <div class="centerContent">
-            <div style="width: 15em">
-                <img class="imgLogoIcon" src="img/logo_icon.png" style="float: left">
-
-                <p style="font-size: 2em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
+        <div class="row responsive-sm padding remvoeBP">
+                   <div class="col">
+                        <div class="app-logo"><img class="logo" src="img/logo_white.png"></div>
+                        <p class="loginselect">我要找：</p>
+                       <ul ng-controller="CityCtrl" style="width: 90%">
+                            <li>
+                             <button class="button button-none" style=" margin:3% 14.1%;width: 66.7%;height: 50px" type="submit">{{vm.chooseCity}}</button>
+                            </li>
+                            <li>
+                               <button class="button button-none" style=" margin:3% 14.1%;width: 66.7%;height: 50px" type="submit" ng-click="choose()" >选择城市</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <label style="margin-top: 1em">——&nbsp;上传子女头像&nbsp;——</label>
-            <button class="button button-none" style="margin-top:25%">本地相册上传</button>
-            <button class="button button-none" style="margin-top:4%" ng-click="takePicture()">拍照上传</button>
-            <button class="button button-none" style="margin-top:4%" ui-sref="guide_07">跳过</button>
-            <label style="margin-top:4%">上传头像，关注度提升一百倍</label>
-            <img ng-show="imgURI!=undefined" ng-src="{{imgURI}}">
-            <!--<img ng-show="imgURI === undefined" ng-src="http://xbox360.tgbus.com/UploadFiles/201301/20130105093935574.jpg">-->
-        </div>
-        <img src="img/tabline_25.png" style="width: 90%;margin:20% 5%;margin-bottom: 0px">
     </ion-content>
 </ion-view>
