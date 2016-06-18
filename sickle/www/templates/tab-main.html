@@ -1,25 +1,25 @@
-<ion-view view-title="Main" class="tab-main">
+<ion-view view-title="Main" class="tab-main" >
   <ion-content>
     <div class="main-self">
       <!--<button class="button ion-ios-gear self-setting"></button>-->
       <button class="button button-none-circle-set"></button>
       <img class="avatar-self" ng-src="img/adam.jpg">
-      <table class="self-dashboard">
+      <table class="self-dashboard" >
         <tbody>
         <tr>
-          <td class="dashboard-key">被关注</td>
-          <td class="dashboard-value">15</td>
+          <td class="dashboard-key">被关注:</td>
+          <td class="dashboard-value">15 <span class="badge badge-custom">9</span></td>
         </tr>
         <tr>
-          <td class="dashboard-key">被浏览</td>
-          <td class="dashboard-value">198</td>
+          <td class="dashboard-key">被浏览:</td>
+          <td class="dashboard-value" >198<span class="badge badge-custom">99+</span></td>
         </tr>
         </tbody>
 
         <!--<button class="button button-clover active ion-ios-person self-profile">相亲名片</button>-->
 
       </table>
-      <button class="button button-edit-personal-detail"></button>
+      <button class="button button-edit-personal-detail" ng-controller="PersonDetailTest" ui-sref="tab.person-detail"></button>
     </div>
 
       <div id="main-bar" class="bar">

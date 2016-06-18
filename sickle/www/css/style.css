@@ -94,7 +94,8 @@
 .self-dashboard{
   color:white;
     font-size:2px;
-    width:80px;
+    width:70px;
+
     position:absolute;
     left:50%;
     margin-left:-40px;
@@ -449,3 +450,19 @@ a.autolinker {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+
+/*custom badge*/
+.badge.badge-custom {
+    color: #ffffff;
+    background-color: red;
+    z-index: 1;
+    padding: 0 5px;
+    margin-top: -5px;
+    border-radius: 10px;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 16px;
+    position: absolute;
+}
