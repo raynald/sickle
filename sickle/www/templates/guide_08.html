@@ -1,25 +1,14 @@
-<ion-view view-title="guide_08" ng-controller="GetPicCtrl">
+<ion-view>
     <ion-content class="guideContentBackground2">
-  <!--      <button class="button  ui-sref="guide_05"></button>-->
-        <img class="back-button-left" src="img/back-left.png" ui-sref="guide_07">
-        <img class="back-button-right" src="img/back-right.png" ui-sref="guide_09">
-        <div class="centerContent">
+        <guide-two-button ui-sref="guide_09"></guide-two-button>
+        <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;color: white;font-family: 微软雅黑;">
             <div style="width: 15em">
                 <img class="imgLogoIcon" src="img/logo_icon.png" style="float: left">
 
-                <p style="font-size: 1.5em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
+                <p style="font-size: 2em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
             </div>
-            <label style="margin-top: 1em">——&nbsp;上传子女头像&nbsp;——</label>
-            <button class="button button-none" style="margin-top:25%">本地相册上传</button>
-            <button class="button button-none" style="margin-top:4%" ng-click="takePicture()">拍照上传</button>
-            <button class="button button-none" style="margin-top:4%" ui-sref="guide_09">跳过</button>
-            <label style="margin-top:4%">上传头像，关注度提升一百倍</label>
-            <img ng-show="imgURI!=undefined" ng-src="{{imgURI}}">
-            <!--<img ng-show="imgURI === undefined" ng-src="http://xbox360.tgbus.com/UploadFiles/201301/20130105093935574.jpg">-->
+            <label style="margin-top: 1em">——&nbsp;个性资料&nbsp;——</label>
         </div>
-<<<<<<< HEAD
-        <img src="img/tabline_25.png" style="width: 90%;margin:20% 5%;margin-bottom: 0px">
-=======
 
         <div style="padding: 1em 1em;">
             <label style="font-size: 1.2em;color: white">选择符合子女的标签：</label>
@@ -92,6 +81,5 @@
            <!-- <button ng-click="Log()">test</button>-->
         </div>
         <img src="img/tabline_75.png" style="margin: 2.5% 2.5%;width: 95%">
->>>>>>> master
     </ion-content>
 </ion-view>

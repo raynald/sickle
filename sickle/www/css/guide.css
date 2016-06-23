@@ -32,7 +32,7 @@ div{
 }
 
 .guideContentBackground2 {
-    background: url("../img/guideBackground.png")  no-repeat;
+    background: url("../img/guideBackground.png") no-repeat;
     background-size: cover;
 }
 
@@ -49,9 +49,8 @@ div{
 }
 
 .imgLogoIcon {
-    width: 60px;
- //   width: 6em;
-//    height: 6em;
+    width: 6em;
+    height: 6em;
     margin-top: -1em;
 }
 .button-clover{
@@ -128,8 +127,7 @@ div{
     border: 2px solid white;
     height: 50px;
     width: 80%;
-//    font-size: 17px;
-    font-size: 1em;
+    font-size: 17px;
 
 }
 
@@ -390,8 +388,6 @@ div{
     margin-right: 1em;
     text-align: center;
 }
-<<<<<<< HEAD
-=======
 /*main tab tags*/
 .person-tag{
     background-color: rgba(24, 24, 24, 0.27);
@@ -418,4 +414,3 @@ div{
     text-align: center;
     display: inline-block;
 }
->>>>>>> master

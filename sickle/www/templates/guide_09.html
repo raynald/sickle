@@ -1,30 +1,18 @@
-<ion-view>
+<ion-view view-title="guide_09">
     <ion-content class="guideContentBackground2">
-<<<<<<< HEAD
-        <guide-two-button ui-sref="guide_10"></guide-two-button>
-=======
         <guide-two-button ui-sref="tab.main"></guide-two-button>
->>>>>>> master
         <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;color: white;font-family: 微软雅黑;">
+
             <div style="width: 15em">
                 <img class="imgLogoIcon" src="img/logo_icon.png" style="float: left">
 
-                <p style="font-size: 1.5em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
+                <p style="font-size: 2em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
             </div>
-            <label style="margin-top: 1em">——&nbsp;基本资料&nbsp;——</label>
-            <ul ng-controller="InputCtrl" style="width: 90%">
-                <li ng-repeat="data in datas">
-                    <div ng-class="{true:'customInputFilled',false:'customInputNotFilled'}[data.isFilled]"  ng-click="do(data.functionId)">
-                        <p style="float: left">{{data.info}}</p>
-                        <p style="float: right;">{{data.value!=null?data.value:"未填写"}}</p>
-                    </div>
-                </li>
-            </ul>
+            <label style="margin-top: 1em">——&nbsp;择偶条件&nbsp;——</label>
         </div>
+        <div style="width: 95%;margin-left: 2.5%;">
+            <label style="font-size: 1.2em;color: white">我希望他/她<a style="color: #A7A7A7">（最多选择九项）</a></label>
 
-<<<<<<< HEAD
-       <!-- <img src="img/tabline_50.png" style="margin: 5% 5%;width: 90%">-->
-=======
             <div class="row" style="height: 5em;">
                 <div class="col col-checkbox-div">
                     <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
@@ -110,6 +98,5 @@
             <!--<button ng-click="Log()">test</button>-->
         </div>
         <img src="img/tabline_100.png" style="margin: 2.5% 2.5%;width: 95%">
->>>>>>> master
     </ion-content>
 </ion-view>
