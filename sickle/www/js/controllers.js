@@ -511,6 +511,15 @@ angular.module('starter.controllers', ['ngCordova'])
           
         };
     })
+    .controller("RegisterCtrl",function($scope,$http){
+        $scope.sendMsg = function(userphone){
+            console.log( userphone);
+           var url = 'http://106.veesing.com/webservice/sms.php?method=Submit&account=cf_wxhdcs789&password=wxhdcs123&mobile='+userphone+'&content=您的验证码是：4526。请不要把验证码泄露给其他人。';
+              $http.get(url).success(function(data,status){
+ //                 console.log(status);
+              })
+        }
+    })
     /*---选择城市，暂时用输入代替-- by Annabel*/
 
 .controller("CityCtrl",function($scope,$ionicPopup){

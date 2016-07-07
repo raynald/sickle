@@ -1,15 +1,12 @@
 <ion-view view-title="guide_02">
- <ion-content class="guideContentBackground2">
- <!-- <ion-content>
-      <div class="bar-header">
-        <img src="img/avatarBackground.png"style="background:repeat-y;">-->
+  <ion-content class="guideContentBackground2">
+      <img class="back-button-left" src="img/back-left.png" ui-sref="guide_01">
+      <img class="back-button-right" src="img/back-right.png" ui-sref="guide_03">
           <div class="centerContent" style="display: flex;">
-           <div class="scroll-content ">
-                <img class="back-button-left" src="img/back-left.png" ui-sref="guide_01">
-                <img class="back-button-right" src="img/back-right.png" ui-sref="guide_03">
-           <!--      <div class="col item-input-inset">-->
+ <!--          <div class="scroll-content ">-->
+                  <div class="col">
                     <div class="app-logo" ><img class="logo" src="img/logo_white.png"></div>
-                                      <label class="item1 item-input icon ion-android-call"><input class="login" style="background: none" type="text" ng-model="user.username" placeholder="请输入11位手机号码" ></label>
+                                      <label class="item1 item-input icon ion-android-call"><input class="login" style="background: none" type="text" ng-model="username" placeholder="请输入11位手机号码" ></label>
                                       <table>
                                           <tr>
                                               <td>
@@ -18,7 +15,7 @@
                                               </label>
                                               </td>
                                               <td>
-                                                  <button class="button-energized" type="submit">获取验证码</button>
+                                                  <button class="button-energized" type="submit"ng-controller="RegisterCtrl"ng-click="sendMsg(username)">获取验证码</button>
                                               </td>
                                           </tr>
                                       </table>
@@ -26,10 +23,9 @@
                     </div>
                  </div>
                 </div>
-            </div>
-       <!-- </div>-->
+         </div>
       </ion-content>
-  </ion-view>
+  </ion-view>-->
 
 
 
@@ -37,11 +33,10 @@
 
 
 
-=======
     <ion-content class="guideContentBackground2" ng-controller="cityCtrl">
         <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;">
-            <img class="imgWhiteLogo" src="img/logo_white.png">
-            <button  class="button button-none" style="margin-top:50%;" ui-sref="guide_03">next page</button>
+ <!--           <img class="imgWhiteLogo" src="img/logo_white.png">
+            <button  class="button button-none" style="margin-top:50%;" ui-sref="guide_03">next page</button>-->
             <!--<ionic-city-picker options='vm.CityPickData1'></ionic-city-picker>
             <ionic-city-picker options='vm.CityPickData2'></ionic-city-picker>
             <ionic-city-picker options='vm.CityPickData3'></ionic-city-picker>
@@ -61,4 +56,3 @@
         </div>
     </ion-content>
 </ion-view>
->>>>>>> master
