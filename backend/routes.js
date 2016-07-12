@@ -1,16 +1,22 @@
 
 exports.setRequestUrl=function(app){
-    var user = require('./Controllers/user')
+    var userController = require('./Controllers/UserController')
         ,indexObj = require('./controllers/index')
         ,fileObj = require('./controllers/fileSystem')
         ,mongoObj = require('./controllers/mongoManagement')
-        ,articleObj = require('./controllers/article');
+        ,articleObj = require('./controllers/article')
+        ,personController = require('./Controllers/PersonController');
 
-    app.get('/', user.login);
-    app.post('/onLogin', user.onLogin);
-    app.get('/userList', user.userList);
-    app.get('/user/addUser', user.addUser);
-    app.get('/user/userManager', user.userManager);
+
+    
+    app.get('/Persons', personController.list);
+    app.post('/Person',personController.create);
+
+    app.post('/User', userController.create);
+    app.get('/Users', userController.list);
+    app.get('/User/userManager', userController.userManager);
+    app.get('/', userController.login);
+    app.post('/onLogin', userController.onLogin);
 
     app.post('/index/newContent', indexObj.newContent);
     app.get('/index', indexObj.index);

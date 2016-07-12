@@ -23,7 +23,7 @@ exports.onLogin = function (req, res, next) {
 		}
 	})
 };
- exports.addUser = function (){
+ exports.create = function (){
      var userEntity = new user();
      userEntity.userName=req.body.userName;
      userEntity.password=req.body.password;
@@ -32,7 +32,7 @@ exports.onLogin = function (req, res, next) {
      })
  };
 
-exports.userList=function(req, res, next){
+exports.list=function(req, res, next){
      user.find({},function(err,userList){
          res.render('./user/users.html',{userList:userList});
          
