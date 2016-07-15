@@ -40,11 +40,70 @@ angular.module('starter.controllers', ['ngCordova'])
     })
     .controller('PersonDetailCtrl', function ($scope, $stateParams, Persons) {
         $scope.person = Persons.get($stateParams.personId);
-    }).controller('PersonDetailTest',function($scope,$ionicScrollDelegate,$timeout){
+    })
+    .controller('PersonDetailTest',function($scope,$ionicScrollDelegate,$timeout){
         //用于改变左侧的tag的样式
         $scope.tagState = [true,false,false,false];
+        //修改模式/展示模式
+        $scope.modleNormal = true;
+        //type:BaseInfo,PersonalityInfo,DailyPic,MaritalFilter
+        $scope.setPersonalDetail = function(position,type){
+            //修改模式
+            if(!$scope.modleNormal){
+            switch(type){
+                case BaseInfo:
+                    switch (position){
+                        case 1:
+                            $scope.showHomePopup();
+                            break;
+                        case 2:
+                            $scope.showHouseholdegisterPopup();
+                            break;
+                        case 3:
+                            $scope.showHousingPopup();
+                            break;
+                        case 4:
+                            $scope.showEducationPopup();
+                            break;
+                        case 5:
+                            $scope.showMonthlyIncomePopup();
+                            break;
+                        case 6:
+                            $scope.showMaritalStatusPopup();
+                            break;
+                    }
+                    break;
+                case PersonalityInfo:
+                    break;
+                case DailyPic:
+                    break;
+                case MaritalFiler:
+                    switch (position){
+                        case 0:
+                            break;
+                        case 1:
+                            $scope.showSetHeightPopup();
+                        case 2:
+                            $scope.showEducationPopup();
+                            break;
+                        case 3:
+                            $scope.showHouseholdegisterPopup();
+                            break;
+                        case 4:
+                            $scope.showHousingPopup();
+                            break;
+                        case 5:
+                            $scope.showMonthlyIncomePopup();
+                            break;
+                        case 6:
+                            $scope.showMaritalStatusPopup();
+                            break;
+                    }
+                    break;
+            }
+        }
+        }
         //通过设置这个属性来切换是自己和别人的相亲页面的样式
-
         //true：自己的相亲名片，false：别人的相亲名片
         $scope.isSelfPersonDetail = true;
         var setTagFlag = function(to){
@@ -172,6 +231,8 @@ angular.module('starter.controllers', ['ngCordova'])
 
                 },500,false);
         }
+
+
 
     })
     .controller('UserMessagesCtrl', ['$scope', '$rootScope', '$state',
@@ -650,6 +711,7 @@ $scope.setValue = function(type,value){
             break;
     }
 };
+
         /*****************************学历****************************************/
         $scope.showEducationPopup = function () {
             $scope.closePopup = function(value){

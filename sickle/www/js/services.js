@@ -599,6 +599,10 @@ angular.module('starter.services', [])
                 info: "*婚姻状况",
                 isFilled: false,
                 functionId: 9
+            },
+            personAge: {
+                value:null,
+                info:"年龄"
             }
         };
         return service;
