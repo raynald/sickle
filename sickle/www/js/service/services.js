@@ -13,7 +13,7 @@ angular.module('starter.services', [])
     .factory('Chats', ChatsService)
     .factory('Users', UsersService)
 
-    .factory('Persons',PersonsService)
+    .factory('Persons', PersonsService)
     .factory('MockService', ['$http', '$q',
         function ($http, $q) {
             var me = {};
