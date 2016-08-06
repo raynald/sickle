@@ -6,7 +6,7 @@
 -->
 <ion-view id="userMessagesView"
           cache-view="false"
-          view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{chat.name}}</div>">
+          view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{chat.belongNick}}</div>">
     <div class="loader-center" ng-if="!doneLoading">
         <div class="loader">
             <i class="icon ion-loading-c"></i>
@@ -16,9 +16,9 @@
         <div class="bar">
             <a class="button" href="/#/tab/chats">return</a>
         </div>
-        <img ng-src="{{chat.face}}" class="avatar">
+        <img ng-src="{{chat.belongAvatar}}" class="avatar">
         <p>
-            {{chat.lastText}}
+            {{chat.content}}
         </p>
         <div ng-repeat="message in messages" class="message-wrapper"
              on-hold="onMessageHold($event, $index, message)">

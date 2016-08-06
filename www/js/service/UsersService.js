@@ -116,16 +116,17 @@ UsersService=function ($http) {
             sendMessage: function (content, toUser) {
                 var user = Bmob.User.current();
                 // Make a new post
-                var Message = Bmob.Object.extend("Message");
+                var Message = Bmob.Object.extend("BmobMsg");
                 var message = new Message();
                 message.set("content", content);
-                message.set("user", user);
-                message.set("to_user", toUser);
+                message.set("belongId", user);
+                message.set("toId", toUser);
+                console.log("message ne: ", message);
                 message.save(null, {
                     success: function (message) {
                         // Find all posts by the current user
                         var query = new Bmob.Query(Message);
-                        query.equalTo("user", user);
+                        query.equalTo("belongId", user);
                         query.find({
                             success: function (messages) {
                                 // userPosts contains all of the posts by the current user.
