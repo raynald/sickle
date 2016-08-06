@@ -11,8 +11,8 @@
         <ion-list>
           <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.id}}">
             <img class="avatar-clover" ng-src="{{person.face}}">
-            <h2>{{person.job}}</h2>
-            <p>{{person.gender}} | {{person.address}} | {{person.birthday}} | {{person.degree}} | {{person.height}}</p>
+            <h2>{{person.company}} {{person.job}}</h2>
+            <p>{{person.sex}} | {{person.residence}} | {{person.bornyear}} | {{person.degree}} | {{person.height}}</p>
             <i class="icon ion-chevron-right icon-accessory"></i>
             <button class="button button-clover ion-chatbox-working" ui-sref="#tab/chats/{{person.id}}">聊一聊</button>
             <button class="button button-clover ion-ios-person" ui-sref="#tab/persons/{{person.id}}">相亲名片</button>
