@@ -1,4 +1,4 @@
-var InputCtrl = function($scope, $ionicPopup, ionicDatePicker, guideData) {
+var InputCtrl = function($scope, $ionicPopup, ionicDatePicker, guideData, Persons,Users) {
     $scope.datas = {
         userHeight: {
             value: null,
@@ -554,6 +554,8 @@ var InputCtrl = function($scope, $ionicPopup, ionicDatePicker, guideData) {
     /*******************************时间选择器*****************************/
     $scope.save = function() {
         guideData.person = $scope.datas;
+        guideData.person.name="aa";
+        Persons.save(guideData.person);
         console.log(guideData.person);
         console.log("click");
     };
