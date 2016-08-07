@@ -1,19 +1,23 @@
-var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams, MockService,
+var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
             $ionicActionSheet,
             $ionicPopup, $ionicScrollDelegate, $timeout, $interval) {
 
+            console.log("never entering here???");
             // mock acquiring data via $stateParams
             $scope.toUser = {
                 _id: '534b8e5aaa5e7afc1b23e69b',
-                pic: 'http://ionicframework.com/img/docs/venkman.jpg',
-                username: 'Venkman'
+                username: 'reniku_liang',
+                id: '0HyWSSSe'
             };
 
             // this could be on $rootScope rather than in $stateParams
             $scope.user = {
+                nickname: '哪个是你',
+                id: 'hRkuBBBF',
                 _id: '534b8fb2aa5e7afc1b23e69c',
                 pic: 'http://ionicframework.com/img/docs/mcfly.jpg',
-                username: 'Marty'
+                username: 'root',
+                avatar: 'http://file.bmob.cn/M02/5D/F7/oYYBAFakpIKAKEMcAAFdEtDsVNU776.png'
             };
 
             $scope.input = {
@@ -78,9 +82,27 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams, MockServ
 
             $scope.sendMessage = function(sendMessageForm) {
                 var message = {
-                    toId: $scope.toUser._id,
-                    text: $scope.input.message
+                    belongNick: $scope.user.nickname,
+                    content: $scope.input.message,
+                    $status: 1,
+                    toId: $scope.toUser.id,
+                    belongId: $scope.user.id,
+                    belongUsername: $scope.user.username,
+                    isReaded: 0,
+                    msgType: 1,
+                    beongAvatar: $scope.user.avatar
                 };
+
+                message.msgTime = new Date().getTime(); // :~)
+                message.createdAt = new Date();
+
+                var table_name = "BmobMsg";
+                var BmobMsg = new Bmob.Object.extend(table_name);
+                var msg = new BmobMsg();
+                for(key in message) {
+                    msg.set(key, message[key]);
+                }
+                msg.save();
 
                 // if you do a web service call this will be needed as well as before the viewScroll calls
                 // you can't see the effect of this in the browser it needs to be used on a real device
@@ -90,13 +112,13 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams, MockServ
                 //MockService.sendMessage(message).then(function(data) {
                 $scope.input.message = '';
 
-                message._id = new Date().getTime(); // :~)
-                message.date = new Date();
+                /*
                 message.username = $scope.user.username;
                 message.userId = $scope.user._id;
                 message.pic = $scope.user.picture;
+                */
 
-                $scope.messages.push(message);
+                // $scope.messages.push(message);
 
                 $timeout(function() {
                     keepKeyboardOpen();
