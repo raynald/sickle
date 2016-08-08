@@ -1,0 +1,79 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view id="userMessagesView"
+          cache-view="false"
+          view-title="<i class='icon ion-chatbubble user-messages-top-icon'></i> <div class='msg-header-username'>{{chat.belongNick}}</div>">
+    <div class="loader-center" ng-if="!doneLoading">
+        <div class="loader">
+            <i class="icon ion-loading-c"></i>
+        </div>
+    </div>
+    <ion-content class="padding">
+        <div class="bar">
+            <a class="button" href="/#/tab/chats">return</a>
+        </div>
+        <ion-item ng-repeat="message in messages" class="message-wrapper"
+             on-hold="onMessageHold($event, $index, message)">
+            <p>
+                {{message.content}}
+            </p>
+
+            <div ng-if="userId !== message.toId">
+
+                <img ng-click="viewProfile(message)" class="profile-pic left"
+                     ng-src="{{message.belongAvatar}}" onerror="onProfilePicError(this)"/>
+
+                <div class="chat-bubble left">
+
+                    <div class="message" ng-bind-html="message.content | nl2br" autolinker>
+                    </div>
+
+                    <div class="message-detail">
+                              <span ng-click="viewProfile(message)"
+                                    class="bold">{{toUser.username}}</span>,
+                        <span am-time-ago="message.createdAt"></span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div ng-if="userId === message.toId">
+
+                <img ng-click="viewProfile(message)" class="profile-pic right"
+                     ng-src="{{message.belongAvatar}}" onerror="onProfilePicError(this)"/>
+
+                <div class="chat-bubble right">
+
+                    <div class="message" ng-bind-html="message.content | nl2br" autolinker>
+                    </div>
+
+                    <div class="message-detail">
+                              <span ng-click="viewProfile(message)"
+                                    class="bold">{{user.username}}</span>,
+                        <span am-time-ago="message.createdAt"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="cf"></div>
+
+        </ion-item>
+    </ion-content>
+    <form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate>
+        <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+            <label class="item-input-wrapper">
+                <textarea ng-model="input.message" value="" placeholder="Send {{toUsername}} a message..." required
+                          minlength="1" maxlength="1500" msd-elastic></textarea>
+            </label>
+            <button class="button button-icon icon ion-android-send" type="submit"
+                    ng-disabled="!input.message || input.message === ''">
+            </button>
+        </ion-footer-bar>
+    </form>
+</ion-view>

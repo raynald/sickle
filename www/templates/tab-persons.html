@@ -1,0 +1,19 @@
+<ion-view view-title="Main">
+  <ion-content>
+
+
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.id}}">
+        <img ng-src="{{person.avatar}}">
+        <h2>{{person.company}}</h2>
+        <p>{{person.sex}} | {{person.residence}} | {{person.bornyear}} | {{person.degree}} | {{person.height}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <button class="button button-red" ui-sref="#tab/chats/1">��һ��</button>
+        <button class="button button-red" ui-sref="#tab/persons/1">������Ƭ</button>
+        <ion-option-button class="button-assertive" ng-click="remove(person)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
