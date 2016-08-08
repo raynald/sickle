@@ -1,5 +1,6 @@
 <ion-view view-title="guide_06" ng-controller="GetPicCtrl">
     <ion-content class="guideContentBackground2">
+<<<<<<< HEAD
         <!--<button class="button button-none-circle-back" ui-sref="guide_05"></button>-->
         <button class="button button-none-circle" ui-sref="guide_05" style="margin: 1em;">返回</button>
         <div class="centerContent">
@@ -7,6 +8,49 @@
                 <img class="imgLogoIcon" src="img/logo_icon.png" style="float: left">
 
                 <p style="font-size: 2em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
+=======
+        <img class="back-button-left" src="img/back-left.png" ui-sref="guide_05">
+        <img class="back-button-right" src="img/back-right.png" ui-sref="guide_07">
+        <!--<button class="button button-none-circle-back" ui-sref="guide_05"></button>-->
+        <div class="centerContent">
+        <div class="row responsive-sm padding remvoeBP">
+                   <div class="col">
+                        <div class="app-logo"><img class="logo" src="img/logo_white.png"></div>
+                        <p class="loginselect">我要找：</p>
+                       <br>
+ <!--                      <ul ng-controller="CityCtrl" style="width: 90%">
+                            <li>
+                             <button class="button button-none" style=" margin:3% 14.1%;width: 66.7%;height: 50px" type="submit">{{vm.chooseCity}}</button>
+                            </li>
+                            <li>
+                               <button class="button button-none" style=" margin:3% 14.1%;width: 66.7%;height: 50px" type="submit" ng-click="choose()" >选择城市</button>
+                            </li>
+                        </ul>-->
+                       <div ng-controller="MycityCtrl">
+                           <p class="loginselect">选择省：</p>
+                           <li class="centerContent">
+                           <select ng-model="your.province" ng-options="v.province for v in chinaCities" ng-change="selectedFirstValue(your.province)">
+                               <option  value="" ng-if="!chinaCities && !your.province">请选择</option>
+                           </select>
+                           </li>
+                           <br>
+                           <p class="loginselect">选择市：</p>
+                           <li class="centerContent">
+                           <select ng-model="your.city" ng-options="v.city for v in your.province.cities">
+                               <option value="" ng-if="!your.city">请选择</option>
+                           </select>
+                           </li>
+                           <br>
+                           <p class="loginselect">选择区：</p>
+                           <li class="centerContent">
+                           <select ng-model="your.area" ng-options="v for v in your.city.areas">
+                               <option value="" ng-if="!your.city">请选择</option>
+                           </select>
+                           </li>
+                       </div>
+                    </div>
+                </div>
+>>>>>>> origin/Anna
             </div>
             <label style="margin-top: 1em">——&nbsp;上传子女头像&nbsp;——</label>
             <button class="button button-none" style="margin-top:25%">本地相册上传</button>
