@@ -1,6 +1,36 @@
-<<<<<<< HEAD
-<ion-view>
-    <ion-content class="guideContentBackground2" ng-controller="InputCtrl">
+<ion-view view-title="guide_07">
+    <ion-content class="guideContentBackground2">
+        <div class="bar-header" style="display: flex">
+            <div class="scroll-content ">
+                <img class="back-button-left" src="img/back-left.png" ui-sref="guide_05">
+                <img class="back-button-right" src="img/back-right.png" ui-sref="guide_08">
+                <div class="centerContent">
+                    <div class="col">
+                        <div class="app-logo"><img class="logo" src="img/logo_white.png"></div>
+                        <label class="item1 item-input icon ion-android-person ">
+                            <input class="login " type="text" ng-model="user.lastname" placeholder="请输入您的姓氏"> </label>
+                        <table>
+                            <tr>
+                                <td>
+                                    <button class="button-energized"
+                                            style="margin:0.625em 2.5em;padding: 10px;width: 8.5em;" type="submit">先生
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="button-energized"
+                                            style="margin: 0.625em 2.5em ;padding: 10px;width:8.5em;" type="submit">女士
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--<p style="margin: 0px 8.3% 0px 41.7%;font-size: 0.1cm;">填写姓氏，性别，方便联系后称谓 </p>-->
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+<!--<ion-content class="guideContentBackground2" ng-controller="InputCtrl">
         <guide-two-button ui-sref="guide_08" ng-click="save()"></guide-two-button>
         <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;color: white;font-family: 微软雅黑;">
             <div style="width: 15em">
@@ -18,35 +48,7 @@
                 </li>
             </ul>
 
-        </div>
-
-       <!-- <img src="img/tabline_50.png" style="margin: 5% 5%;width: 90%">-->
-=======
-<ion-view view-title="guide_07">
-   <ion-content class="guideContentBackground2">
-       <img class="back-button-left" src="img/back-left.png" ui-sref="guide_05">
-       <img class="back-button-right" src="img/back-right.png" ui-sref="guide_08">
- <!--       <div class="bar-header" style="display: flex">-->
-       <div class="centerContent "style="display: flex" >
-  <!--          <div class="scroll-content ">-->
-                        <div class="col">
-                            <div class="app-logo"><img class="logo" src="img/logo_white.png"></div>
-                            <label class="item1 item-input icon ion-android-person "><input class="login " type="text"  ng-model="user.lastname" placeholder="请输入您的姓氏" > </label>
-                            <table>
-                                <tr>
-                                    <td>
-                                       <button class="button-energized" style="margin:0.625em 2.5em;padding: 10px;width: 8.5em;" type="submit">先生</button>
-                                    </td>
-                                    <td>
-                                        <button class="button-energized" style="margin: 0.625em 2.5em ;padding: 10px;width:8.5em;" type="submit">女士</button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <p style="margin: 0px 8.3% 0px 41.7%;font-size: 0.1cm;">填写姓氏，性别，方便联系后称谓 </p>
-                    </div>
-                </div>
-            </div>
->>>>>>> origin/Anna
-    </ion-content>
-</ion-view>
+        </div>-->
+<!-- <img src="img/tabline_50.png" style="margin: 5% 5%;width: 90%">-->
+<!--    </ion-content>
+</ion-view>-->

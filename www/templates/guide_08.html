@@ -1,89 +1,24 @@
-<ion-view>
+<ion-view view-title="guide_08" ng-controller="GetPicCtrl">
     <ion-content class="guideContentBackground2">
-        <guide-two-button ui-sref="guide_09"></guide-two-button>
-        <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;color: white;font-family: 微软雅黑;">
+  <!--      <button class="button  ui-sref="guide_05"></button>-->
+        <img class="back-button-left" src="img/back-left.png" ui-sref="guide_07">
+        <img class="back-button-right" src="img/back-right.png" ui-sref="guide_09">
+        <div class="centerContent">
             <div style="width: 15em">
                 <img class="imgLogoIcon" src="img/logo_icon.png" style="float: left">
 
-                <p style="font-size: 2em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
+                <p style="font-size: 1.5em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
             </div>
-            <label style="margin-top: 1em">——&nbsp;个性资料&nbsp;——</label>
+            <label style="margin-top: 1em">——&nbsp;上传子女头像&nbsp;——</label>
+            <button class="button button-none" style="margin-top:25%">本地相册上传</button>
+            <button class="button button-none" style="margin-top:4%" ng-click="takePicture()">拍照上传</button>
+            <button class="button button-none" style="margin-top:4%" ui-sref="guide_09">跳过</button>
+            <label style="margin-top:4%">上传头像，关注度提升一百倍</label>
+            <img ng-show="imgURI!=undefined" ng-src="{{imgURI}}">
+            <!--<img ng-show="imgURI === undefined" ng-src="http://xbox360.tgbus.com/UploadFiles/201301/20130105093935574.jpg">-->
         </div>
-<<<<<<< HEAD
 
-        <div style="padding: 1em 1em;">
-            <label style="font-size: 1.2em;color: white">选择符合子女的标签：</label>
-            <div class="row" style="height: 5em;">
-            <div class="col col-checkbox-div">
-                <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                     ng-controller="RadioCtrl" ng-click="check(8,0)">测试</div>
-            </div>
-            <div class="col col-checkbox-div">
-                <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                     ng-controller="RadioCtrl" ng-click="check(8,1)">测试</div>
-            </div>
-            <div class="col col-checkbox-div">
-                <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                     ng-controller="RadioCtrl" ng-click="check(8,2)"><label>测试</label></div>
-            </div>
-        </div>
-            <div class="row" style="height: 5em;">
-                <div class="col col-checkbox-div">
-                    <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                         ng-controller="RadioCtrl" ng-click="check(8,3)">测试44</div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                         ng-controller="RadioCtrl" ng-click="check(8,4)">测试</div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                         ng-controller="RadioCtrl" ng-click="check(8,5)"><label>测试</label></div>
-                </div>
-            </div>
-            <div class="row" style="height: 5em;">
-                <div class="col col-checkbox-div">
-                    <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                         ng-controller="RadioCtrl" ng-click="check(8,6)">测试22</div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                         ng-controller="RadioCtrl" ng-click="check(8,7)">测试11</div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                         ng-controller="RadioCtrl" ng-click="check(8,8)"><label>测试33</label></div>
-                </div>
-            </div>
-            <div class="row" style="height: 5em;">
-                <div class="col col-checkbox-div">
-                    <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                         ng-controller="RadioCtrl" ng-click="check(8,9)">测试22</div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                         ng-controller="RadioCtrl" ng-click="check(8,10)">测试11</div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                         ng-controller="RadioCtrl" ng-click="check(8,11)"><label>测试33</label></div>
-                </div>
-            </div>
-
-            <p style="font-size: 1.2em;color: white">补充说明:</p>
-        </div>
-        <div class="centerContent"
-             style="border: 1px solid white;-webkit-border-radius: 3em;-moz-border-radius:
-             3em;border-radius: 2em;height: 12em;width: 95%;margin-left: 2.5%"
-                ng-controller="GuideExtraInfoCtrl">
-            <textarea placeholder="介绍家庭情况/兴趣爱好/特长等" ng-model="guide08ExtraText"
-                   style="height: 90%;width: 90%;background-color: rgba(255, 0, 0, 0)!important;
-                   border: 0 solid white;color:rgba(172, 166, 166, 0.59);font-size: 1.1em;resize: none"></textarea>
-           <!-- <button ng-click="Log()">test</button>-->
-        </div>
-        <img src="img/tabline_75.png" style="margin: 2.5% 2.5%;width: 95%">
-=======
         <img src="img/tabline_25.png" style="width: 90%;margin:20% 5%;margin-bottom: 0px">
->>>>>>> origin/Anna
+
     </ion-content>
 </ion-view>
