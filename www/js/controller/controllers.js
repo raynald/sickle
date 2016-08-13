@@ -1,13 +1,13 @@
 angular.module('starter.controllers', ['ngCordova'])
     .controller('SubscribeCtrl', SubscribeCtrl)
     .controller('ChatsCtrl', ChatsCtrl)
-    .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+    .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
         // $scope.chat = Chats.get($stateParams.chatId);
         $scope.messages = Chats.get("0HyWSSSe"); //TODO: replace with parameter
         $scope.userId = "hRkuBBBF"; // TODO: replace with Bmob.User.current().id
         $scope.toUsername = "大亲家";
     })
-    .controller('PersonDetailCtrl', function($scope, $stateParams, Persons) {
+    .controller('PersonDetailCtrl', function ($scope, $stateParams, Persons) {
         $scope.person = Persons.get($stateParams.personId);
     })
     .controller('PersonDetailTest', PersonDetailTest)
@@ -15,8 +15,8 @@ angular.module('starter.controllers', ['ngCordova'])
         '$stateParams', 'MockService', '$ionicActionSheet',
         '$ionicPopup', '$ionicScrollDelegate', '$timeout', '$interval', UserMessagesCtrl
     ])
-    .controller("GetPicCtrl", function($scope, $cordovaCamera, guideData) {
-        $scope.takePicture = function() {
+    .controller("GetPicCtrl", function ($scope, $cordovaCamera, guideData) {
+        $scope.takePicture = function () {
             var options = {
                 quality: 75,
                 destinationType: Camera.DestinationType.DATA_URL,
@@ -29,15 +29,15 @@ angular.module('starter.controllers', ['ngCordova'])
                 saveToPhotoAlbum: false
             };
 
-            $cordovaCamera.getPicture(options).then(function(imageData) {
+            $cordovaCamera.getPicture(options).then(function (imageData) {
                 $scope.imgURI = "data:image/jpeg;base64," + imageData;
                 guideData.photoUri = $scope.imgURI;
-            }, function(err) {
+            }, function (err) {
                 // An error occured. Show a message to the user
             });
         }
     })
-    .controller('PersonsCtrl', function($scope, Persons) {
+    .controller('PersonsCtrl', function ($scope, Persons) {
 
     })
     .controller('MainCtrl', MainCtrl)
@@ -465,133 +465,250 @@ angular.module('starter.controllers', ['ngCordova'])
                 $scope.your.area = province ? province.cities[0].areas[0] : '';
             };
         }])
-        /*---选择城市，暂时用输入代替-- by Annabel*/
+    /*---选择城市，暂时用输入代替-- by Annabel*/
 
-    .controller("CityCtrl",function($scope,$ionicPopup){
-            $scope.vm = {};
-            $scope.vm.chooseCity ="上海";
-          $scope.choose =function(){
-                var CityPopup = $ionicPopup.show({
+    .controller("CityCtrl", function ($scope, $ionicPopup) {
+        $scope.vm = {};
+        $scope.vm.chooseCity = "上海";
+        $scope.choose = function () {
+            var CityPopup = $ionicPopup.show({
 
-                    template: '<input type="text" ng-model="vm.chooseCity" style="background-color: #6E6E6E !important;border-radius: 1em;height: 3em!important;font-size: 1.5em;text-align: center;">',
+                template: '<input type="text" ng-model="vm.chooseCity" style="background-color: #6E6E6E !important;border-radius: 1em;height: 3em!important;font-size: 1.5em;text-align: center;">',
 
-                    title: '请输入城市',
+                title: '请输入城市',
 
-                    scope: $scope,
+                scope: $scope,
 
-                    buttons: [{text: '取消', type: 'button-red-none'}, {
+                buttons: [{text: '取消', type: 'button-red-none'}, {
 
-                        text: '<b>确定</b>',
+                    text: '<b>确定</b>',
 
-                        type: 'button-red-none',
+                    type: 'button-red-none',
 
-                        onTap: function (e) {
+                    onTap: function (e) {
 
-                           if (!$scope.vm.chooseCity) {
-                                e.preventDefault();
+                        if (!$scope.vm.chooseCity) {
+                            e.preventDefault();
 
-                           } else {
-                               console.log($scope.vm.chooseCity);
-                               return $scope.vm.chooseCity;
-                           }
+                        } else {
+                            console.log($scope.vm.chooseCity);
+                            return $scope.vm.chooseCity;
                         }
                     }
-                    ]
-                });
-
-               CityPopup.then(function () {
-
-                    if ($scope.chooseCity!= null) {
-                        console.log($scope.chooseCity);
-                    }
-                });
-            }
-        })
-
-        /*radioBox控制器-----jiefly*/
-        .controller('RadioCtrl', function ($scope,guideData) {
-            $scope.check = function (type,index) {
-                if(type == 8){
-                    guideData.guide08RadioButton[index] = !guideData.guide08RadioButton[index];
-                    $scope.Check = guideData.guide08RadioButton[index];
-                    console.log(guideData.guide08RadioButton);
-                }else if(type == 9){
-                    if(guideData.guide09checkedButtonNum>=9){
-                        if(!guideData.guide09RadioButton[index]){
-                            return;
-                        }
-                    }
-                    guideData.guide09RadioButton[index] = !guideData.guide09RadioButton[index];
-                    if(guideData.guide09RadioButton[index]){
-                        guideData.guide09checkedButtonNum++;
-                    }else{
-                        guideData.guide09checkedButtonNum--;
-                    }
-                    $scope.Check = guideData.guide09RadioButton[index];
-                    console.log(guideData.guide09RadioButton);
                 }
-            };
-        })
-    /*基本资料输入项--------------jiefly*/
-    .controller('InputCtrl', InputCtrl)
-    .controller('GuideExtraInfoCtrl', function($scope, guideData) {
-        $scope.guide08ExtraText = null;
-        $scope.guide09ExtraText = null;
-        $scope.Log = function() {
-            guideData.guide08ExtraText = $scope.guide08ExtraText;
-            guideData.guide09ExtraText = $scope.guide09ExtraText;
-            console.log("8:" + guideData.guide08ExtraText + "9:" + guideData.guide09ExtraText);
+                ]
+            });
+
+            CityPopup.then(function () {
+
+                if ($scope.chooseCity != null) {
+                    console.log($scope.chooseCity);
+                }
+            });
         }
     })
-    .controller('AccountCtrl', function($scope) {
+
+    /*radioBox控制器-----jiefly*/
+    .controller('RadioCtrl', function ($scope, guideData) {
+        $scope.check = function (type, index) {
+            if (type == 8) {
+                guideData.guide08RadioButton[index] = !guideData.guide08RadioButton[index];
+                $scope.Check = guideData.guide08RadioButton[index];
+                console.log(guideData.guide08RadioButton);
+            } else if (type == 9) {
+                if (guideData.guide09checkedButtonNum >= 9) {
+                    if (!guideData.guide09RadioButton[index]) {
+                        return;
+                    }
+                }
+                guideData.guide09RadioButton[index] = !guideData.guide09RadioButton[index];
+                if (guideData.guide09RadioButton[index]) {
+                    guideData.guide09checkedButtonNum++;
+                } else {
+                    guideData.guide09checkedButtonNum--;
+                }
+                $scope.Check = guideData.guide09RadioButton[index];
+                console.log(guideData.guide09RadioButton);
+            }
+        };
+    })
+    /*基本资料输入项--------------jiefly*/
+    .controller('InputCtrl', InputCtrl)
+    .controller('GuideExtraInfoCtrl', function ($scope, guideData) {
+        $scope.guide10ExtraText = null;
+        $scope.guide11ExtraText = null;
+        $scope.Log = function () {
+            guideData.guide10ExtraText = $scope.guide10ExtraText;
+            guideData.guide11ExtraText = $scope.guide11ExtraText;
+            console.log("8:" + guideData.guide10ExtraText + "9:" + guideData.guide11ExtraText);
+        }
+    })
+
+    .controller('selectCityCtrl', function ($rootScope, $scope, $state, $filter, $ionicHistory, selectCitySvc, storageSvc, scollImageSvc, classIficationItemSvc) {
+
+        //       $scope.currentCity = selectCitySvc.getCurrentCity();
+
+        //       $scope.allRegions = selectCitySvc.getCacheAllAreas();
+
+        $scope.allProvinces = [
+            {Id: 0, RegionName: '请选择省份'}
+        ];
+
+        $scope.cities = [
+            {Id: 0, RegionName: '请选择城市'}
+        ];
+
+        $scope.areas = [
+            {Id: 0, RegionName: '请选择区/县'}
+        ];
+
+        $scope.data = {
+            selectName: "",
+            currentProvinceId: 0,
+            currentCityId: 0,
+            currentAreaId: 0
+        };
+
+        function getSelectedRegionId() {
+            var regionId = $scope.data.currentAreaId;
+            if (regionId == 0) {
+                regionId = $scope.data.currentCityId;
+            }
+            if (regionId == 0) {
+                regionId = $scope.data.currentProvinceId;
+            }
+            return regionId;
+        }
+
+        function updateSelectRegionName() {
+            var currentRegion = $filter('filter')($scope.allRegions, {Id: getSelectedRegionId()}, true)[0];
+            if (currentRegion) {
+                $scope.data.selectName = currentRegion.RegionName
+            } else {
+                $scope.data.selectName = '';
+            }
+        }
+
+        $scope.switchProvince = function (currentProvinceId) {
+            console.log(currentProvinceId);
+            $scope.data.currentCityId = 0;
+            $scope.data.currentAreaId = 0;
+
+            $scope.cities.splice(1);
+            $scope.areas.splice(1);
+
+            var cities = $filter('filter')($scope.allRegions, {RegionType: 1, ParentId: currentProvinceId});
+            for (var i in cities) {
+                $scope.cities.push(cities[i]);
+            }
+
+            updateSelectRegionName();
+        };
+
+        $scope.switchCity = function (currentCityId) {
+            $scope.data.currentAreaId = 0;
+
+            $scope.areas.splice(1);
+
+            var areas = $filter('filter')($scope.allRegions, {RegionType: 2, ParentId: currentCityId});
+            for (var i in areas) {
+                $scope.areas.push(areas[i]);
+            }
+
+            updateSelectRegionName();
+        };
+
+        //增加当切换县区的时候更换服务区名
+        $scope.switchArea = function (currentAreaId) {
+            updateSelectRegionName();
+        };
+
+        var allProvinces = $filter('filter')($scope.allRegions, {RegionType: 0});
+        for (var i in allProvinces) {
+            $scope.allProvinces.push(allProvinces[i]);
+        }
+
+        if ($scope.currentCity.RegionType == 0) {
+            // 如果上次选择省份
+            $scope.data.currentProvinceId = $scope.currentCity.Id;
+            $scope.switchProvince($scope.currentCity.Id);
+        } else if ($scope.currentCity.RegionType == 1) {
+            var province = $filter('filter')($scope.allRegions, {Id: $scope.currentCity.ParentId}, true)[0];
+            $scope.data.currentProvinceId = province.Id;
+            //省份
+            $scope.switchProvince(province.Id);
+            $scope.data.currentCityId = $scope.currentCity.Id;
+            $scope.switchCity($scope.currentCity.Id);
+        } else if ($scope.currentCity.RegionType == 2) {
+            // 如果上次选择县区
+            var city = $filter('filter')($scope.allRegions, {Id: $scope.currentCity.ParentId}, true)[0];
+            var province = $filter('filter')($scope.allRegions, {Id: city.ParentId}, true)[0];
+
+            $scope.data.currentProvinceId = province.Id;
+            $scope.switchProvince(province.Id);
+            $scope.data.currentCityId = city.Id;
+            $scope.switchCity(city.Id);
+            $scope.data.currentAreaId = $scope.currentCity.Id;
+        }
+        $scope.user = {
+            province: "" || storageSvc.load('province.RegionName'),
+            city: "" || storageSvc.load('city.RegionName'),
+            area: "" || storageSvc.load('area.RegionName'),
+            currentCity: "" || storageSvc.load('selectCitySvc.getCurrentCity()')
+
+        };
+
+    })
+
+    .controller('AccountCtrl', function ($scope) {
         $scope.settings = {
             enableFriends: true
         };
-    }).controller('cityCtrl', function($scope) {
-        var vm = $scope.vm = {};
-        vm.cb = function() {
-                console.log(vm.CityPickData1.areaData)
-                console.log(vm.CityPickData2.areaData)
-                console.log(vm.CityPickData3.areaData)
-                console.log(vm.CityPickData4.areaData)
-            }
-            //例1
-        vm.CityPickData1 = {
-                areaData: [],
-                backdrop: true,
-                backdropClickToClose: true,
-                defaultAreaData: ['江苏', '无锡', '江阴市'],
-                buttonClicked: function() {
-                    vm.cb()
-                },
-                tag: '-',
-                iconClass: 'ion-location',
-                title: '有icon的数据'
-            }
-            //例2
-        vm.CityPickData2 = {
-                areaData: ['请选择城市'],
-                title: '没有初始城市',
-                hardwareBackButtonClose: false
-            }
-            //例3
-        vm.CityPickData3 = {
-                areaData: [],
-                defaultAreaData: ['江苏', '无锡', '江阴市'],
-                title: '初始城市江苏无锡江阴市'
-            }
-            //例4
-        vm.CityPickData4 = {
-            areaData: [],
-            title: '外部更改值',
-            watchChange: true
-        }
-        vm.change = function() {
-            console.log('change')
-            vm.CityPickData4.areaData = ['上海', '徐汇区']
-        }
-        vm.sync = function() {
-            console.log('sync')
-            vm.CityPickData4.areaData = vm.CityPickData2.areaData
-        }
-    });
+    }).controller('cityCtrl', function ($scope) {
+    var vm = $scope.vm = {};
+    vm.cb = function () {
+        console.log(vm.CityPickData1.areaData)
+        console.log(vm.CityPickData2.areaData)
+        console.log(vm.CityPickData3.areaData)
+        console.log(vm.CityPickData4.areaData)
+    }
+    //例1
+    vm.CityPickData1 = {
+        areaData: [],
+        backdrop: true,
+        backdropClickToClose: true,
+        defaultAreaData: ['江苏', '无锡', '江阴市'],
+        buttonClicked: function () {
+            vm.cb()
+        },
+        tag: '-',
+        iconClass: 'ion-location',
+        title: '有icon的数据'
+    }
+    //例2
+    vm.CityPickData2 = {
+        areaData: ['请选择城市'],
+        title: '没有初始城市',
+        hardwareBackButtonClose: false
+    }
+    //例3
+    vm.CityPickData3 = {
+        areaData: [],
+        defaultAreaData: ['江苏', '无锡', '江阴市'],
+        title: '初始城市江苏无锡江阴市'
+    }
+    //例4
+    vm.CityPickData4 = {
+        areaData: [],
+        title: '外部更改值',
+        watchChange: true
+    }
+    vm.change = function () {
+        console.log('change')
+        vm.CityPickData4.areaData = ['上海', '徐汇区']
+    }
+    vm.sync = function () {
+        console.log('sync')
+        vm.CityPickData4.areaData = vm.CityPickData2.areaData
+    }
+});

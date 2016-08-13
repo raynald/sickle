@@ -167,23 +167,12 @@ PersonsService = function($http) {
      tags:['can make food', 'single child'],
      target:['80-89','taller than 175cm']
      }];*/
-    var table_name = "person";
+
     return {
         save: function(person) {
-            var Person = Bmob.Object.extend(table_name);
+            //var Person = Bmob.Object.extend(table_name);
             var personBmob = new Person();
-/*            id: 7,
-     name: 'Mike Harrington2',
-     face: 'img/mike.png',
-     job: 'bank clerk',
-     gender:'female',
-     address:'Shanghai',
-     birthday:'1989',
-     degree:'master',
-     height:'167cm',
-     tags:['can make food', 'single child'],
-     target:['80-89','taller than 175cm']*/
-            personBmob.set("name", person.name);
+            personBmob.setName(person.name);
             personBmob.save(null, {
                 success: function(object) {
                     alert("create person success, object id:" + object.id);
@@ -209,7 +198,7 @@ PersonsService = function($http) {
              console.error(status);
              });*/
             var person = [];
-            var Person = Bmob.Object.extend(table_name);
+            //var Person = Bmob.Object.extend(table_name);
             var query = new Bmob.Query(Person);
             query.find().then(function(results) {
                 console.log(persons);
@@ -235,13 +224,12 @@ PersonsService = function($http) {
         },
         allSortBy: function(sortBy) {
             var persons = [];
-            var Person = Bmob.Object.extend(table_name);
+            //var Person = Bmob.Object.extend(table_name);
             var query = new Bmob.Query(Person);
             query.descending(sortBy).then(function(results) {
                 console.log(persons);
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
-
                     var person = object.attributes;
                     person.id = object.id;
                     persons.push(person);
@@ -262,7 +250,7 @@ PersonsService = function($http) {
              }
              }*/
             var person = {};
-            var Person = Bmob.Object.extend(table_name);
+            //var Person = Bmob.Object.extend(table_name);
             var query = new Bmob.Query(Person);
             query.get(personId).then(function(object) {
                 person = object.attributes;
@@ -273,4 +261,4 @@ PersonsService = function($http) {
 
         }
     };
-}
+};

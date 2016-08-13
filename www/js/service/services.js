@@ -52,15 +52,15 @@ angular.module('starter.services', [])
     .factory('guideData',function(){
         var service = {};
         /*页面8中的附加信息*/
-        service.guide08ExtraText = null;
+        service.guide10ExtraText = null;
         /*页面9中的附加信息*/
-        service.guide09ExtraText = null;
+        service.guide11ExtraText = null;
         /*页面8中十二个选项,默认为不选中*/
-        service.guide08RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false];
+        service.guide10RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false];
         /*页面9中十五个选项*/
-        service.guide09RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
+        service.guide11RadioButton = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
         /*页面9中已选中项数目*/
-        service.guide09checkedButtonNum = 0;
+        service.guide10checkedButtonNum = 0;
         /*上传图片的uri*/
         service.photoUri = null;
         /*个人基本资料*/
