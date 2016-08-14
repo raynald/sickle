@@ -2,31 +2,15 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
             $ionicActionSheet,
             $ionicPopup, $ionicScrollDelegate, $timeout, $interval) {
 
-            console.log("never entering here???");
             // mock acquiring data via $stateParams
-            $scope.toUser = {
-                _id: '534b8e5aaa5e7afc1b23e69b',
-                username: 'reniku_liang',
-                id: '0HyWSSSe'
-            };
-
-            // this could be on $rootScope rather than in $stateParams
-            $scope.user = {
-                nickname: '哪个是你',
-                id: 'hRkuBBBF',
-                _id: '534b8fb2aa5e7afc1b23e69c',
-                pic: 'http://ionicframework.com/img/docs/mcfly.jpg',
-                username: 'root',
-                avatar: 'http://file.bmob.cn/M02/5D/F7/oYYBAFakpIKAKEMcAAFdEtDsVNU776.png'
-            };
 
             $scope.input = {
-                message: localStorage['userMessage-' + $scope.toUser._id] || ''
+                message: localStorage['userMessage-' + $scope.toUser.id] || ''
             };
 
             var messageCheckTimer;
 
-            var viewScroll = $ionicScrollDelegate.$getByHandle('userMessageScroll');
+            // var viewScroll = $ionicScrollDelegate.$getByHandle('userMessageScroll');
             var footerBar; // gets set in $ionicView.enter
             var txtInput; // ^^^
 
@@ -56,14 +40,14 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
 
             $scope.$on('$ionicView.beforeLeave', function() {
                 if (!$scope.input.message || $scope.input.message === '') {
-                    localStorage.removeItem('userMessage-' + $scope.toUser._id);
+                    localStorage.removeItem('userMessage-' + $scope.toUser.id);
                 }
             });
 
             function getMessages() {
                 // the service is mock but you would probably pass the toUser's GUID here
                 MockService.getUserMessages({
-                    toUserId: $scope.toUser._id
+                    toUserId: $scope.toUser.id
                 }).then(function(data) {
                     $scope.doneLoading = true;
                     $scope.messages = data.messages;
@@ -75,25 +59,25 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
             }
 
             $scope.$watch('input.message', function(newValue, oldValue) {
-                console.log('input.message $watch, newValue ' + newValue);
                 if (!newValue) newValue = '';
-                localStorage['userMessage-' + $scope.toUser._id] = newValue;
+                localStorage['userMessage-' + $scope.toUser.id] = newValue;
             });
 
             $scope.sendMessage = function(sendMessageForm) {
                 var message = {
                     belongNick: $scope.user.nickname,
                     content: $scope.input.message,
-                    $status: 1,
+                    status: 1,
                     toId: $scope.toUser.id,
                     belongId: $scope.user.id,
                     belongUsername: $scope.user.username,
+                    conversationId: $scope.user.id + '&' + $scope.toUser.id,
                     isReaded: 0,
                     msgType: 1,
                     beongAvatar: $scope.user.avatar
                 };
 
-                message.msgTime = new Date().getTime(); // :~)
+                message.msgTime = String(new Date().getTime()); // :~)
                 message.createdAt = new Date();
 
                 var table_name = "BmobMsg";
@@ -107,7 +91,7 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
                 // if you do a web service call this will be needed as well as before the viewScroll calls
                 // you can't see the effect of this in the browser it needs to be used on a real device
                 // for some reason the one time blur event is not firing in the browser but does on devices
-                keepKeyboardOpen();
+                // keepKeyboardOpen();
 
                 //MockService.sendMessage(message).then(function(data) {
                 $scope.input.message = '';
@@ -120,16 +104,16 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
 
                 // $scope.messages.push(message);
 
-                $timeout(function() {
-                    keepKeyboardOpen();
-                    viewScroll.scrollBottom(true);
-                }, 0);
+//                $timeout(function() {
+//                    keepKeyboardOpen();
+//                    viewScroll.scrollBottom(true);
+//                }, 0);
 
-                $timeout(function() {
-                    $scope.messages.push(MockService.getMockMessage());
-                    keepKeyboardOpen();
-                    viewScroll.scrollBottom(true);
-                }, 2000);
+//                $timeout(function() {
+//                    $scope.messages.push(MockService.getMockMessage());
+//                    keepKeyboardOpen();
+//                    viewScroll.scrollBottom(true);
+//                }, 2000);
 
                 //});
             };
@@ -175,7 +159,7 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
 
             // this prob seems weird here but I have reasons for this in my app, secret!
             $scope.viewProfile = function(msg) {
-                if (msg.userId === $scope.user._id) {
+                if (msg.userId === $scope.user.id) {
                     // go to your profile
                 } else {
                     // go to other users profile

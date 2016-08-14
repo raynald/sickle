@@ -18,12 +18,11 @@
         </div>
         <ion-item ng-repeat="message in messages" class="message-wrapper"
              on-hold="onMessageHold($event, $index, message)">
-            <p>
-                {{message.content}}
-            </p>
 
-            <div ng-if="userId !== message.toId">
-
+            <div ng-if="userId === message.toId">
+                <p align="left">
+                    {{message.belongNick}}
+                </p>
                 <img ng-click="viewProfile(message)" class="profile-pic left"
                      ng-src="{{message.belongAvatar}}" onerror="onProfilePicError(this)"/>
 
@@ -34,14 +33,17 @@
 
                     <div class="message-detail">
                               <span ng-click="viewProfile(message)"
-                                    class="bold">{{toUser.username}}</span>,
+                                    class="bold">{{toUser.username}}</span>
                         <span am-time-ago="message.createdAt"></span>
                     </div>
 
                 </div>
             </div>
 
-            <div ng-if="userId === message.toId">
+            <div ng-if="userId !== message.toId">
+                <p align="right">
+                    {{message.belongNick}}
+                </p>
 
                 <img ng-click="viewProfile(message)" class="profile-pic right"
                      ng-src="{{message.belongAvatar}}" onerror="onProfilePicError(this)"/>
@@ -53,7 +55,7 @@
 
                     <div class="message-detail">
                               <span ng-click="viewProfile(message)"
-                                    class="bold">{{user.username}}</span>,
+                                    class="bold">{{user.username}}</span>
                         <span am-time-ago="message.createdAt"></span>
                     </div>
 
@@ -65,14 +67,14 @@
 
         </ion-item>
     </ion-content>
-    <form name="sendMessageForm" ng-submit="sendMessage(sendMessageForm)" novalidate>
+    <form name="sendMessageForm" ng-submit="sendMessage()" ng-controller="UserMessagesCtrl" novalidate>
         <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
             <label class="item-input-wrapper">
-                <textarea ng-model="input.message" value="" placeholder="Send {{toUsername}} a message..." required
+                <textarea ng-model="input.message" value="" placeholder="Send {{toUser.nick}} a message..." required
                           minlength="1" maxlength="1500" msd-elastic></textarea>
             </label>
             <button class="button button-icon icon ion-android-send" type="submit"
-                    ng-disabled="!input.message || input.message === ''">
+                ng-disabled="!input.message || input.message === ''">
             </button>
         </ion-footer-bar>
     </form>
