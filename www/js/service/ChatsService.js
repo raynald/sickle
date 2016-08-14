@@ -45,7 +45,7 @@ ChatsService=function () {
                 var Chats = Bmob.Object.extend(table_name);
                 var query = new Bmob.Query(Chats);
                 var messages = [];
-                query.containedIn("toId", [user_id, belongId]);
+                query.containedIn("conversationId", [user_id + '&' + belongId, belongId + '&' + user_id]);
                 query.ascending("createdAt");
                 query.find().then(function (results) {
                     for (var i = 0;i < results.length;i ++) {
@@ -56,6 +56,16 @@ ChatsService=function () {
                     return messages;
                 });
                 return messages;
+            },
+            getUser: function (id) {
+                var user = Bmob.Object.extend("_User");
+                var query = new Bmob.Query(user);
+                var toUser = {};
+                query.get(id). then(function(result) {
+                        toUser = result.attributes;
+                        return toUser;
+                });
+                return toUser;
             }
         };
     }

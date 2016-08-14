@@ -3,24 +3,9 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
             $ionicPopup, $ionicScrollDelegate, $timeout, $interval) {
 
             // mock acquiring data via $stateParams
-            $scope.toUser = {
-                _id: '534b8e5aaa5e7afc1b23e69b',
-                username: 'reniku_liang',
-                id: '0HyWSSSe'
-            };
-
-            // this could be on $rootScope rather than in $stateParams
-            $scope.user = {
-                nickname: '哪个是你',
-                id: 'hRkuBBBF',
-                _id: '534b8fb2aa5e7afc1b23e69c',
-                pic: 'http://ionicframework.com/img/docs/mcfly.jpg',
-                username: 'root',
-                avatar: 'http://file.bmob.cn/M02/5D/F7/oYYBAFakpIKAKEMcAAFdEtDsVNU776.png'
-            };
 
             $scope.input = {
-                message: localStorage['userMessage-' + $scope.toUser._id] || ''
+                message: localStorage['userMessage-' + $scope.toUser.id] || ''
             };
 
             var messageCheckTimer;
@@ -55,14 +40,14 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
 
             $scope.$on('$ionicView.beforeLeave', function() {
                 if (!$scope.input.message || $scope.input.message === '') {
-                    localStorage.removeItem('userMessage-' + $scope.toUser._id);
+                    localStorage.removeItem('userMessage-' + $scope.toUser.id);
                 }
             });
 
             function getMessages() {
                 // the service is mock but you would probably pass the toUser's GUID here
                 MockService.getUserMessages({
-                    toUserId: $scope.toUser._id
+                    toUserId: $scope.toUser.id
                 }).then(function(data) {
                     $scope.doneLoading = true;
                     $scope.messages = data.messages;
@@ -75,7 +60,7 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
 
             $scope.$watch('input.message', function(newValue, oldValue) {
                 if (!newValue) newValue = '';
-                localStorage['userMessage-' + $scope.toUser._id] = newValue;
+                localStorage['userMessage-' + $scope.toUser.id] = newValue;
             });
 
             $scope.sendMessage = function(sendMessageForm) {
@@ -86,6 +71,7 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
                     toId: $scope.toUser.id,
                     belongId: $scope.user.id,
                     belongUsername: $scope.user.username,
+                    conversationId: $scope.user.id + '&' + $scope.toUser.id,
                     isReaded: 0,
                     msgType: 1,
                     beongAvatar: $scope.user.avatar
@@ -173,7 +159,7 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
 
             // this prob seems weird here but I have reasons for this in my app, secret!
             $scope.viewProfile = function(msg) {
-                if (msg.userId === $scope.user._id) {
+                if (msg.userId === $scope.user.id) {
                     // go to your profile
                 } else {
                     // go to other users profile

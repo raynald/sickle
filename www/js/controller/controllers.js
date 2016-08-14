@@ -2,10 +2,10 @@ angular.module('starter.controllers', ['ngCordova'])
     .controller('SubscribeCtrl', SubscribeCtrl)
     .controller('ChatsCtrl', ChatsCtrl)
     .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
-        // $scope.chat = Chats.get($stateParams.chatId);
-        $scope.messages = Chats.get("0HyWSSSe"); //TODO: replace with parameter
+        $scope.messages = Chats.get($stateParams.chatId);
         $scope.userId = "hRkuBBBF"; // TODO: replace with Bmob.User.current().id
-        $scope.toUsername = "大亲家";
+        $scope.toUser = Persons.getUser($stateParams.chatId);
+        $scope.user = Chats.getUser($scope.userId);
     })
     .controller('PersonDetailCtrl', function ($scope, $stateParams, Persons) {
         $scope.person = Persons.get($stateParams.personId);

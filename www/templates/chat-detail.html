@@ -70,7 +70,7 @@
     <form name="sendMessageForm" ng-submit="sendMessage()" ng-controller="UserMessagesCtrl" novalidate>
         <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
             <label class="item-input-wrapper">
-                <textarea ng-model="input.message" value="" placeholder="Send {{toUsername}} a message..." required
+                <textarea ng-model="input.message" value="" placeholder="Send {{toUser.nick}} a message..." required
                           minlength="1" maxlength="1500" msd-elastic></textarea>
             </label>
             <button class="button button-icon icon ion-android-send" type="submit"
