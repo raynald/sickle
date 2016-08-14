@@ -26,13 +26,12 @@ ChatsService=function () {
                 var Chats = Bmob.Object.extend(table_name);
                 var query = new Bmob.Query(Chats);
                 query.equalTo("toId", user_id);
+                query.ascending("createdAt");
                 query.find().then(function (results) {
                     for (var i = 0;i < results.length;i ++) {
                         var object = results[i];
                         var chat = object.attributes;
-                        if (chat.belongId in chats) {
-                            if(chat.createdAt > chats[chat.belongId]) chats[chat.belongId] = chat;
-                        } else chats[chat.belongId] = chat;
+                        chats[chat.belongId] = chat;
                     }
                     return chats;
                 });

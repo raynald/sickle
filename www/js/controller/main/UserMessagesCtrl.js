@@ -2,7 +2,6 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
             $ionicActionSheet,
             $ionicPopup, $ionicScrollDelegate, $timeout, $interval) {
 
-            console.log("never entering here???");
             // mock acquiring data via $stateParams
             $scope.toUser = {
                 _id: '534b8e5aaa5e7afc1b23e69b',
@@ -26,7 +25,7 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
 
             var messageCheckTimer;
 
-            var viewScroll = $ionicScrollDelegate.$getByHandle('userMessageScroll');
+            // var viewScroll = $ionicScrollDelegate.$getByHandle('userMessageScroll');
             var footerBar; // gets set in $ionicView.enter
             var txtInput; // ^^^
 
@@ -75,7 +74,6 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
             }
 
             $scope.$watch('input.message', function(newValue, oldValue) {
-                console.log('input.message $watch, newValue ' + newValue);
                 if (!newValue) newValue = '';
                 localStorage['userMessage-' + $scope.toUser._id] = newValue;
             });
@@ -84,7 +82,7 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
                 var message = {
                     belongNick: $scope.user.nickname,
                     content: $scope.input.message,
-                    $status: 1,
+                    status: 1,
                     toId: $scope.toUser.id,
                     belongId: $scope.user.id,
                     belongUsername: $scope.user.username,
@@ -93,7 +91,7 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
                     beongAvatar: $scope.user.avatar
                 };
 
-                message.msgTime = new Date().getTime(); // :~)
+                message.msgTime = String(new Date().getTime()); // :~)
                 message.createdAt = new Date();
 
                 var table_name = "BmobMsg";
@@ -107,7 +105,7 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
                 // if you do a web service call this will be needed as well as before the viewScroll calls
                 // you can't see the effect of this in the browser it needs to be used on a real device
                 // for some reason the one time blur event is not firing in the browser but does on devices
-                keepKeyboardOpen();
+                // keepKeyboardOpen();
 
                 //MockService.sendMessage(message).then(function(data) {
                 $scope.input.message = '';
@@ -120,16 +118,16 @@ var UserMessagesCtrl=function($scope, $rootScope, $state, $stateParams,
 
                 // $scope.messages.push(message);
 
-                $timeout(function() {
-                    keepKeyboardOpen();
-                    viewScroll.scrollBottom(true);
-                }, 0);
+//                $timeout(function() {
+//                    keepKeyboardOpen();
+//                    viewScroll.scrollBottom(true);
+//                }, 0);
 
-                $timeout(function() {
-                    $scope.messages.push(MockService.getMockMessage());
-                    keepKeyboardOpen();
-                    viewScroll.scrollBottom(true);
-                }, 2000);
+//                $timeout(function() {
+//                    $scope.messages.push(MockService.getMockMessage());
+//                    keepKeyboardOpen();
+//                    viewScroll.scrollBottom(true);
+//                }, 2000);
 
                 //});
             };
