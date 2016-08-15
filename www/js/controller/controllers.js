@@ -42,8 +42,13 @@ angular.module('starter.controllers', ['ngCordova'])
     })
 
     .controller('MainCtrl', MainCtrl)
-    .controller('GuideCtrl', function ($scope, Persons) {
-
+    .controller('GuideCtrl', function ($scope, $state,Users,Persons) {
+        $scope.user = Users.getCurrentUser();
+        if($scope.user===null){
+            $state.go("guide_02",{}, {reload: true});
+        }else{
+            console.log("save user:"+$scope.user);
+        }
     })
     /*radioBox控制器-----jiefly*/
     .controller('RadioCtrl', function($scope, guideData) {
