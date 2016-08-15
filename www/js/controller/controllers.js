@@ -40,7 +40,11 @@ angular.module('starter.controllers', ['ngCordova'])
     .controller('PersonsCtrl', function ($scope, Persons) {
 
     })
+
     .controller('MainCtrl', MainCtrl)
+    .controller('GuideCtrl', function ($scope, Persons) {
+
+    })
     /*radioBox控制器-----jiefly*/
     .controller('RadioCtrl', function($scope, guideData) {
         $scope.check = function(type, index) {
@@ -67,17 +71,24 @@ angular.module('starter.controllers', ['ngCordova'])
     })
     .controller("RegisterCtrl",function($scope,$http,Users,Persons){
         $scope.user = Users.getCurrentUser();
-        
+        if($scope.user===null){
+            $scope.user={};
+        }
         $scope.sendMsg = function(userphone){
             console.log( userphone);
-           var url = 'http://106.veesing.com/webservice/sms.php?method=Submit&account=cf_wxhdcs789&password=wxhdcs123&mobile='+userphone+'&content=您的验证码是：4526。请不要把验证码泄露给其他人。';
+            var url = 'http://106.veesing.com/webservice/sms.php?method=Submit&account=cf_wxhdcs789&password=wxhdcs123&mobile='+userphone+'&content=您的验证码是：4526。请不要把验证码泄露给其他人。';
               $http.get(url).success(function(data,status){
  //                 console.log(status);
               })
         };
         $scope.login = function(user){
             console.log( user.username,user.password);
-           Users.login(user.username,user.password);
+            //TODO check mobile
+            Users.login(user.username);
+            $scope.user = Users.getCurrentUser();
+            if($scope.user===null){
+                Users.register(user.username,user.username);
+            }
         };
     })
      /*省市区三级联动 ----by Annabel*/

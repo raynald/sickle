@@ -602,31 +602,38 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             })
             .state('guide_02', {
                 url: '/guide_02',
-                templateUrl: 'templates/guide_02.html'
+                templateUrl: 'templates/guide_02.html',
+                controller: 'RegisterCtrl'
             })
+            //drop this page
             .state('guide_03', {
                 url: '/guide_03',
                 templateUrl: 'templates/guide_03.html'
             })
             .state('guide_04', {
                 url: '/guide_04',
-                templateUrl: 'templates/guide_04.html'
+                templateUrl: 'templates/guide_04.html',
+                controller: 'GuideCtrl'
             })
             .state('guide_05', {
                 url: '/guide_05',
-                templateUrl: 'templates/guide_05.html'
+                templateUrl: 'templates/guide_05.html',
+                controller: 'GuideCtrl'
             })
             .state('guide_06', {
                 url: '/guide_06',
-                templateUrl: 'templates/guide_06.html'
+                templateUrl: 'templates/guide_06.html',
+                controller: 'GuideCtrl'
             })
             .state('guide_07', {
                 url: '/guide_07',
-                templateUrl: 'templates/guide_07.html'
+                templateUrl: 'templates/guide_07.html',
+                controller: 'GuideCtrl'
             })
             .state('guide_08', {
                 url: '/guide_08',
-                templateUrl: 'templates/guide_08.html'
+                templateUrl: 'templates/guide_08.html',
+                controller: 'GuideCtrl'
             })
             .state('guide_09', {
                 url: '/guide_09',

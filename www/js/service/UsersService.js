@@ -6,14 +6,15 @@ UsersService=function ($http) {
                 var user = new Bmob.User();
                 user.set("username", username);
                 user.set("password", password);
-                user.set("email", "example@a.com");
+                //user.set("email", "example@a.com");
 
                 // other fields can be set just like with Bmob.Object
-                user.set("phone", "415-392-0202");
+                //user.set("phone", "415-392-0202");
 
                 user.signUp(null, {
                     success: function (user) {
                         // Hooray! Let them use the app now.
+                        console.log("register success");
                     },
                     error: function (user, error) {
                         // Show the error message somewhere and let the user try again.
@@ -22,10 +23,10 @@ UsersService=function ($http) {
                 });
             },
 
-            login: function (username, password) {
-                var user = Bmob.User.logIn(username, password, {
+            login: function (mobile) {
+                var user = Bmob.User.logIn(mobile,mobile, {
                     success: function (user) {
-                        user.set("username", "my_new_username");  // attempt to change username
+                        /*user.set("username", "my_new_username");  // attempt to change username
                         user.save(null, {
                             success: function (user) {
                                 // This succeeds, since the user was authenticated on the device
@@ -43,10 +44,17 @@ UsersService=function ($http) {
                                     }
                                 });
                             }
-                        });
+                        });*/
+                        //means has this mobile in database
+                        console.log("login success");
+                        return user;
+
                     },
                     error: function (user, error) {
-                        // The login failed. Check error to see why.
+                        // The login failed. Means no mobile in database
+                        //register(mobile,mobile);
+                        return {};
+
                     }
                 });
             },
