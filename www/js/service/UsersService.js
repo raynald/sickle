@@ -2,6 +2,28 @@ UsersService=function ($http) {
         var table_name = "_User";
 
         return {
+            save: function(user) {
+                //var user = new Bmob.User();
+                /*user.set("")
+                user.set("child", "my_new_username");  // attempt to change username
+
+                    "child":"1",/!*person id*!/
+                    "gender":"male",
+                    "lastname":"huang",
+                    "mobile":"1333333333",
+                    "targetgender":"male",*/
+                user.save(null, {
+                    success: function(user) {
+                        // This succeeds, since the user was authenticated on the device
+
+
+                    },
+                    error: function(model, error) {
+                        alert("create user fail");
+                    }
+                });
+
+            },
             register: function (username, password) {
                 var user = new Bmob.User();
                 user.set("username", username);

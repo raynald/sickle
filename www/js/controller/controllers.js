@@ -47,8 +47,39 @@ angular.module('starter.controllers', ['ngCordova'])
         if($scope.user===null){
             $state.go("guide_02",{}, {reload: true});
         }else{
-            console.log("save user:"+$scope.user);
-        }
+            console.log($state.current.name);
+            console.log("save user:");
+            console.log($scope.user);
+        };
+        $scope.updateTargetGender = function(targetgender){
+            $scope.user.set("targetgender",targetgender);
+            Users.save($scope.user);
+            console.log($scope.user);
+            //TODO guide_06
+            $state.go("guide_07",{}, {reload: true});
+        };
+        $scope.updateGenderLastName = function(gender,lastname){
+            $scope.user.set("gender",gender);
+            if(lastname!==null&&lastname!==undefined&&lastname!=="") {
+                $scope.user.set("lastname", lastname);
+                Users.save($scope.user);
+                console.log($scope.user);
+                $state.go("guide_09",{}, {reload: true});
+            }
+
+            
+        };
+        $scope.updateLastName = function(gender){
+            $scope.user.set("lastname",lastname);
+            Users.save($scope.user);
+            console.log($scope.user);
+            var gender = $scope.user.get("gender");
+            if(gender!==null&&gender!==undefined&&gender!==""){
+                $state.go("guide_09",{}, {reload: true});
+            }
+
+        };
+        
     })
     /*radioBox控制器-----jiefly*/
     .controller('RadioCtrl', function($scope, guideData) {
@@ -74,7 +105,7 @@ angular.module('starter.controllers', ['ngCordova'])
             }
         };
     })
-    .controller("RegisterCtrl",function($scope,$http,Users,Persons){
+    .controller("RegisterCtrl",function($scope,$state,$http,Users,Persons){
         $scope.user = Users.getCurrentUser();
         if($scope.user===null){
             $scope.user={};
@@ -94,6 +125,7 @@ angular.module('starter.controllers', ['ngCordova'])
             if($scope.user===null){
                 Users.register(user.username,user.username);
             }
+            $state.go("guide_04",{}, {reload: true});
         };
     })
      /*省市区三级联动 ----by Annabel*/

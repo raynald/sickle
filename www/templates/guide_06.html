@@ -10,15 +10,19 @@
                     <div class="app-logo"><img class="logo" src="img/logo_white.png"></div>
                     <p class="loginselect">我要找：</p>
                     <br>
-                    <!--                      <ul ng-controller="CityCtrl" style="width: 90%">
-                                           <li>
-                                               <button class="button button-none" style=" margin:3% 14.1%;width: 66.7%;height: 50px" type="submit">{{vm.chooseCity}}</button>
-                                           </li>
-                                           <li>
-                                               <button class="button button-none" style=" margin:3% 14.1%;width: 66.7%;height: 50px" type="submit" ng-click="choose()">选择城市</button>
-                                           </li>
-                                           </ul>-->
-                    <div ng-controller="MycityCtrl">
+                    <ul ng-controller="CityCtrl" style="width: 90%">
+                        <li>
+                            <button class="button button-none" style=" margin:3% 14.1%;width: 66.7%;height: 50px"
+                                    type="submit">{{vm.chooseCity}}
+                            </button>
+                        </li>
+                        <li>
+                            <button class="button button-none" style=" margin:3% 14.1%;width: 66.7%;height: 50px"
+                                    type="submit" ng-click="choose()">选择城市
+                            </button>
+                        </li>
+                    </ul>
+                    <!--<div ng-controller="MycityCtrl">
                         <p class="loginselect">选择省：</p>
                         <li class="centerContent">
                             <select ng-model="your.province" ng-options="v.province for v in chinaCities"
@@ -40,7 +44,7 @@
                                 <option value="" ng-if="!your.city">请选择</option>
                             </select>
                         </li>
-                    </div>
+                    </div>-->
                 </div>
             </div>
 
