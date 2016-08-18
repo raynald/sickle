@@ -83,6 +83,9 @@ angular.module('starter.controllers', ['ngCordova'])
     })
     /*radioBox控制器-----jiefly*/
     .controller('RadioCtrl', function($scope, guideData) {
+        /*
+        * 这里有个bug改成guide10RadioButton之后浏览器调试的时候一直显示没修改成功
+        * */
         $scope.check = function(type, index) {
             if (type == 8) {
                 guideData.guide08RadioButton[index] = !guideData.guide08RadioButton[index];
