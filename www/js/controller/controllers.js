@@ -87,24 +87,24 @@ angular.module('starter.controllers', ['ngCordova'])
         * 这里有个bug改成guide10RadioButton之后浏览器调试的时候一直显示没修改成功
         * */
         $scope.check = function(type, index) {
-            if (type == 8) {
-                guideData.guide08RadioButton[index] = !guideData.guide08RadioButton[index];
-                $scope.Check = guideData.guide08RadioButton[index];
-                console.log(guideData.guide08RadioButton);
-            } else if (type == 9) {
-                if (guideData.guide09checkedButtonNum >= 9) {
-                    if (!guideData.guide09RadioButton[index]) {
+            if (type === 'self') {
+                guideData.guide10RadioButton[index] = !guideData.guide10RadioButton[index];
+                $scope.Check = guideData.guide10RadioButton[index];
+                console.log(guideData.guide10RadioButton);
+            } else if (type === 'target') {
+                if (guideData.guide11checkedButtonNum >= 9) {
+                    if (!guideData.guide11RadioButton[index]) {
                         return;
                     }
                 }
-                guideData.guide09RadioButton[index] = !guideData.guide09RadioButton[index];
-                if (guideData.guide09RadioButton[index]) {
-                    guideData.guide09checkedButtonNum++;
+                guideData.guide11RadioButton[index] = !guideData.guide11RadioButton[index];
+                if (guideData.guide11RadioButton[index]) {
+                    guideData.guide11checkedButtonNum++;
                 } else {
-                    guideData.guide09checkedButtonNum--;
+                    guideData.guide11checkedButtonNum--;
                 }
-                $scope.Check = guideData.guide09RadioButton[index];
-                console.log(guideData.guide09RadioButton);
+                $scope.Check = guideData.guide11RadioButton[index];
+                console.log(guideData.guide11RadioButton);
             }
         };
     })
@@ -563,35 +563,35 @@ angular.module('starter.controllers', ['ngCordova'])
     .controller('RadioCtrl', function ($scope, guideData) {
         $scope.check = function (type, index) {
             if (type == 8) {
-                guideData.guide08RadioButton[index] = !guideData.guide08RadioButton[index];
-                $scope.Check = guideData.guide08RadioButton[index];
-                console.log(guideData.guide08RadioButton);
+                guideData.guide10RadioButton[index] = !guideData.guide10RadioButton[index];
+                $scope.Check = guideData.guide10RadioButton[index];
+                console.log(guideData.guide10RadioButton);
             } else if (type == 9) {
-                if (guideData.guide09checkedButtonNum >= 9) {
-                    if (!guideData.guide09RadioButton[index]) {
+                if (guideData.guide11checkedButtonNum >= 9) {
+                    if (!guideData.guide11RadioButton[index]) {
                         return;
                     }
                 }
-                guideData.guide09RadioButton[index] = !guideData.guide09RadioButton[index];
-                if (guideData.guide09RadioButton[index]) {
-                    guideData.guide09checkedButtonNum++;
+                guideData.guide11RadioButton[index] = !guideData.guide11RadioButton[index];
+                if (guideData.guide11RadioButton[index]) {
+                    guideData.guide11checkedButtonNum++;
                 } else {
-                    guideData.guide09checkedButtonNum--;
+                    guideData.guide11checkedButtonNum--;
                 }
-                $scope.Check = guideData.guide09RadioButton[index];
-                console.log(guideData.guide09RadioButton);
+                $scope.Check = guideData.guide11RadioButton[index];
+                console.log(guideData.guide11RadioButton);
             }
         };
     })
     /*基本资料输入项--------------jiefly*/
     .controller('InputCtrl', InputCtrl)
     .controller('GuideExtraInfoCtrl', function ($scope, guideData) {
-        $scope.guide10ExtraText = null;
-        $scope.guide11ExtraText = null;
+        $scope.selfDesc = null;
+        $scope.targetDesc = null;
         $scope.Log = function () {
-            guideData.guide10ExtraText = $scope.guide10ExtraText;
-            guideData.guide11ExtraText = $scope.guide11ExtraText;
-            console.log("8:" + guideData.guide10ExtraText + "9:" + guideData.guide11ExtraText);
+            guideData.selfDesc = $scope.selfDesc;
+            guideData.targetDesc = $scope.targetDesc;
+            console.log("self:" + guideData.selfDesc + "target:" + guideData.targetDesc);
         }
     })
 

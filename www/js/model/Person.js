@@ -1,6 +1,19 @@
 /**
  * Created by I312177 on 8/13/2016.
  */
+ var person={
+        "id": 9,
+        "name": "Mike Harrington2",
+        "avatar": "img/mike.png",
+        "job": "bank clerk",
+        "gender":"female",
+        "address":"Shanghai",
+        "birthday":"1989",
+        "degree":"master",
+        "height":"167cm",
+        "tags":["can make food", "single child"],
+        "targets":["80-89","taller than 175cm"]
+}
 // 为Bmob.Object的子类添加实例方法和类方法
 var Person = Bmob.Object.extend("person",
     {
@@ -81,6 +94,19 @@ var Person = Bmob.Object.extend("person",
             gameScore.set("score", score);
             return gameScore;
         }*/
+        spawn:function(personBmob){
+            var person = new Person();
+            person.setAddress(personBmob.get("address"));
+            person.setAvatar(personBmob.get("avatar"));
+            person.setBirthday(personBmob.get("birthday"));
+            person.setDegree(personBmob.get("degree"));
+            person.setGender(personBmob.get("gender"));
+            person.setHeight(personBmob.get("height"));
+            person.setId(personBmob.get("id"));
+            person.setJob(personBmob.get("job"));
+            person.setName(personBmob.get("name"));
+            return person;
+        }
     });
 //var gameScore = new GameScore();
 

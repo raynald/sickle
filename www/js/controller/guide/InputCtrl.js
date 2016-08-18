@@ -1,4 +1,12 @@
-var InputCtrl = function($scope, $ionicPopup, ionicDatePicker, guideData, Persons,Users) {
+var InputCtrl = function($scope,$state, $ionicPopup, ionicDatePicker, guideData, Persons,Users) {
+    $scope.user = Users.getCurrentUser();
+    if($scope.user===null){
+        $state.go("guide_02",{}, {reload: true});
+    }else{
+        console.log($state.current.name);
+        console.log($scope.user);
+    };
+
     $scope.datas = {
         userHeight: {
             value: null,
@@ -553,10 +561,73 @@ var InputCtrl = function($scope, $ionicPopup, ionicDatePicker, guideData, Person
     };
     /*******************************时间选择器*****************************/
     $scope.save = function() {
-        guideData.person = $scope.datas;
-        guideData.person.name="aa";
-        Persons.save(guideData.person);
-        console.log(guideData.person);
+        //guideData.person = $scope.datas;
+        //guideData.person.name="aa";
+        //Persons.save(guideData.person);
+        //console.log(guideData.person);
         console.log("click");
+        console.log($scope.datas);
+
+
+        var personId = $scope.user.get("childId");
+        console.log(personId);
+        $scope.person = null;
+        //no child yet
+        if(personId===null||personId===undefined){
+            $scope.person = new Person();
+            $scope.setPersonData(person);
+            $scope.person.save(null, {
+                success: function(object) {
+                    console.log("save person success, object id:" + object.id);
+                    $scope.user.set("childId",object.id);
+
+                    Users.save($scope.user);
+                },
+                error: function(model, error) {
+                    console.log("save person fail");
+                }
+            });
+        }
+        //has child
+        else{
+            var query = new Bmob.Query(Person);
+            query.get(personId).then(function(object) {
+                //person = object.attributes;
+                //person.id = object.id;
+                person = Person.spawn(object);
+                person.setId(personId);
+                console.log(person);
+
+
+                //person.set
+                $scope.setPersonData(person);
+                Persons.save(person);
+
+            });
+
+
+            console.log("personGet");
+            console.log($scope.person);
+        }
+
+
+        console.log("clicksaveeeeeee");
+    };
+    $scope.setPersonData = function(person){
+        person.setHeight($scope.datas.userHeight.value);
+        person.setBirthday($scope.datas.userBorn.value);
+        person.setDegree($scope.datas.userEducation.value);
+        person.setAddress($scope.datas.userHome.value);
+        person.setJob($scope.datas.userJob.value);
+        /*userHome: Object
+         userHouseholdegister: Object
+         userHousing: Object
+         userJobCategory: Object
+         userMaritalStatus: Object
+         userMonthlyIncome: Object*/
+    };
+    $scope.skip = function(){
+        console.log("clickskipeeeee");
+        $state.go("guide_10",{}, {reload: true});
     };
 }

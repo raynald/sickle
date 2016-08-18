@@ -637,15 +637,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             })
             .state('guide_09', {
                 url: '/guide_09',
-                templateUrl: 'templates/guide_09.html'
+                templateUrl: 'templates/guide_09.html',
+                controller: 'InputCtrl'
             })
             .state('guide_10',{
                 url: '/guide_10',
-                templateUrl: 'templates/guide_10.html'
+                templateUrl: 'templates/guide_10.html',
+                controller: 'RadioCtrl'
             })
             .state('guide_11',{
                 url: '/guide_11',
-                templateUrl: 'templates/guide_11.html'
+                templateUrl: 'templates/guide_11.html',
+                controller: 'RadioCtrl'
             })
             // setup an abstract state for the tabs directive
             .state('tab', {
@@ -791,7 +794,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         return {
             restrict: 'E',
             /*这是guide页面最上面的两个button  保存和跳过*/
-            template: '<div><button class="button button-none-circle" style="margin-top: 1em;margin-left: 1em;">跳过</button><button class="button button-none-circle" style="margin-top: 1em;margin-right: 1em;float: right">保存</button></div>',
+            template: '<div><button class="button button-none-circle" style="margin-top: 1em;margin-left: 1em;" ng-click="skip()">跳过</button><button class="button button-none-circle" style="margin-top: 1em;margin-right: 1em;float: right" ng-click="save()">保存</button></div>',
             replace: true
         };
     })
