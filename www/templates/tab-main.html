@@ -42,10 +42,10 @@
 
       <div class="persons-list-main">
           <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.id}}">
-              <img class="avatar-clover" ng-src="{{person.face}}">
-              <h2>{{person.company}} {{person.job}}</h2>
-              <p>{{person.sex}} | {{person.residence}} | {{person.bornyear}} | {{person.degree}} | {{person.height}}</p>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.getId()}}">
+              <img class="avatar-clover" ng-src="{{person.getAvatar()}}">
+              <h2>{{person.getCompany()}} {{person.getJob()}}</h2>
+              <p>{{person.getGender()}} | {{person.residence}} | {{person.bornyear}} | {{person.getDegree()}} | {{person.getHeight()}}</p>
               <div class="person-tags">
                 <div class="person-tag" ng-repeat="tag in person.tags ">{{tag}}</div>
               </div>
