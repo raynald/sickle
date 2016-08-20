@@ -71,6 +71,20 @@ div{
     width:50px;
     height:50px;
 }
+
+.button.button-none-red-nobord{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 30px;
+    height: 50px;
+    width: 80%;
+    font-size: 17px;
+}
+.button.button-none-red-nobord.active, .button.button-none-red-nobord.activated {
+    background-color: rgba(184, 175, 201, 0.08);
+    border: 1px solid rgba(203, 208, 219, 0.12);
+    color: #ffffff;
+}
 /*自定义圆角button,按下去是红色的。弹起来是透明的带有1px的白色边框。字体为*/
 .button.button-none-red {
 

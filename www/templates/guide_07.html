@@ -6,50 +6,49 @@
         <img class="back-button-right" src="img/back-right.png" ui-sref="guide_08" style="width:50px;margin-top: 1em;margin-right: 1em;float: right">
 
         <div class="centerContent">
-                    <div class="col">
-                        <div class="app-logo"><img class="logo" src="img/logo_white.png"></div>
-                        <label class="item1 item-input icon ion-android-person ">
-                            <input class="login " type="text" ng-model="user.lastname" placeholder="请输入您的姓氏"> </label>
-                        <table>
-                            <tr>
-                                <td>
-                                    <button class="button-energized"
-                                            style="margin:0.625em 2.5em;padding: 10px;width: 8.5em;" type="submit" ng-click="updateGenderLastName('male',user.lastname);">先生
-                                    </button>
-                                </td>
-                                <td>
-                                    <button class="button-energized"
-                                            style="margin: 0.625em 2.5em ;padding: 10px;width:8.5em;" type="submit" ng-click="updateGenderLastName('female',user.lastname);">女士
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+            <img  src="img/logo_white.png" style="width: 8em;height: auto;margin-top: 2em">
+
+                <div style="margin-top:40%;background-color: rgba(255, 255, 255, 0);color: white;border-radius: 30px;border: 2px solid white;height: 50px; align-items: center; display: flex;justify-content: center;width: 70%">
+                    <!--这里有一个bug，在chrome中 transparent 属性未能设置透明背景。。。待解决-->
+                    <input style="background-color: transparent;width: 80%;" type="text" ng-model="user.lastname" placeholder="请输入您的姓氏">
+                </div>
+            <div style="margin-top:2em;display: flex;justify-content: center;width: 70%">
+                <div class="button button-none" style="margin-right: 5%;">
+                    <img src="img/male.png" style="height: 30px;float: left;margin-top: 10px;margin-left: 10px;">
+                    <p>先生</p>
+                </div>
+                <div class="button button-none" style="float: right">
+                    <img src="img/female.png" style="height: 30px;float: left;margin-top: 10px;margin-left: 10px;">
+                    <p>女士</p>
+                </div>
+
+            </div>
+            <div style="width:70%;">
+                <p style="float: right;margin-left: auto; margin-top:1em;font-size: 0.1cm;">填写姓氏，性别，方便联系后称谓 </p>
+            </div>
+            <!--<div class="col">
+                <div class="app-logo"><img class="logo" src="img/logo_white.png"></div>
+                <label class="item1 item-input icon ion-android-person ">
+                    <input class="login " type="text" ng-model="user.lastname" placeholder="请输入您的姓氏"> </label>
+                <table>
+                    <tr>
+                        <td>
+                            <button class="button-energized"
+                                    style="margin:0.625em 2.5em;padding: 10px;width: 8.5em;" type="submit" ng-click="updateGenderLastName('male',user.lastname);">先生
+                            </button>
+                        </td>
+                        <td>
+                            <button class="button-energized"
+                                    style="margin: 0.625em 2.5em ;padding: 10px;width:8.5em;" type="submit" ng-click="updateGenderLastName('female',user.lastname);">女士
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>-->
                     <!--<p style="margin: 0px 8.3% 0px 41.7%;font-size: 0.1cm;">填写姓氏，性别，方便联系后称谓 </p>-->
                 </div>
 <!--            </div>
         </div>-->
     </ion-content>
 </ion-view>
-<!--<ion-content class="guideContentBackground2" ng-controller="InputCtrl">
-        <guide-two-button ui-sref="guide_08" ng-click="save()"></guide-two-button>
-        <div style="display: flex;justify-content: center;flex-flow: column;align-items: center;color: white;font-family: 微软雅黑;">
-            <div style="width: 15em">
-                <img class="imgLogoIcon" src="img/logo_icon.png" style="float: left">
 
-                <p style="font-size: 2em;padding-top: 1.6em;font-weight: normal;">相亲名片</p>
-            </div>
-            <label style="margin-top: 1em">——&nbsp;基本资料&nbsp;——</label>
-            <ul  style="width: 90%">
-                <li ng-repeat="data in datas">
-                    <div ng-class="{true:'customInputFilled',false:'customInputNotFilled'}[data.isFilled]"  ng-click="do(data.functionId)">
-                        <p style="float: left">{{data.info}}</p>
-                        <p style="float: right;">{{data.value!=null?data.value:"未填写"}}</p>
-                    </div>
-                </li>
-            </ul>
-
-        </div>-->
-<!-- <img src="img/tabline_50.png" style="margin: 5% 5%;width: 90%">-->
-<!--    </ion-content>
-</ion-view>-->
