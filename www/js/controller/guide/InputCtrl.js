@@ -1,8 +1,8 @@
-var InputCtrl = function($scope,$state, $ionicPopup, ionicDatePicker, guideData, Persons,Users) {
+var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData, Persons, Users) {
     $scope.user = Users.getCurrentUser();
-    if($scope.user===null){
-        $state.go("guide_02",{}, {reload: true});
-    }else{
+    if ($scope.user === null) {
+        $state.go("guide_02", {}, { reload: true });
+    } else {
         console.log($state.current.name);
         console.log($scope.user);
     };
@@ -573,13 +573,13 @@ var InputCtrl = function($scope,$state, $ionicPopup, ionicDatePicker, guideData,
         console.log(personId);
         $scope.person = null;
         //no child yet
-        if(personId===null||personId===undefined){
+        if (personId === null || personId === undefined) {
             $scope.person = new Person();
-            $scope.setPersonData(person);
+            $scope.setPersonData($scope.person);
             $scope.person.save(null, {
                 success: function(object) {
                     console.log("save person success, object id:" + object.id);
-                    $scope.user.set("childId",object.id);
+                    $scope.user.set("childId", object.id);
 
                     Users.save($scope.user);
                 },
@@ -589,7 +589,7 @@ var InputCtrl = function($scope,$state, $ionicPopup, ionicDatePicker, guideData,
             });
         }
         //has child
-        else{
+        else {
             var query = new Bmob.Query(Person);
             query.get(personId).then(function(object) {
                 //person = object.attributes;
@@ -613,7 +613,7 @@ var InputCtrl = function($scope,$state, $ionicPopup, ionicDatePicker, guideData,
 
         console.log("clicksaveeeeeee");
     };
-    $scope.setPersonData = function(person){
+    $scope.setPersonData = function(person) {
         person.setHeight($scope.datas.userHeight.value);
         person.setBirthday($scope.datas.userBorn.value);
         person.setDegree($scope.datas.userEducation.value);
@@ -626,8 +626,39 @@ var InputCtrl = function($scope,$state, $ionicPopup, ionicDatePicker, guideData,
          userMaritalStatus: Object
          userMonthlyIncome: Object*/
     };
-    $scope.skip = function(){
+    $scope.skip = function() {
         console.log("clickskipeeeee");
-        $state.go("guide_10",{}, {reload: true});
+        $state.go("guide_10", {}, { reload: true });
+    };
+    console.log(guideData);
+
+    $scope.selftags=["500","can make food","tall","test1","test1","test1","test1","test1","test1","test1","test1","test1"];
+    $scope.targetTags=["500","can make food","tall","test1","test1","test1","test1","test1","test1","test1","test1","test1"];
+    $scope.selfTagsCheck=[false,false,false,false,false,false,false,false,false,false,false,false];
+    $scope.targetTagsCheck=[false,false,false,false,false,false,false,false,false,false,false,false];
+    /*
+     * 这里有个bug改成guide10RadioButton之后浏览器调试的时候一直显示没修改成功
+     * */
+    $scope.check = function(type, index) {
+        console.log("check");
+        if (type === 'self') {
+            $scope.selfTagsCheck[index] = !$scope.selfTagsCheck[index];
+            $scope.Check = $scope.selfTagsCheck[index];
+            console.log($scope.selfTagsCheck);
+        } else if (type === 'target') {
+            if (guideData.guide11checkedButtonNum >= 9) {
+                if (!$scope.targetTagsCheck[index]) {
+                    return;
+                }
+            }
+            $scope.targetTagsCheck[index] = !$scope.targetTagsCheck[index];
+            if ($scope.targetTagsCheck[index]) {
+                guideData.guide11checkedButtonNum++;
+            } else {
+                guideData.guide11checkedButtonNum--;
+            }
+            $scope.Check = $scope.targetTagsCheck[index];
+            console.log($scope.targetTagsCheck);
+        }
     };
 }

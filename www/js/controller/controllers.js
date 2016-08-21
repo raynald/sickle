@@ -78,35 +78,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 $state.go("guide_09",{}, {reload: true});
             }
 
-        };
-        
-    })
-    /*radioBox控制器-----jiefly*/
-    .controller('RadioCtrl', function($scope, guideData) {
-        /*
-        * 这里有个bug改成guide10RadioButton之后浏览器调试的时候一直显示没修改成功
-        * */
-        $scope.check = function(type, index) {
-            if (type === 'self') {
-                guideData.guide10RadioButton[index] = !guideData.guide10RadioButton[index];
-                $scope.Check = guideData.guide10RadioButton[index];
-                console.log(guideData.guide10RadioButton);
-            } else if (type === 'target') {
-                if (guideData.guide11checkedButtonNum >= 9) {
-                    if (!guideData.guide11RadioButton[index]) {
-                        return;
-                    }
-                }
-                guideData.guide11RadioButton[index] = !guideData.guide11RadioButton[index];
-                if (guideData.guide11RadioButton[index]) {
-                    guideData.guide11checkedButtonNum++;
-                } else {
-                    guideData.guide11checkedButtonNum--;
-                }
-                $scope.Check = guideData.guide11RadioButton[index];
-                console.log(guideData.guide11RadioButton);
-            }
-        };
+        };        
     })
     .controller("RegisterCtrl",function($scope,$state,$http,Users,Persons){
         $scope.user = Users.getCurrentUser();
@@ -559,30 +531,7 @@ angular.module('starter.controllers', ['ngCordova'])
         }
     })
 
-    /*radioBox控制器-----jiefly*/
-    .controller('RadioCtrl', function ($scope, guideData) {
-        $scope.check = function (type, index) {
-            if (type == 8) {
-                guideData.guide10RadioButton[index] = !guideData.guide10RadioButton[index];
-                $scope.Check = guideData.guide10RadioButton[index];
-                console.log(guideData.guide10RadioButton);
-            } else if (type == 9) {
-                if (guideData.guide11checkedButtonNum >= 9) {
-                    if (!guideData.guide11RadioButton[index]) {
-                        return;
-                    }
-                }
-                guideData.guide11RadioButton[index] = !guideData.guide11RadioButton[index];
-                if (guideData.guide11RadioButton[index]) {
-                    guideData.guide11checkedButtonNum++;
-                } else {
-                    guideData.guide11checkedButtonNum--;
-                }
-                $scope.Check = guideData.guide11RadioButton[index];
-                console.log(guideData.guide11RadioButton);
-            }
-        };
-    })
+
     /*基本资料输入项--------------jiefly*/
     .controller('InputCtrl', InputCtrl)
     .controller('GuideExtraInfoCtrl', function ($scope, guideData) {

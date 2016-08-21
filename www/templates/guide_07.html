@@ -13,11 +13,11 @@
                     <input style="background-color: transparent;width: 80%;" type="text" ng-model="user.lastname" placeholder="请输入您的姓氏">
                 </div>
             <div style="margin-top:2em;display: flex;justify-content: center;width: 70%">
-                <div class="button button-none" style="margin-right: 5%;">
+                <div class="button button-none" style="margin-right: 5%;" ng-click="updateGenderLastName('male',user.lastname);">
                     <img src="img/male.png" style="height: 30px;float: left;margin-top: 10px;margin-left: 10px;">
                     <p>先生</p>
                 </div>
-                <div class="button button-none" style="float: right">
+                <div class="button button-none" style="float: right" ng-click="updateGenderLastName('female',user.lastname);">
                     <img src="img/female.png" style="height: 30px;float: left;margin-top: 10px;margin-left: 10px;">
                     <p>女士</p>
                 </div>

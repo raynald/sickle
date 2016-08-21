@@ -337,6 +337,35 @@ div{
     border: 1px solid #ae0009;
     color: white;
 }
+.button-check{
+        /*display: flex;*/
+    /*justify-content: center;*/
+    /*flex-flow: column;*/
+    /*align-items: center;
+    color: white;
+    margin: 5px 10px;
+    width: auto;*/
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    border-radius: 30px;
+    border: 2px solid white;
+    height: 50px;
+    margin:1em;
+    padding:0em 3em 0em 3em;
+    /*width: 80%;*/
+    font-size: 17px;
+    float:left;   display:inline-block;
+}
+.button.button-check:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.button.button-check.active, .button.button-check.activated {
+    background-color: rgba(184, 175, 201, 0.4);
+    border: 2px solid rgba(203, 208, 219, 0.12);
+    color: #ffffff;
+}
 
 /*.button.button-red-none-50{
     background-color: rgba(255, 255, 255, 0.2);

@@ -643,12 +643,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             .state('guide_10',{
                 url: '/guide_10',
                 templateUrl: 'templates/guide_10.html',
-                controller: 'RadioCtrl'
+                controller: 'InputCtrl'
             })
             .state('guide_11',{
                 url: '/guide_11',
                 templateUrl: 'templates/guide_11.html',
-                controller: 'RadioCtrl'
+                controller: 'InputCtrl'
             })
             // setup an abstract state for the tabs directive
             .state('tab', {
