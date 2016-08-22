@@ -1,17 +1,24 @@
 <ion-view view-title="guide_06" ng-controller="GetPicCtrl">
     <ion-content class="guideContentBackground2">
+        <div class="centerContent">
+            <div style="margin-left: 1em;margin-right: 1em;width: 100%;height: 5em" >
+                <img class="back-button-left" ng-click="" src="img/back-left.png" ui-sref="guide_04" style="width: 50px;margin-top: 1em;margin-left: 1em;float: left">
+                <img class="back-button-right" ng-click="" src="img/back-right.png" ui-sref="guide_06" style="width:50px;margin-top: 1em;margin-right: 1em;float: right">
+            </div>
+            <img  src="img/logo_white.png" style="width: 8em;height: auto;margin-top: 2em;margin-bottom: 5em">
+<!--    <ion-content class="guideContentBackground2">
         <img class="back-button-left" src="img/back-left.png" ui-sref="guide_05" style="width: 50px;margin-top: 1em;margin-left: 1em;float: left">
-        <img class="back-button-right" src="img/back-right.png" ui-sref="guide_07" style="width:50px;margin-top: 1em;margin-right: 1em;float: right">
+        <img class="back-button-right" src="img/back-right.png" ui-sref="guide_07" style="width:50px;margin-top: 1em;margin-right: 1em;float: right">-->
 
         <!--<button class="button button-none-circle-back" ui-sref="guide_05"></button>-->
         <!--<button class="button button-none-circle" ui-sref="guide_05" style="margin: 1em;">返回</button>-->
-        <div class="centerContent">
+<!--        <div class="centerContent">
             <img  src="img/logo_white.png" style="width: 8em;height: auto;margin-top: 2em;margin-bottom: 5em">
             <p>我要找：</p>
             <div style="display: flex;justify-content: center;width: 80%;margin-top: 20%" ng-controller="CityCtrl">
                 <div style="margin-left: 2em;background-color: rgba(255, 255, 255, 0);color: white;border-radius: 30px;border: 2px solid white;height: 50px;width: 100%;display: flex;justify-content: center;flex-flow: column;align-items: center;font-style: inherit">
                     <!--这里有一个bug，在chrome中 transparent 属性未能设置透明背景。。。待解决-->
-                    <label>{{vm.chooseCity}}</label>
+<!--                    <label>{{vm.chooseCity}}</label>
                 </div>
                 <div class="button button-none-circle" style="float: right;margin-left: 1em;width:50%;margin-right: 2em;font-size: 12px;color: whitesmoke;font-style: normal" ng-click="choose()">
                     选择城市
@@ -34,10 +41,13 @@
                             </button>
                         </li>
                     </ul>-->
-                    <!--<div ng-controller="MycityCtrl">
+                    <div ng-controller="MycityCtrl">
+                        <p class="loginselect">我要找：</p>
+                        <br>
                         <p class="loginselect">选择省：</p>
+                        <br>
                         <li class="centerContent">
-                            <select ng-model="your.province" ng-options="v.province for v in chinaCities"
+                            <select class="button button-none"style="width: 66.7%;height: 50px; color: #d1d3d6;background-color: transparent " ng-model="your.province" ng-options="v.province for v in chinaCities"
                                     ng-change="selectedFirstValue(your.province)">
                                 <option value="" ng-if="!chinaCities && !your.province">请选择</option>
                             </select>
@@ -45,17 +55,17 @@
                         <br>
                         <p class="loginselect">选择市：</p>
                         <li class="centerContent">
-                            <select ng-model="your.city" ng-options="v.city for v in your.province.cities">
+                            <select class="button button-none"style="width: 66.7%;height: 50px;color: #d1d3d6;background-color: transparent "ng-model="your.city" ng-options="v.city for v in your.province.cities">
                                 <option value="" ng-if="!your.city">请选择</option>
                             </select>
                         </li>
                         <br>
                         <p class="loginselect">选择区：</p>
                         <li class="centerContent">
-                            <select ng-model="your.area" ng-options="v for v in your.city.areas">
+                            <select  class="button button-none"style="width: 66.7%;height: 50px;color: #d1d3d6;background-color: transparent "ng-model="your.area" ng-options="v for v in your.city.areas">
                                 <option value="" ng-if="!your.city">请选择</option>
                             </select>
-                        </li>-->
+                        </li>
                     </div>
                 </div>
             </div>
