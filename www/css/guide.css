@@ -265,13 +265,13 @@ div{
  *没选中为透明带一个白色边框，通过RadioCtrl
  *的check的值可以知道当前checkBox是否选中，
  *true：选中，false：没选中*/
-.customCheckBox{
+.button-check.customCheckBox{
     background-color: rgba(255, 255, 255, 0);
     color: white;
     border-radius: 30px;
     border: 1px solid white;
     height: 50px;
-    padding: 0.4em 0;
+    padding: 0em 3em 0em 3em;
     font-size: 17px;
     display: flex;
     justify-content: center;
@@ -279,13 +279,13 @@ div{
     text-align: center;
 
 }
-.customCheckBoxChecked{
+.button-check.customCheckBoxChecked{
     background-color: rgba(200, 200, 200, 0.27);
     color: white;
     border-radius: 30px;
 
     height: 50px;
-    padding: 0.4em 0;
+    padding: 0em 3em 0em 3em;
     font-size: 17px;
     display: flex;
     justify-content: center;

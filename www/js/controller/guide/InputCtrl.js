@@ -6,7 +6,7 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
         console.log($state.current.name);
         console.log($scope.user);
     };
-
+    
     $scope.datas = {
         userHeight: {
             value: null,
@@ -590,6 +590,7 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
         }
         //has child
         else {
+            var Person = new Person();
             var query = new Bmob.Query(Person);
             query.get(personId).then(function(object) {
                 //person = object.attributes;
@@ -601,6 +602,21 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
 
                 //person.set
                 $scope.setPersonData(person);
+                var selfTagsChecked = [];
+                for (x in $scope.selfTagsCheck){
+                    if($scope.selfTagsCheck[x]===true){
+                        selfTagsChecked.push(x);
+                    }
+                }
+                var targetTagsChecked = [];
+                for (x in $scope.targetTagsCheck){
+                    if($scope.targetTagsCheck[x]===true){
+                        targetTagsChecked.push(x);
+                    }
+                }
+                person.setTags(selfTagsChecked);
+                person.setTargets(targetTagsChecked);
+
                 Persons.save(person);
 
             });
@@ -632,32 +648,32 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
     };
     console.log(guideData);
 
-    $scope.selftags=["500","can make food","tall","test1","test1","test1","test1","test1","test1","test1","test1","test1"];
-    $scope.targetTags=["500","can make food","tall","test1","test1","test1","test1","test1","test1","test1","test1","test1"];
-    $scope.selfTagsCheck=[false,false,false,false,false,false,false,false,false,false,false,false];
-    $scope.targetTagsCheck=[false,false,false,false,false,false,false,false,false,false,false,false];
+    $scope.selfTags = ["500", "can make food", "tall", "test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9"];
+    $scope.targetTags = ["500", "can make food", "tall", "test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9"];
+    $scope.selfTagsCheck = [];
+    $scope.targetTagsCheck = [];
     /*
      * 这里有个bug改成guide10RadioButton之后浏览器调试的时候一直显示没修改成功
      * */
-    $scope.check = function(type, index) {
+    $scope.check = function(type, tag) {
         console.log("check");
         if (type === 'self') {
-            $scope.selfTagsCheck[index] = !$scope.selfTagsCheck[index];
-            $scope.Check = $scope.selfTagsCheck[index];
+            $scope.selfTagsCheck[tag] = !$scope.selfTagsCheck[tag];
+            $scope.Check = $scope.selfTagsCheck[tag];
             console.log($scope.selfTagsCheck);
         } else if (type === 'target') {
             if (guideData.guide11checkedButtonNum >= 9) {
-                if (!$scope.targetTagsCheck[index]) {
+                if (!$scope.targetTagsCheck[tag]) {
                     return;
                 }
             }
-            $scope.targetTagsCheck[index] = !$scope.targetTagsCheck[index];
-            if ($scope.targetTagsCheck[index]) {
+            $scope.targetTagsCheck[tag] = !$scope.targetTagsCheck[tag];
+            if ($scope.targetTagsCheck[tag]) {
                 guideData.guide11checkedButtonNum++;
             } else {
                 guideData.guide11checkedButtonNum--;
             }
-            $scope.Check = $scope.targetTagsCheck[index];
+            $scope.Check = $scope.targetTagsCheck[tag];
             console.log($scope.targetTagsCheck);
         }
     };

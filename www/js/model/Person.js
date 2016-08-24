@@ -1,7 +1,7 @@
 /**
  * Created by I312177 on 8/13/2016.
  */
- var person={
+ /*var person={
         "id": 9,
         "name": "Mike Harrington2",
         "avatar": "img/mike.png",
@@ -13,7 +13,7 @@
         "height":"167cm",
         "tags":["can make food", "single child"],
         "targets":["80-89","taller than 175cm"]
-}
+}*/
 // 为Bmob.Object的子类添加实例方法和类方法
 var Person = Bmob.Object.extend("person",
     {
@@ -85,6 +85,18 @@ var Person = Bmob.Object.extend("person",
         },
         setHeight:function(height){
             return this.set("height",height);
+        }
+        getTags:function(){
+            return this.get("tags");
+        },
+        setTags:function(tags){
+            return this.set("tags",tags);
+        }
+        getTargets:function(){
+            return this.get("targets");
+        },
+        setTargets:function(targets){
+            return this.set("targets",targets);
         }
     },
     {

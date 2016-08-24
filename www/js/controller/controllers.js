@@ -83,6 +83,7 @@ angular.module('starter.controllers', ['ngCordova'])
     .controller("RegisterCtrl",function($scope,$state,$http,Users,Persons){
         $scope.user = Users.getCurrentUser();
         if($scope.user===null){
+            console.log("not login")
             $scope.user={};
         }
         $scope.sendMsg = function(userphone){
