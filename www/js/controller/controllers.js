@@ -100,8 +100,11 @@ angular.module('starter.controllers', ['ngCordova'])
             $scope.user = Users.getCurrentUser();
             if($scope.user===null){
                 Users.register(user.username,user.username);
+                $state.go("guide_04",{}, {reload: true});
+            }else{
+                $state.go("tab.main",{}, {reload: true});
             }
-            $state.go("guide_04",{}, {reload: true});
+            
         };
     })
      /*省市区三级联动 ----by Annabel*/

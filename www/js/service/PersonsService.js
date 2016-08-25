@@ -237,7 +237,7 @@ PersonsService = function($http) {
             var query = new Bmob.Query(Person);
             query.descending(sortBy);
             query.find().then(function(results) {
-                console.log(persons);
+                
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
                     //var person = object.attributes;
@@ -245,6 +245,7 @@ PersonsService = function($http) {
                     //var person = Person.spawn(object);
                     persons.push(object);
                 }
+                console.log(persons);
                 return persons;
             });
 
