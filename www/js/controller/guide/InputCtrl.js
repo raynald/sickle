@@ -574,8 +574,8 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
         $scope.person = null;
         //no child yet
         if (personId === null || personId === undefined) {
-            $scope.person = new Person();
-            $scope.setPersonData($scope.person);
+            $scope.person = Bmob.Object.extend("person");
+            $scope.setPersonData2($scope.person);
             $scope.person.save(null, {
                 success: function(object) {
                     console.log("save person success, object id:" + object.id);
@@ -590,34 +590,44 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
         }
         //has child
         else {
-            var Person = new Person();
+
+            var Person = Bmob.Object.extend("person");
+    
             var query = new Bmob.Query(Person);
             query.get(personId).then(function(object) {
                 //person = object.attributes;
                 //person.id = object.id;
-                person = Person.spawn(object);
-                person.setId(personId);
-                console.log(person);
+                $scope.person= object;
+                console.log($scope.person);
 
 
                 //person.set
-                $scope.setPersonData(person);
-                var selfTagsChecked = [];
-                for (x in $scope.selfTagsCheck){
-                    if($scope.selfTagsCheck[x]===true){
-                        selfTagsChecked.push(x);
+                if($state.current.name==="guide_09"){
+                    $scope.setPersonData2($scope.person);
+                }else if($state.current.name==="guide_10"){
+                    var selfTagsChecked = [];
+                    for (x in $scope.selfTagsCheck){
+                        if($scope.selfTagsCheck[x]===true){
+                            selfTagsChecked.push(x);
+                        }
                     }
-                }
-                var targetTagsChecked = [];
-                for (x in $scope.targetTagsCheck){
-                    if($scope.targetTagsCheck[x]===true){
-                        targetTagsChecked.push(x);
+                    $scope.person.set("tags",selfTagsChecked);
+                }else if($state.current.name==="guide_11"){
+                    var targetTagsChecked = [];
+                    for (x in $scope.targetTagsCheck){
+                        if($scope.targetTagsCheck[x]===true){
+                            targetTagsChecked.push(x);
+                        }
                     }
-                }
-                person.setTags(selfTagsChecked);
-                person.setTargets(targetTagsChecked);
+                    console.log(targetTagsChecked);
+                    $scope.person.set("targets",targetTagsChecked);
 
-                Persons.save(person);
+                }
+                
+                
+                
+                Persons.save($scope.person);
+
 
             });
 
@@ -629,18 +639,25 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
 
         console.log("clicksaveeeeeee");
     };
-    $scope.setPersonData = function(person) {
+    /*$scope.setPersonData = function(person) {
         person.setHeight($scope.datas.userHeight.value);
         person.setBirthday($scope.datas.userBorn.value);
         person.setDegree($scope.datas.userEducation.value);
         person.setAddress($scope.datas.userHome.value);
         person.setJob($scope.datas.userJob.value);
-        /*userHome: Object
+         userHome: Object
          userHouseholdegister: Object
          userHousing: Object
          userJobCategory: Object
          userMaritalStatus: Object
-         userMonthlyIncome: Object*/
+         userMonthlyIncome: Object
+    };*/
+    $scope.setPersonData2=function(person){
+        person.set("height",parseInt($scope.datas.userHeight.value));
+        person.set("birthday",$scope.datas.userBorn.value);
+        person.set("degree",$scope.datas.userEducation.value);
+        person.set("address",$scope.datas.userHome.value);
+        person.set("job",$scope.datas.userJob.value);
     };
     $scope.skip = function() {
         console.log("clickskipeeeee");
@@ -659,7 +676,7 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
         console.log("check");
         if (type === 'self') {
             $scope.selfTagsCheck[tag] = !$scope.selfTagsCheck[tag];
-            $scope.Check = $scope.selfTagsCheck[tag];
+            //$scope.Check = $scope.selfTagsCheck[tag];
             console.log($scope.selfTagsCheck);
         } else if (type === 'target') {
             if (guideData.guide11checkedButtonNum >= 9) {
@@ -673,7 +690,7 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
             } else {
                 guideData.guide11checkedButtonNum--;
             }
-            $scope.Check = $scope.targetTagsCheck[tag];
+            //$scope.Check = $scope.targetTagsCheck[tag];
             console.log($scope.targetTagsCheck);
         }
     };

@@ -177,8 +177,8 @@ PersonsService = function($http) {
             person.save(null, {
                 success: function(object) {
                     alert("save person success, object id:" + object.id);
-                    person = Person.spawn(object);
-
+                    //person = Person.spawn(object);
+                    person=object;
                     return person;
                 },
                 error: function(model, error) {
@@ -206,16 +206,16 @@ PersonsService = function($http) {
              console.error(status);
              });*/
            //var person = [];
-            //var Person = Bmob.Object.extend(table_name);
+            var Person = Bmob.Object.extend("person");
             var query = new Bmob.Query(Person);
             query.find().then(function(results) {
                 console.log(persons);
                 for (var i = 0; i < results.length; i++) {
                     var  personBmob= results[i];
-                    var person = Person.spawn(personBmob);
+                    //var person = Person.spawn(personBmob);
                     //var person = object.attributes;
                     //person.id = object.id;
-                    persons.push(person);
+                    persons.push(personBmob);
                 }
                 return persons;
             });
@@ -232,7 +232,7 @@ PersonsService = function($http) {
         },
         allSortBy: function(sortBy) {
             var persons = [];
-            //var Person = Bmob.Object.extend(table_name);
+            var Person = Bmob.Object.extend(table_name);
             var query = new Bmob.Query(Person);
             query.descending(sortBy).then(function(results) {
                 console.log(persons);
@@ -240,8 +240,8 @@ PersonsService = function($http) {
                     var object = results[i];
                     //var person = object.attributes;
                     //person.id = object.id;
-                    var person = Person.spawn(object);
-                    persons.push(person);
+                    //var person = Person.spawn(object);
+                    persons.push(object);
                 }
                 return persons;
             });
@@ -259,14 +259,14 @@ PersonsService = function($http) {
              }
              }*/
             var person = {};
-            //var Person = Bmob.Object.extend(table_name);
+            var Person = Bmob.Object.extend("person");
             var query = new Bmob.Query(Person);
             query.get(personId).then(function(object) {
                 //person = object.attributes;
                 //person.id = object.id;
-                person = Person.spawn(object);
-                person.setId(object.id);
-                console.log("idddddddd"+person.getId());
+                //person = Person.spawn(object);
+                person.set("id",object.id);
+                console.log("idddddddd"+person.get("id"));
                 return person;
             });
 

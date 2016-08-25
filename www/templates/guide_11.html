@@ -12,116 +12,15 @@
         </div>
         <div style="width: 95%;margin-left: 2.5%;">
             <label style="font-size: 1.2em;color: white">我希望他/她<a style="color: #A7A7A7">（最多选择九项）</a></label>
-
-            <div class="row" style="height: 5em;">
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                          ng-click="check('target',0)">测试
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-                          ng-click="check('target',1)">测试
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',2)"><label>测试</label></div>
-
-                </div>
+            <div class="person-tags" style="display:block;">
+                <div class="button button-check" ng-class="{'customCheckBox':!targetTagsCheck[tag],'customCheckBoxChecked':targetTagsCheck[tag]}" ng-click="check('target',tag)" ng-repeat="tag in targetTags">{{tag}}</div>
             </div>
-            <div class="row" style="height: 5em;">
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',3)">测试44
-
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',4)">测试
-
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',5)"><label>测试</label></div>
-
-                </div>
-            </div>
-            <div class="row" style="height: 5em;">
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',6)">测试22
-
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',7)">测试11
-
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',8)"><label>测试33</label></div>
-
-                </div>
-            </div>
-            <div class="row" style="height: 5em;">
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',9)">测试
-
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',10)">测试
-
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',11)"><label>测试</label></div>
-
-                </div>
-            </div>
-            <div class="row" style="height: 5em;">
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',12)">测试44
-
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',13)">测试
-
-                    </div>
-                </div>
-                <div class="col col-checkbox-div">
-                    <div class="button button-none" ng-class="{'customCheckBox':!Check,'customCheckBoxChecked':Check}"
-
-                          ng-click="check('target',14)"><label>测试</label></div>
-
-                </div>
-            </div>
+            
         </div>
-        <p style="font-size: 1.2em;color: white;margin-left: 2.5%">补充说明:</p>
-
+        <div style="display: flex;width: 100%;padding: 1em 1em;">
+            <p style="font-size: 1.2em;color: white;margin-left: 2.5%">补充说明:</p>
+        </div>
+        
         <div class="centerContent"
              style="border: 1px solid white;-webkit-border-radius: 3em;-moz-border-radius:
              3em;border-radius: 3em;height: 12em;width: 95%;margin-left: 2.5%">
