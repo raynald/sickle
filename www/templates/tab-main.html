@@ -43,9 +43,9 @@
       <div class="persons-list-main">
           <ion-list>
             <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.getId()}}">
-              <img class="avatar-clover" ng-src="{{person.getAvatar()}}">
-              <h2>{{person.getCompany()}} {{person.getJob()}}</h2>
-              <p>{{person.getGender()}} | {{person.residence}} | {{person.bornyear}} | {{person.getDegree()}} | {{person.getHeight()}}</p>
+              <img class="avatar-clover" ng-src="{{person.get("avatar")}}">
+              <h2>{{person.get("company")}} {{person.get("job")}}</h2>
+              <p>{{person.get("gender")}} | {{person.residence}} | {{person.bornyear}} | {{person.get("degree")}} | {{person.get("height")}}</p>
               <div class="person-tags">
                 <div class="person-tag" ng-repeat="tag in person.tags ">{{tag}}</div>
               </div>

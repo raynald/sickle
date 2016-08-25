@@ -167,7 +167,7 @@ PersonsService = function($http) {
      tags:['can make food', 'single child'],
      target:['80-89','taller than 175cm']
      }];*/
-
+     var table_name="person";
     return {
         save: function(person) {
             //var Person = Bmob.Object.extend(table_name);
@@ -231,10 +231,12 @@ PersonsService = function($http) {
 
         },
         allSortBy: function(sortBy) {
+            console.log(sortBy);
             var persons = [];
             var Person = Bmob.Object.extend(table_name);
             var query = new Bmob.Query(Person);
-            query.descending(sortBy).then(function(results) {
+            query.descending(sortBy);
+            query.find().then(function(results) {
                 console.log(persons);
                 for (var i = 0; i < results.length; i++) {
                     var object = results[i];
@@ -246,8 +248,6 @@ PersonsService = function($http) {
                 return persons;
             });
 
-
-            return persons;
         },
         remove: function(person) {
             //persons.splice(persons.indexOf(person), 1);
