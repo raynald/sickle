@@ -170,6 +170,13 @@ PersonsService = function($http) {
     var table_name = "person";
     return {
         save: function(person) {
+            var that = this;
+            console.log(person);
+            var Person = Bmob.Object.extend(table_name);
+            personBmob = that.convertToBmob(person, personBmob);
+            return personBmob.save();
+        },
+        save1: function(person) {
             //var Person = Bmob.Object.extend(table_name);
             //var personBmob = new Person();
             //personBmob.setName(person.name);
@@ -237,9 +244,9 @@ PersonsService = function($http) {
 
         },
         all: function(millis) {
-           
 
-          
+
+
             var Person = Bmob.Object.extend("person");
             var query = new Bmob.Query(Person);
             return query.find();
@@ -282,7 +289,21 @@ PersonsService = function($http) {
                 persons[i] = this.convertToJson(personBmobs[i]);
             }
             return persons;
-        }
+        },
+        convertToBmob: function(person, personBmob) {
+            personBmob.set("id",person.id);
+            personBmob.set("name", person.name);
+            personBmob.set("avatar", person.avatar);
+            personBmob.set("job", person.job);
+            personBmob.set("gender", person.gender);
+            personBmob.set("address", person.address);
+            personBmob.set("birthday", person.birthday);
+            personBmob.set("degree", person.degree);
+            personBmob.set("height", person.height);
+            personBmob.set("tags", person.tags);
+            personBmob.set("targets", person.targets);
+            return personBmob;
+        },
 
     };
 };

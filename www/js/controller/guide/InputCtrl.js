@@ -6,7 +6,7 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
         console.log($state.current.name);
         console.log($scope.user);
     };
-    
+
     $scope.datas = {
         userHeight: {
             value: null,
@@ -574,58 +574,52 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
         $scope.person = null;
         //no child yet
         if (personId === null || personId === undefined) {
-            $scope.person = Bmob.Object.extend("person");
-            $scope.setPersonData2($scope.person);
-            $scope.person.save(null, {
-                success: function(object) {
-                    console.log("save person success, object id:" + object.id);
-                    $scope.user.set("childId", object.id);
-
-                    Users.save($scope.user);
-                },
-                error: function(model, error) {
-                    console.log("save person fail");
-                }
+            $scope.person = {};
+            $scope.setPersonData($scope.person);
+            Persons.save($scope.person).then(function(object) {
+                console.log("save person success, object id:" + object.id);
+                $scope.user.set("childId", object.id);
+                Users.save($scope.user);
+            }, function(error) {
+                console.log("save person fail");
             });
+
         }
         //has child
         else {
 
-            var Person = Bmob.Object.extend("person");
-    
-            var query = new Bmob.Query(Person);
-            query.get(personId).then(function(object) {
+            Persons.get(personId).then(function(result) {
                 //person = object.attributes;
                 //person.id = object.id;
-                $scope.person= object;
+                $scope.person = Persons.convertToJson(result);
                 console.log($scope.person);
 
 
                 //person.set
-                if($state.current.name==="guide_09"){
-                    $scope.setPersonData2($scope.person);
-                }else if($state.current.name==="guide_10"){
+                if ($state.current.name === "guide_09") {
+                    $scope.setPersonData($scope.person);
+                } else if ($state.current.name === "guide_10") {
                     var selfTagsChecked = [];
-                    for (x in $scope.selfTagsCheck){
-                        if($scope.selfTagsCheck[x]===true){
+                    for (x in $scope.selfTagsCheck) {
+                        if ($scope.selfTagsCheck[x] === true) {
                             selfTagsChecked.push(x);
                         }
                     }
-                    $scope.person.set("tags",selfTagsChecked);
-                }else if($state.current.name==="guide_11"){
+                    $scope.person.tags=selfTagsChecked;
+                } else if ($state.current.name === "guide_11") {
                     var targetTagsChecked = [];
-                    for (x in $scope.targetTagsCheck){
-                        if($scope.targetTagsCheck[x]===true){
+                    for (x in $scope.targetTagsCheck) {
+                        if ($scope.targetTagsCheck[x] === true) {
                             targetTagsChecked.push(x);
                         }
                     }
                     console.log(targetTagsChecked);
-                    $scope.person.set("targets",targetTagsChecked);
+                    $scope.person.targets=targetTagsChecked;
 
                 }
-                
-                
-                
+
+
+
                 Persons.save($scope.person);
 
 
@@ -652,12 +646,12 @@ var InputCtrl = function($scope, $state, $ionicPopup, ionicDatePicker, guideData
          userMaritalStatus: Object
          userMonthlyIncome: Object
     };*/
-    $scope.setPersonData2=function(person){
-        person.set("height",parseInt($scope.datas.userHeight.value));
-        person.set("birthday",$scope.datas.userBorn.value);
-        person.set("degree",$scope.datas.userEducation.value);
-        person.set("address",$scope.datas.userHome.value);
-        person.set("job",$scope.datas.userJob.value);
+    $scope.setPersonData = function(person) {
+        person.height = parseInt($scope.datas.userHeight.value);
+        person.birthday = $scope.datas.userBorn.value;
+        person.degree = $scope.datas.userEducation.value;
+        person.address = $scope.datas.userHome.value;
+        person.job = $scope.datas.userJob.value;
     };
     $scope.skip = function() {
         console.log("clickskipeeeee");
