@@ -167,7 +167,7 @@ PersonsService = function($http) {
      tags:['can make food', 'single child'],
      target:['80-89','taller than 175cm']
      }];*/
-    var table_name = "person";
+    var table_name = "Person";
     return {
         save: function(person) {
             var that = this;
@@ -271,7 +271,7 @@ PersonsService = function($http) {
              }
              }*/
             var person = {};
-            var Person = Bmob.Object.extend("person");
+            var Person = Bmob.Object.extend("Person");
             var query = new Bmob.Query(Person);
             return query.get(personId);
 

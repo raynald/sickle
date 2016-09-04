@@ -69,13 +69,25 @@
     </ion-content>
     <form name="sendMessageForm" ng-submit="sendMessage()" ng-controller="UserMessagesCtrl" novalidate>
         <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+            <a href="javascript:void(0)" class="button button-icon icon ion-plus-circled" type="text">
+            </a>
             <label class="item-input-wrapper">
-                <textarea ng-model="input.message" value="" placeholder="Send {{toUser.nick}} a message..." required
+                <textarea class="emojis-wysiwyg" ng-model="input.message" value="" placeholder="Send {{toUser.nick}} a message..." required
                           minlength="1" maxlength="1500" msd-elastic></textarea>
             </label>
+            <div class="value"><pre id="emojis-wysiwyg-value"></pre></div>
             <button class="button button-icon icon ion-android-send" type="submit"
                 ng-disabled="!input.message || input.message === ''">
             </button>
         </ion-footer-bar>
     </form>
+    <script>
+		var $wysiwyg = $('.emojis-wysiwyg').emojiarea({wysiwyg: true});
+		var $wysiwyg_value = $('#emojis-wysiwyg-value');
+
+		$wysiwyg.on('change', function() {
+			$wysiwyg_value.text($(this).val());
+		});
+		$wysiwyg.trigger('change');
+	</script>
 </ion-view>

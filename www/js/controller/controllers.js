@@ -4,7 +4,7 @@ angular.module('starter.controllers', ['ngCordova'])
     .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
         $scope.messages = Chats.get($stateParams.chatId);
         $scope.userId = "hRkuBBBF"; // TODO: replace with Bmob.User.current().id
-        $scope.toUser = Persons.getUser($stateParams.chatId);
+        $scope.toUser = Chats.getUser($stateParams.chatId);
         $scope.user = Chats.getUser($scope.userId);
     })
     .controller('PersonDetailCtrl', function($scope, $stateParams, Persons) {
