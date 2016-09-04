@@ -39,9 +39,8 @@ angular.module('starter.controllers', ['ngCordova'])
             });
         }
     })
-    .controller('PersonsCtrl', function($scope, Persons) {
 
-    })
+
 
 .controller('MainCtrl', MainCtrl)
     .controller('GuideCtrl', function($scope, $state, Users, Persons) {
@@ -95,16 +94,26 @@ angular.module('starter.controllers', ['ngCordova'])
                 //                 console.log(status);
             })
         };
+        $scope.login1 = function(user) {
+            Users.login(user.username).then(function() {
+                $scope.user = Users.getCurrentUser();
+                $state.go("tab.main", {}, { reload: true });
+            }, function(error) {
+                // This isn't called because the error was already handled.
+                Users.register(user.username, user.username);
+                $state.go("guide_04", {}, { reload: true });
+            });
+        };
         $scope.login = function(user) {
             console.log(user.username, user.password);
             //TODO check mobile
-            Users.login(user.username);
-            $scope.user = Users.getCurrentUser();
-            if ($scope.user === null) {
-                Users.register(user.username, user.username);
-                $state.go("guide_04", {}, { reload: true });
+            var that = this;
+            if (Users.getCurrentUser() !== null) {
+                Users.logOut().then(function() {
+                    that.login1(user);
+                })
             } else {
-                $state.go("tab.main", {}, { reload: true });
+                that.login1(user);
             }
 
         };
