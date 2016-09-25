@@ -167,9 +167,16 @@ PersonsService = function($http) {
      tags:['can make food', 'single child'],
      target:['80-89','taller than 175cm']
      }];*/
-     var table_name="person";
+    var table_name = "person";
     return {
         save: function(person) {
+            var that = this;
+            console.log(person);
+            var Person = Bmob.Object.extend(table_name);
+            personBmob = that.convertToBmob(person, personBmob);
+            return personBmob.save();
+        },
+        save1: function(person) {
             //var Person = Bmob.Object.extend(table_name);
             //var personBmob = new Person();
             //personBmob.setName(person.name);
@@ -178,7 +185,7 @@ PersonsService = function($http) {
                 success: function(object) {
                     alert("save person success, object id:" + object.id);
                     //person = Person.spawn(object);
-                    person=object;
+                    person = object;
                     return person;
                 },
                 error: function(model, error) {
@@ -190,8 +197,14 @@ PersonsService = function($http) {
             });
             return person;
         },
+        //will delete
+        all1: function() {
 
-        all: function() {
+
+
+
+
+
             var persons = [];
             /*$http({
              url:server_url+table_name,
@@ -205,13 +218,13 @@ PersonsService = function($http) {
              console.error(config);
              console.error(status);
              });*/
-           //var person = [];
+            //var person = [];
             var Person = Bmob.Object.extend("person");
             var query = new Bmob.Query(Person);
             query.find().then(function(results) {
                 console.log(persons);
                 for (var i = 0; i < results.length; i++) {
-                    var  personBmob= results[i];
+                    var personBmob = results[i];
                     //var person = Person.spawn(personBmob);
                     //var person = object.attributes;
                     //person.id = object.id;
@@ -230,25 +243,23 @@ PersonsService = function($http) {
              })*/
 
         },
+        all: function(millis) {
+
+
+
+            var Person = Bmob.Object.extend("person");
+            var query = new Bmob.Query(Person);
+            return query.find();
+        },
+
+
         allSortBy: function(sortBy) {
             console.log(sortBy);
             var persons = [];
             var Person = Bmob.Object.extend(table_name);
             var query = new Bmob.Query(Person);
             query.descending(sortBy);
-            query.find().then(function(results) {
-                
-                for (var i = 0; i < results.length; i++) {
-                    var object = results[i];
-                    //var person = object.attributes;
-                    //person.id = object.id;
-                    //var person = Person.spawn(object);
-                    persons.push(object);
-                }
-                console.log(persons);
-                return persons;
-            });
-
+            return query.find();
         },
         remove: function(person) {
             //persons.splice(persons.indexOf(person), 1);
@@ -262,16 +273,37 @@ PersonsService = function($http) {
             var person = {};
             var Person = Bmob.Object.extend("person");
             var query = new Bmob.Query(Person);
-            query.get(personId).then(function(object) {
-                //person = object.attributes;
-                //person.id = object.id;
-                //person = Person.spawn(object);
-                person.set("id",object.id);
-                console.log("idddddddd"+person.get("id"));
-                return person;
-            });
+            return query.get(personId);
 
 
-        }
+        },
+        convertToJson: function(personBmob) {
+            var person = {};
+            person = personBmob.attributes;
+            person.id = personBmob.id;
+            return person;
+        },
+        convertToJsonArray: function(personBmobs) {
+            var persons = [];
+            for (var i = 0; i < personBmobs.length; i++) {
+                persons[i] = this.convertToJson(personBmobs[i]);
+            }
+            return persons;
+        },
+        convertToBmob: function(person, personBmob) {
+            personBmob.set("id",person.id);
+            personBmob.set("name", person.name);
+            personBmob.set("avatar", person.avatar);
+            personBmob.set("job", person.job);
+            personBmob.set("gender", person.gender);
+            personBmob.set("address", person.address);
+            personBmob.set("birthday", person.birthday);
+            personBmob.set("degree", person.degree);
+            personBmob.set("height", person.height);
+            personBmob.set("tags", person.tags);
+            personBmob.set("targets", person.targets);
+            return personBmob;
+        },
+
     };
 };

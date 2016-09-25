@@ -85,7 +85,7 @@ var Person = Bmob.Object.extend("person",
         },
         setHeight:function(height){
             return this.set("height",height);
-        }
+        },
         getTags:function(){
             return this.get("tags");
         },

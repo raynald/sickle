@@ -46,39 +46,7 @@ UsersService=function ($http) {
             },
 
             login: function (mobile) {
-                var user = Bmob.User.logIn(mobile,mobile, {
-                    success: function (user) {
-                        /*user.set("username", "my_new_username");  // attempt to change username
-                        user.save(null, {
-                            success: function (user) {
-                                // This succeeds, since the user was authenticated on the device
-
-                                // Get the user from a non-authenticated method
-                                var query = new Bmob.Query(Bmob.User);
-                                query.get(user.objectId, {
-                                    success: function (userAgain) {
-                                        userAgain.set("username", "another_username");
-                                        userAgain.save(null, {
-                                            error: function (userAgain, error) {
-                                                // This will error, since the Bmob.User is not authenticated
-                                            }
-                                        });
-                                    }
-                                });
-                            }
-                        });*/
-                        //means has this mobile in database
-                        console.log("login success");
-                        return user;
-
-                    },
-                    error: function (user, error) {
-                        // The login failed. Means no mobile in database
-                        //register(mobile,mobile);
-                        return {};
-
-                    }
-                });
+                return Bmob.User.logIn(mobile,mobile);
             },
             verifyEmail: function (email) {
                 //reset password
@@ -103,9 +71,9 @@ UsersService=function ($http) {
                 }
             },
             logOut: function () {
-                Bmob.User.logOut();
+                return Bmob.User.logOut();
 
-                var currentUser = Bmob.User.current();  // this will now be null
+                //var currentUser = Bmob.User.current();  // this will now be null
             },
             getSubscribe: function () {
                 var user = Bmob.User.current();

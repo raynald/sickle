@@ -1,7 +1,11 @@
 var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users) {
     $scope.activeButton = 'recent';
 
-    $scope.persons = Persons.all();
+    $scope.persons = []
+    Persons.all().then(function(results) {
+        $scope.persons = Persons.convertToJsonArray(results);
+    });
+
     $scope.remove = function(person) {
         Persons.remove(person);
     };
@@ -116,10 +120,16 @@ var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users) {
 
         switch (filter) {
             case 'recent':
-                $scope.persons = Persons.allSortBy('createdAt');
+                Persons.allSortBy('createdAt').then(function(results) {
+                    $scope.persons = Persons.convertToJsonArray(results);
+                });
+                //$scope.persons = Persons.allSortBy('createdAt');
                 break;
             case 'hot':
-                $scope.persons = Persons.allSortBy('createdAt');
+                Persons.allSortBy('createdAt').then(function(results) {
+                    $scope.persons = Persons.convertToJsonArray(results);
+                });
+                //$scope.persons = Persons.allSortBy('createdAt');
                 break;
             case 'filter':
                 this.openModal();
