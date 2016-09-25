@@ -132,7 +132,45 @@
     background-color: #f0f0f0;
     font-weight:bold;
 }
+.tab-item{
+    opacity: 100;
+}
 
+.tabs .tab-item:hover{
+    background-color: #ae0009 !important;
+    color: white;
+}
+ion-tabs.tabs-color-active-assertive .tab-item {
+    color: #ae051e;
+}
+ion-tabs.tabs-color-active-assertive .tab-item-active .tab-item:active{
+    color: #ffffff !important;
+}
+
+.bar-main-normal {
+     background:url(../img/main_normal.png) no-repeat center;
+     background-size: 20%;
+ }
+.bar-main-choose {
+    background:url(../img/main_choose.png) no-repeat center;
+    background-size: 20%;
+}
+.bar-subscribe-normal {
+    background:url(../img/subscribe_normal.png) no-repeat center;
+    background-size: 20%;
+}
+.bar-subscribe-choose {
+    background:url(../img/subscribe_choose.png) no-repeat center;
+    background-size: 20%;
+}
+.bar-talk-normal {
+    background:url(../img/talk_normal.png) no-repeat center;
+    background-size: 20%;
+}
+.bar-talk-choose {
+    background:url(../img/talk_choose.png) no-repeat center;
+    background-size: 20%;
+}
 .main-bar-fix-position{
     position:fixed;
     _position:absolute;

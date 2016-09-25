@@ -5,7 +5,9 @@ var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users) {
     $scope.remove = function(person) {
         Persons.remove(person);
     };
-
+    $scope.tabSelected = function(tab) {
+        console.log(tab + ' Tab Selected');
+    };
     // 触发一个按钮点击，或一些其他目标
     $scope.showPopup = function() {
         $scope.data = {}
@@ -28,7 +30,7 @@ var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users) {
                         }*/
                         return "";
                     }
-                },
+                }
             ]
         });
         myPopup.then(function(res) {
@@ -59,7 +61,7 @@ var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users) {
                         Users.subscribe(person);
                         return "";
                     }
-                },
+                }
             ]
         });
         confirmPopup.then(function(res) {

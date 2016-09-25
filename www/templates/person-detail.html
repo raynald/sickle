@@ -14,15 +14,19 @@
         </div>
     </div>
     <ion-content ng-controller="PersonDetailTest" scroll="false" on-scroll="checkTag()" overflow-scroll=’true’> <!--class="padding"-->
-        <div class="bar">
-            <!--<a class="button" href="/#/tab/main">return</a>-->
-            <a class="button" ui-sref="tab.main">return</a>
-        </div>
+        <!--<div class="bar">
+            &lt;!&ndash;<a class="button" href="/#/tab/main">return</a>&ndash;&gt;
+            <a class="button button" ui-sref="tab.main">return</a>
+        </div>-->
+
         <!--<p>hhh{{person.job}}</p>
         <p>hhh{{person==null}}</p>-->
            <div class="centerContent Avatar" >
+               <div style="margin-left: 1em;margin-right: 1em;width: 100%;height: 5em" >
+                   <img class="back-button-left" ng-click="" src="img/back-left.png" ui-sref="tab.main" style="width: 50px;margin-top: 1em;margin-left: 1em;float: left">
+               </div>
                <!--相亲名片logo-->
-               <div style="width: 13em;margin-top: 2em">
+               <div style="width: 13em;">
                    <img class="imgLogoIcon"  src="img/logo_icon.png" style="float: left;height: 5em;width: 5em;">
 
                    <p style="font-size: 1.4em;padding-top: 2em;font-weight: bold">相亲名片</p>

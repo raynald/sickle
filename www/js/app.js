@@ -571,7 +571,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         // Learn more here: https://github.com/angular-ui/ui-router
         // Set up the various states which the app can be in.
         // Each state's controller can be found in controllers.js
-        /*这段代码用来修复android中bottom栏出现在上方的bug*/
+        /*这段代码用来使android中bottom栏出现在上方*/
 
         $ionicConfigProvider.platform.ios.tabs.style('standard');
         $ionicConfigProvider.platform.ios.tabs.position('bottom');
