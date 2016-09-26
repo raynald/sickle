@@ -34,7 +34,7 @@ PersonsService = function($http) {
      console.log(data);
      });*/
     // Some fake testing data
-    /*var persons = [{
+    var persons = [{
      id: 0,
      name: 'Ben Sparrow',
      face: 'img/ben.png',
@@ -166,7 +166,7 @@ PersonsService = function($http) {
      height:'167cm',
      tags:['can make food', 'single child'],
      target:['80-89','taller than 175cm']
-     }];*/
+     }];
     var table_name = "person";
     return {
         save: function(person) {

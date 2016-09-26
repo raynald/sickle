@@ -132,6 +132,17 @@
     background-color: #f0f0f0;
     font-weight:bold;
 }
+
+/*个人信息tag*/
+.col-person-tag-main {
+    background-color: rgba(99, 99, 99, 0.4);
+    border-radius: 3em;
+    font-weight: bold;
+    padding: 0.1em 0.4em;
+    text-align: center;
+    margin-right: 1em;
+}
+
 .tab-item{
     opacity: 100;
 }
@@ -488,7 +499,41 @@ a.autolinker {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+/*自定义相亲名片button,*/
+.button.button-personal-detail {
 
+    background-color: rgba(255, 255, 255, 0);
+    background-image:url("../img/cardBackground.png");
+    background-size: 70%;
+    background-position: center;
+    background-repeat:no-repeat;
+    border-radius: 40px;
+    display:inline-block;
+    width: 9em;
+
+}
+.button.button-personal-detail.active, .button.button-personal-detail.activated {
+
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+/*自定义chat button,*/
+.button.button-chat {
+
+    background-color: rgba(255, 255, 255, 0);
+    background-image:url("../img/chatBackground.png");
+    background-size: 70%;
+    background-position: center;
+    background-repeat:no-repeat;
+    border-radius: 40px;
+    display:inline-block;
+    width: 9em;
+}
+.button.button-chat.active, .button.button-chat.activated {
+
+
+    background-color: rgba(255, 0, 0, 0.3);
+}
 /*custom badge*/
 .badge.badge-custom {
     color: #ffffff;

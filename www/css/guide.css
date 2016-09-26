@@ -56,6 +56,7 @@ div{
 .button-clover{
     background-color:transparent;
     border-radius:25px;
+    height: 80%;
     color:#ae0009;
     border:1px #ae0009 solid;
 
@@ -68,8 +69,8 @@ div{
 }
 .avatar-clover{
     border:solid 1px #ae0009;
-    width:50px;
-    height:50px;
+    width:100px;
+    height:100px;
 }
 
 .button.button-none-red-nobord{
@@ -434,7 +435,6 @@ div{
 /*main tab tags*/
 .person-tag{
     background-color: rgba(24, 24, 24, 0.27);
-    color: black;
     border-radius: 3em;
     font-weight: bold;
     padding: 0.4em 0.7em;
@@ -445,15 +445,11 @@ div{
 }
 
 .person-target-tag{
-    background-color: #EEEEEE;
-    color: black;
+    background-color: #ffffff;
     border-radius: 3em;
-    border-color: rgba(24, 24, 24, 0.27);
-    border-width: 1px;
-    font-weight: bold;
+    border: 1px solid rgba(175, 175, 175, 0.65);
+    font-weight: normal;
     padding: 0.4em 0.7em;
-    text-align: center;
-    margin-right: 1em;
     text-align: center;
     display: inline-block;
 }

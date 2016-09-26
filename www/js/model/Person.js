@@ -91,7 +91,7 @@ var Person = Bmob.Object.extend("person",
         },
         setTags:function(tags){
             return this.set("tags",tags);
-        }
+        },
         getTargets:function(){
             return this.get("targets");
         },
