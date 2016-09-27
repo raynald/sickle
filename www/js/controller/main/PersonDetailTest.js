@@ -188,4 +188,4 @@ var PersonDetailTest = function($scope, $ionicScrollDelegate, $timeout) {
 
             }, 500, false);
     }
-}
+};

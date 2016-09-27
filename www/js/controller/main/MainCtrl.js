@@ -1,4 +1,4 @@
-var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users) {
+var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users,$ionicScrollDelegate) {
     $scope.activeButton = 'recent';
 
     $scope.persons = []
@@ -137,4 +137,13 @@ var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users) {
         }
 
     };
+
+//    滑动事件监听
+    $scope.mScroll = function(){
+        $scope.height = $ionicScrollDelegate.getScrollPosition().top;
+        if($scope.height >= 260) {
+
+        }
+        console.log($scope.height);
+    }
 };

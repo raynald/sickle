@@ -1,5 +1,5 @@
 <ion-view view-title="Main" class="tab-main" >
-  <ion-content>
+  <ion-content on-scroll="mScroll()">
     <div class="main-self">
       <!--<button class="button ion-ios-gear self-setting"></button>-->
       <button class="button button-none-circle-set"></button>
@@ -38,46 +38,48 @@
           </script>
         </div>
       </div>
+      <ion-scroll id="main_content_scroll_view" style="height: 450px">
+        <ion-list>
+          <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.getId()}}">
+            <!--<img class="avatar-clover" ng-src="{{person.get("avatar")}}">-->
+            <img class="avatar-clover" style="max-height: 100px;max-width: 100px;float: left" ng-src="../www/img/adam.jpg">
+            <!--<h2>{{person.company}} {{person.job}}</h2>-->
+            <h3 style="margin-left: 20%;font-size: 24px">国企中层管理</h3>
+            <!--<p>{{person.gender}} | {{person.residence}} | {{person.bornyear}} | {{person.degree}} | {{person.height}}</p>-->
+            <p style="margin-left: 20%;word-break: break-all;white-space: pre-wrap">女 | 现居上海浦东 | 1989年 | 本科 | 180cm | 以购房(无贷款)</p>
+            <div class="row" style="margin-left: 20%;width: 80%">
+              <div class="col col-person-tag-main" >测试测试</div>
+              <div class="col col-person-tag-main" >测试1</div>
+              <div class="col col-person-tag-main" >测试</div>
+            </div>
+            <div class="row" style="margin-top: 0.2em;margin-left: 20%">
+              <div class="col col-person-tag-main" >测试</div>
+              <div class="col col-person-tag-main" >测试1</div>
+              <div class="col col-person-tag-main" >测试测试</div>
+            </div>
+            <!--<div class="person-tags">
+              <div class="person-tag" ng-repeat="tag in person.tags ">{{tag}}</div>
+            </div>-->
 
-      <div class="persons-list-main">
-          <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.getId()}}">
-              <!--<img class="avatar-clover" ng-src="{{person.get("avatar")}}">-->
-              <img class="avatar-clover" style="max-height: 100px;max-width: 100px;float: left" ng-src="../www/img/adam.jpg">
-              <!--<h2>{{person.company}} {{person.job}}</h2>-->
-              <h3 style="margin-left: 20%;font-size: 24px">国企中层管理</h3>
-              <!--<p>{{person.gender}} | {{person.residence}} | {{person.bornyear}} | {{person.degree}} | {{person.height}}</p>-->
-              <p style="margin-left: 20%;word-break: break-all;white-space: pre-wrap">女 | 现居上海浦东 | 1989年 | 本科 | 180cm | 以购房(无贷款)</p>
-              <div class="row" style="margin-left: 20%;width: 80%">
-                <div class="col col-person-tag-main" >测试测试</div>
-                <div class="col col-person-tag-main" >测试1</div>
-                <div class="col col-person-tag-main" >测试</div>
-              </div>
-              <div class="row" style="margin-top: 0.2em;margin-left: 20%">
-                <div class="col col-person-tag-main" >测试</div>
-                <div class="col col-person-tag-main" >测试1</div>
-                <div class="col col-person-tag-main" >测试测试</div>
-              </div>
-              <!--<div class="person-tags">
-                <div class="person-tag" ng-repeat="tag in person.tags ">{{tag}}</div>
-              </div>-->
-              
-              <div class="target-tags">
-                <h2 style="margin-left:10%; display:inline-block;text-align: center">寻觅</h2>
-                <!--<div class="person-target-tag" ng-repeat="target in person.targets ">{{target}}</div>-->
-                <div class="person-target-tag">80-90年</div>
-                <div class="person-target-tag">年薪百万</div>
-              </div>
-              <!--<i class="icon ion-chevron-right icon-accessory" ></i>-->
+            <div class="target-tags">
+              <h2 style="margin-left:10%; display:inline-block;text-align: center">寻觅</h2>
+              <!--<div class="person-target-tag" ng-repeat="target in person.targets ">{{target}}</div>-->
+              <div class="person-target-tag">80-90年</div>
+              <div class="person-target-tag">年薪百万</div>
+            </div>
+            <!--<i class="icon ion-chevron-right icon-accessory" ></i>-->
 
-              <button class="button button-personal-detail" style="margin-left: 60px;float: left" href="#" ng-click="showConfirm(person)"></button>
-              <button class="button button-chat" href="#/tab/persons/{{person.id}}"></button>
-              <ion-option-button class="button-assertive" ng-click="remove(person)">
-                删除
-              </ion-option-button>
-            </ion-item>
-          </ion-list>
-      </div>
+            <button class="button button-personal-detail" style="margin-left: 60px;float: left" href="#" ng-click="showConfirm(person)"></button>
+            <button class="button button-chat" href="#/tab/persons/{{person.id}}"></button>
+            <ion-option-button class="button-assertive" ng-click="remove(person)">
+              删除
+            </ion-option-button>
+          </ion-item>
+        </ion-list>
+      </ion-scroll>
+<!--      <div class="persons-list-main">
+
+      </div>-->
 
   </ion-content>
 </ion-view>

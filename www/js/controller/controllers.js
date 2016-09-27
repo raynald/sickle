@@ -833,4 +833,5 @@ angular.module('starter.controllers', ['ngCordova'])
         console.log('sync')
         vm.CityPickData4.areaData = vm.CityPickData2.areaData
     }
-});
+})
+;
