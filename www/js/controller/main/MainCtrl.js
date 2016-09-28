@@ -139,11 +139,23 @@ var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users,$ionicS
     };
 
 //    滑动事件监听
-    $scope.mScroll = function(){
-        $scope.height = $ionicScrollDelegate.getScrollPosition().top;
-        if($scope.height >= 260) {
-
+    $scope.mainScroll = function(){
+        //main到260左右头部完全被隐藏，这时候要是main还有向上的滑动的话要将滑动事件传递给list
+        $scope.mainScrollPosition = $ionicScrollDelegate.getScrollPosition().top;
+        console.log('main:'+$scope.mainScrollPosition);
+    };
+    $scope.lastListScrollPosition = 0;
+    $scope.mainScrollPosition = 0;
+//    list 滑动事件监听
+    $scope.listScroll = function(){
+        height = $ionicScrollDelegate.$getByHandle('list').getScrollPosition().top;
+        if(height <= 0 && $scope.mainScrollPosition) {
+            delatY = height - $scope.lastListScrollPosition;
+            if(delatY>0)
+                delatY = - delatY;
+            $ionicScrollDelegate.$getByHandle('main').scrollTop(true);
         }
-        console.log($scope.height);
+        $scope.lastListScrollPosition = height;
+        console.log('list:'+height);
     }
 };

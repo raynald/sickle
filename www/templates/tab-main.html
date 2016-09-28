@@ -1,5 +1,5 @@
 <ion-view view-title="Main" class="tab-main" >
-  <ion-content on-scroll="mScroll()">
+  <ion-content on-scroll="mainScroll()" delegate-handle="main">
     <div class="main-self">
       <!--<button class="button ion-ios-gear self-setting"></button>-->
       <button class="button button-none-circle-set"></button>
@@ -38,7 +38,7 @@
           </script>
         </div>
       </div>
-      <ion-scroll id="main_content_scroll_view" style="height: 450px">
+      <ion-scroll id="main_content_scroll_view"  over-flow="true" delegate-handle="list" style="height: 655px;margin-top: 35px" on-scroll="listScroll()">
         <ion-list>
           <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.getId()}}">
             <!--<img class="avatar-clover" ng-src="{{person.get("avatar")}}">-->
