@@ -12,7 +12,8 @@ UsersService=function ($http) {
                     "lastname":"huang",
                     "mobile":"1333333333",
                     "targetgender":"male",*/
-                user.save(null, {
+                    return user.save();
+                /*user.save(null, {
                     success: function(user) {
                         // This succeeds, since the user was authenticated on the device
 
@@ -21,32 +22,52 @@ UsersService=function ($http) {
                     error: function(model, error) {
                         alert("create user fail");
                     }
-                });
+                });*/
 
             },
-            register: function (username, password) {
-                var user = new Bmob.User();
-                user.set("username", username);
-                user.set("password", password);
-                //user.set("email", "example@a.com");
 
-                // other fields can be set just like with Bmob.Object
-                //user.set("phone", "415-392-0202");
-
-                user.signUp(null, {
-                    success: function (user) {
-                        // Hooray! Let them use the app now.
-                        console.log("register success");
-                    },
-                    error: function (user, error) {
-                        // Show the error message somewhere and let the user try again.
-                        alert("Error: " + error.code + " " + error.message);
-                    }
-                });
-            },
 
             login: function (mobile) {
+
                 return Bmob.User.logIn(mobile,mobile);
+
+                /*if(Bmob.User.current()!==null){
+                    Bmob.User.logOut();
+                }
+                var user = Bmob.User.logIn(mobile,mobile, {
+                    success: function (user) {
+                        user.set("username", "my_new_username");  // attempt to change username
+                        user.save(null, {
+                            success: function (user) {
+                                // This succeeds, since the user was authenticated on the device
+
+                                // Get the user from a non-authenticated method
+                                var query = new Bmob.Query(Bmob.User);
+                                query.get(user.objectId, {
+                                    success: function (userAgain) {
+                                        userAgain.set("username", "another_username");
+                                        userAgain.save(null, {
+                                            error: function (userAgain, error) {
+                                                // This will error, since the Bmob.User is not authenticated
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                        //means has this mobile in database
+                        console.log("login success");
+                        return user;
+
+                    },
+                    error: function (user, error) {
+                        // The login failed. Means no mobile in database
+                        //register(mobile,mobile);
+                        return {};
+
+                    }
+                });*/
+
             },
             verifyEmail: function (email) {
                 //reset password
@@ -81,19 +102,23 @@ UsersService=function ($http) {
                 relation.query().find({
                     success: function (list) {
                         // list contains the posts that the current user likes.
+                        console.log("subscribe list :::"+list)
                     }
                 });
+
+
 
             },
             getSubscribed: function () {
                 var currentUser = Bmob.User.current();
-                var person = currentUser.child;
 
 
-                var query = Bmob.Relation.reverseQuery('_User', 'subscribes', person);
+
+                var query = Bmob.Relation.reverseQuery('_User', 'subscribes', currentUser);
                 query.find({
                     success: function (users) {
                         //users who subscribes this person
+                        console.log("subscribe list :::"+users)
                         return users;
                     }
                 });
@@ -165,13 +190,56 @@ UsersService=function ($http) {
 // });
 
             },
-            subscribe: function (person) {
+            subscribe: function (personToSubscribe) {
                 var user = Bmob.User.current();
                 console.log(user);
                 var relation = user.relation("subscribes");
-                relation.add(person);
+                relation.add(personToSubscribe.bmob);
                 user.save();
             },
+            all:function(){
+            var query = new Bmob.Query(Bmob.User);
+                        //query.equalTo(gender, "female");  // find all the women
+                        query.find({
+                          success: function(women) {
+                            // Do stuff
+                          }
+                        });
+
+
+
+
+
+            },
+             convertToJson: function(userBmob) {
+                        var child = {};
+                        child = userBmob.attributes;
+                        child.id = userBmob.id;
+                        child.bmob=userBmob
+                        return child;
+                    },
+                    convertToJsonArray: function(userBmobs) {
+                        var children = [];
+                        for (var i = 0; i < userBmobs.length; i++) {
+                            children[i] = this.convertToJson(userBmobs[i]);
+                        }
+                        return children;
+                    },
+                    /*convertToBmob: function(person, personBmob) {
+                        personBmob.set("id",person.id);
+                        personBmob.set("name", person.name);
+                        personBmob.set("avatar", person.avatar);
+                        personBmob.set("job", person.job);
+                        personBmob.set("gender", person.gender);
+                        personBmob.set("address", person.address);
+                        personBmob.set("birthday", person.birthday);
+                        personBmob.set("degree", person.degree);
+                        personBmob.set("height", person.height);
+                        personBmob.set("tags", person.tags);
+                        personBmob.set("targets", person.targets);
+                        return personBmob;
+                    },*/
+
 
         };
 

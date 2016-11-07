@@ -1,10 +1,17 @@
 var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users,$ionicScrollDelegate) {
     $scope.activeButton = 'recent';
 
-    $scope.persons = []
-    Persons.all().then(function(results) {
-        $scope.persons = Persons.convertToJsonArray(results);
-    });
+    $scope.persons = [];
+
+            var query = new Bmob.Query(Bmob.User);
+            //query.descending(sortBy);
+            query.find().then(function(results){
+                console.log("persons::::"+results);
+                $scope.persons = Users.convertToJsonArray(results);
+            });
+
+
+
 
     $scope.remove = function(person) {
         Persons.remove(person);
@@ -61,7 +68,7 @@ var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users,$ionicS
                         } else {
                           return $scope.data.wifi;
                         }*/
-                        console.log(person);
+                        console.log("will subscribe this person: "+person);
                         Users.subscribe(person);
                         return "";
                     }
@@ -69,6 +76,7 @@ var MainCtrl = function($scope, $ionicModal, $ionicPopup, Persons, Users,$ionicS
             ]
         });
         confirmPopup.then(function(res) {
+
             if (res) {
                 console.log('You are sure');
             } else {

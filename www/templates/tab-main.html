@@ -43,10 +43,10 @@
           <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="person in persons" type="item-text-wrap" href="#/tab/persons/{{person.getId()}}">
             <!--<img class="avatar-clover" ng-src="{{person.get("avatar")}}">-->
             <img class="avatar-clover" style="max-height: 100px;max-width: 100px;float: left" ng-src="../www/img/adam.jpg">
-            <!--<h2>{{person.company}} {{person.job}}</h2>-->
-            <h3 style="margin-left: 20%;font-size: 24px">国企中层管理</h3>
+
+            <h3 style="margin-left: 20%;font-size: 24px">{{person.childcompany}} {{person.childjob}}</h3>
             <!--<p>{{person.gender}} | {{person.residence}} | {{person.bornyear}} | {{person.degree}} | {{person.height}}</p>-->
-            <p style="margin-left: 20%;word-break: break-all;white-space: pre-wrap">女 | 现居上海浦东 | 1989年 | 本科 | 180cm | 以购房(无贷款)</p>
+            <p style="margin-left: 20%;word-break: break-all;white-space: pre-wrap">女 | 现居上海浦东 | 1989年 | {{person.childdegree}} | 180cm | 以购房(无贷款)</p>
             <div class="row" style="margin-left: 20%;width: 80%">
               <div class="col col-person-tag-main" >测试测试</div>
               <div class="col col-person-tag-main" >测试1</div>
@@ -57,20 +57,20 @@
               <div class="col col-person-tag-main" >测试1</div>
               <div class="col col-person-tag-main" >测试测试</div>
             </div>
-            <!--<div class="person-tags">
-              <div class="person-tag" ng-repeat="tag in person.tags ">{{tag}}</div>
+            <!--<div class="person-tags" style="margin-left: 20%;width: 80%">
+              <div class="person-tag" ng-repeat="tag in person.childtags ">{{tag}}</div>
             </div>-->
 
             <div class="target-tags">
               <h2 style="margin-left:10%; display:inline-block;text-align: center">寻觅</h2>
-              <!--<div class="person-target-tag" ng-repeat="target in person.targets ">{{target}}</div>-->
+              <div class="person-target-tag" ng-repeat="target in person.childtargettags ">{{target}}</div>
               <div class="person-target-tag">80-90年</div>
               <div class="person-target-tag">年薪百万</div>
             </div>
             <!--<i class="icon ion-chevron-right icon-accessory" ></i>-->
 
-            <button class="button button-personal-detail" style="margin-left: 60px;float: left" href="#" ng-click="showConfirm(person)"></button>
-            <button class="button button-chat" href="#/tab/persons/{{person.id}}"></button>
+            <button class="button button-personal-detail" style="margin-left: 60px;float: left" href="#/tab/persons/{{person.id}}" ></button>
+            <button class="button button-chat" href="#" ng-click="showConfirm(person)"></button>
             <ion-option-button class="button-assertive" ng-click="remove(person)">
               删除
             </ion-option-button>

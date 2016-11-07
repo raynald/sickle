@@ -54,31 +54,34 @@ angular.module('starter.controllers', ['ngCordova'])
         };
         $scope.updateTargetGender = function(targetgender) {
             $scope.user.set("targetgender", targetgender);
-            Users.save($scope.user);
-            console.log($scope.user);
-            //TODO guide_06
-            $state.go("guide_07", {}, { reload: true });
+            $scope.user.save().then(function() {
+                console.log($scope.user);
+                //TODO guide_06
+                $state.go("guide_07", {}, { reload: true });
+            });
+
         };
         $scope.updateGenderLastName = function(gender, lastname) {
             $scope.user.set("gender", gender);
             if (lastname !== null && lastname !== undefined && lastname !== "") {
                 $scope.user.set("lastname", lastname);
-                Users.save($scope.user);
-                console.log($scope.user);
-                $state.go("guide_09", {}, { reload: true });
+                $scope.user.save().then(function() {
+                    console.log($scope.user);
+                    $state.go("guide_09", {}, { reload: true });
+                });
             }
 
 
         };
         $scope.updateLastName = function(gender) {
             $scope.user.set("lastname", lastname);
-            Users.save($scope.user);
-            console.log($scope.user);
-            var gender = $scope.user.get("gender");
-            if (gender !== null && gender !== undefined && gender !== "") {
-                $state.go("guide_09", {}, { reload: true });
-            }
-
+            $scope.user.save().then(function() {
+                console.log($scope.user);
+                var gender = $scope.user.get("gender");
+                if (gender !== null && gender !== undefined && gender !== "") {
+                    $state.go("guide_09", {}, { reload: true });
+                }
+            });
         };
     })
     .controller("RegisterCtrl", function($scope, $state, $http, Users, Persons) {
@@ -99,9 +102,28 @@ angular.module('starter.controllers', ['ngCordova'])
                 $scope.user = Users.getCurrentUser();
                 $state.go("tab.main", {}, { reload: true });
             }, function(error) {
-                // This isn't called because the error was already handled.
-                Users.register(user.username, user.username);
-                $state.go("guide_04", {}, { reload: true });
+
+
+                var user1 = new Bmob.User();
+                                user1.set("username", user.username);
+                                user1.set("password", user.username);
+                                //user.set("email", "example@a.com");
+
+                                // other fields can be set just like with Bmob.Object
+                                //user.set("phone", "415-392-0202");
+
+                                user1.signUp(null, {
+                                    success: function (user1) {
+                                        // Hooray! Let them use the app now.
+                                        console.log("register success");
+                                         $state.go("guide_04", {}, { reload: true });
+                                    },
+                                    error: function (user1, error) {
+                                        // Show the error message somewhere and let the user try again.
+                                        alert("Error: " + error.code + " " + error.message);
+                                    }
+                                });
+
             });
         };
         $scope.login = function(user) {
@@ -109,9 +131,9 @@ angular.module('starter.controllers', ['ngCordova'])
             //TODO check mobile
             var that = this;
             if (Users.getCurrentUser() !== null) {
-                Users.logOut().then(function() {
+                Users.logOut();//.then(function() {
                     that.login1(user);
-                })
+                //})
             } else {
                 that.login1(user);
             }
