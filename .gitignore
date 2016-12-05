@@ -4,8 +4,4 @@
 **/node_modules/
 **/.project
 **/bower_components
-sickle/platforms
-sickle/plugins
-platforms
-plugins
-resources
+plugins/**
